@@ -2,14 +2,8 @@
     from{
         transform: skew(0);
     }
-    25% {
-        transform: skew(2deg, 0deg);
-    }
     50% {
         transform: skew(2deg, 2deg);
-    }
-    75% {
-        transform: skew(0deg, 2deg);
     }
     to {
         transform: skew(0);
@@ -19,6 +13,7 @@
 #hero {
     width: 100vw;
     height: 100vh;
+    z-index: 1;
 }
 
 .hero-background {
@@ -28,7 +23,7 @@
     /* background-image: url('/static/damascus.svg'); */
     background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/damascus.svg');
     animation: shift 5s;
-    animation-iteration-count: 10;
+    animation-iteration-count: infinite;
     animation-timing-function: ease;
 }
 

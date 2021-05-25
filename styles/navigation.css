@@ -8,6 +8,7 @@
     user-select: none;
     padding: 30px;
     position: sticky;
+    z-index: 2;
 }
 
 .navbar-logo{
