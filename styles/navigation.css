@@ -1,5 +1,45 @@
-.navigation-container{
+.navbar-container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    height: 20px;
+    user-select: none;
+    padding: 30px;
+    position: sticky;
+}
+
+.navbar-logo{
+    width: 50px;
+    padding-right: 20px;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+}
+
+.navbar-links{
+    list-style: none;
+    margin:0;
+    padding:0;
+    list-style-type: none;
+}
+
+.navbar-links li{
+    display:inline-block;
+    padding-left: 80px;
+}
+
+.navbar-links li:first-child{
+    padding-left: 0px;
+}
+
+.navbar-links li, a{
+    text-decoration: none;
+}
+
+.navbar-brand{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
