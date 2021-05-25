@@ -36,7 +36,7 @@
 .hero-content {
     position: absolute;
     left: 10%;
-    top: 20%;
+    top: 25%;
     max-width: 60%;
     max-height: 70%;
 }
@@ -44,8 +44,8 @@
 .visual-hero-content img {
     position: absolute;
     right: 0;
-    top: 0;
-    height: 100vh;
+    bottom: 0;
+    height: 92vh;
     width: auto;
 }
 
