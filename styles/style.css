@@ -15,6 +15,7 @@ body {
     font-family: "Mukta Vaani", serif, Helvetica;
     color: #110f06;
     background-color: #f8f4fa;
+    overflow: hidden;
 }
 
 /* Headlines */
