@@ -2,4 +2,37 @@
     width: 100vw;
     height: 100vh;
     background-image: url('/static/damascus.svg');
+    background-blend-mode: multiply;
+}
+
+#inner-hero {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-content {
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    max-width: 60%;
+    max-height: 70%;
+}
+
+.visual-hero-content img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: auto;
+}
+
+.hero-footer {
+    position: absolute;
+    bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
