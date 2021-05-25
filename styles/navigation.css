@@ -4,18 +4,23 @@
     justify-content: space-between;
     align-items: center;
     background-color: var(--primary-color);
-    height: 20px;
+    height: 25px;
     user-select: none;
-    padding: 30px;
+    padding: 20px;
     position: sticky;
     z-index: 2;
 }
 
-.navbar-logo{
-    width: 50px;
+.navbar-brand-logo, .navbar-profile-logo{
+    height: 100%;
+    width: auto;
     padding-right: 20px;
     -webkit-filter: invert(100%);
     filter: invert(100%);
+}
+
+.navbar-profile-logo{
+    padding-right: 0px;
 }
 
 .navbar-links{
@@ -43,4 +48,9 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
+}
+
+.navbar-user{
+    height: 100%;
 }
