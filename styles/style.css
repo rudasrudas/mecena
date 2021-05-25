@@ -1,0 +1,174 @@
+/* Imports */
+
+@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Mukta+Vaani&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+/* Generic resets */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Mukta Vaani", serif, Helvetica;
+    color: #110f06;
+    background-color: #f8f4fa;
+}
+
+/* Headlines */
+
+h1 {
+    font-family: 'Kanit', serif, Verdana;
+    font-size: 60px;
+    font-weight: 400;
+}
+
+h2 {
+    font-family: 'Kanit', serif, Verdana;
+    font-size: 48px;
+    font-weight: 400;
+}
+
+h3 {
+    font-family: 'Mukta Vaani', serif, Helvetica;
+    font-size: 36px;
+    font-weight: 300;
+}
+
+h4 {
+    font-family: 'Mukta Vaani', serif, Helvetica;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+p {
+    font-family: 'Open Sans', serif, Helvetica;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+/* Colors */
+
+:root {
+    /* Default */
+    --primary-color: #110f06;
+    --secondary-color: #2a252d;
+    --accent-color: #ecbd00;
+    --secondary-accent-color: #cc9900;
+    --white-color: #f8f4fa;
+
+    /* Buttons */
+    --btn-primary-color: #ecbd00;
+    --btn-primary-hover-color: #e7c22e;
+    --btn-primary-color-border: #c79f00;
+    --btn-primary-hover-color-border: #d3b22c;
+
+    --btn-secondary-color: #DFD7E1;
+    --btn-secondary-hover-color: #D7CFD9;
+    --btn-secondary-color-border: #C5C1C6;
+    --btn-secondary-hover-color-border: #BFBBC0;
+}
+
+.primary-color {
+    color: var(--primary-color);
+}
+
+.secondary-color {
+    color: var(--secondary-color);
+}
+
+.accent-color {
+    color: var(--accent-color);
+}
+
+.secondary-accent-color {
+    color: var(--secondary-accent-color);
+}
+
+.white-color {
+    color: var(--white-color);
+}
+
+/* Background colors */
+
+.primary-color-background {
+    color: var(--primary-color);
+}
+
+.secondary-color-background {
+    color: var(--secondary-color);
+}
+
+.accent-color-background {
+    color: var(--accent-color);
+}
+
+.secondary-accent-color-background {
+    color: var(--secondary-accent-color);
+}
+
+.white-color-background {
+    color: var(--white-color);
+}
+
+/* Buttons */
+
+.primary-btn {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    cursor: pointer;
+    user-select: none;
+
+    border: 1px solid;
+    border-radius: 6px;
+    border-color: var(--btn-primary-color-border);
+    background-color: var(--btn-primary-color);
+    color: var(--white-color);
+
+    font-weight: 600;
+    font-family: 'Open Sans';
+    font-size: 18px;
+}
+
+.primary-btn:hover {
+    background-color: var(--btn-primary-hover-color);
+    border-color: var(--btn-primary-hover-color-border);
+}
+
+.primary-btn:active {
+    border-color: var(--btn-primary-color-border);
+    background-color: var(--btn-primary-color);
+}
+
+.secondary-btn {
+    position: relative;
+    display: inline-block;
+    padding: 8px 20px;
+    cursor: pointer;
+    user-select: none;
+
+    border: 1px solid;
+    border-radius: 6px;
+    border-color: var(--btn-secondary-color-border);
+    background-color: var(--btn-secondary-color);
+    color: var(--primary-color);
+
+    font-weight: 600;
+    font-family: 'Open Sans';
+    font-size: 18px;
+}
+
+.secondary-btn:hover {
+    background-color: var(--btn-secondary-hover-color);
+    border-color: var(--btn-secondary-hover-color-border);
+}
+
+.secondary-btn:active {
+    border-color: var(--btn-secondary-color-border);
+    background-color: var(--btn-secondary-color);
+}
+
+/* Inputs */
