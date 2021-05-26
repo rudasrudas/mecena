@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Mukta+Vaani&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lusitana&display=swap');
 
 /* Generic resets */
 
@@ -66,110 +67,148 @@ p {
     --btn-primary-color-border: #c79f00;
     --btn-primary-hover-color-border: #d3b22c;
 
+    
     --btn-secondary-color: #DFD7E1;
     --btn-secondary-hover-color: #D7CFD9;
     --btn-secondary-color-border: #C5C1C6;
     --btn-secondary-hover-color-border: #BFBBC0;
+
+    /* Primary button */
+
+    --color-btn-primary-text: #1a1502;
+    --color-btn-primary-bg-start: #f1ca2e;
+    --color-btn-primary-bg-end: #e69f06;
+    --color-btn-primary-border: #f1c410;
+
+    --color-btn-primary-text-hover: #1a1502;
+    --color-btn-primary-bg-start-hover: #f1ca2e;
+    --color-btn-primary-bg-end-hover: #e6aa06;
+    --color-btn-primary-border-hover: #e6aa06;
+
+    /* Alternative button */
+    --color-btn-alternative-text: #e9e9e9;
+    --color-btn-alternative-bg: transparent;
+    --color-btn-alternative-border: #e9e9e9;
+
+    --color-btn-alternative-text-hover: #bdbdbd;
+    --color-btn-alternative-bg-hover: #dfd7e121;
+    --color-btn-alternative-border-hover: #bdbdbd;
+
+    /* Alternative dark */
+    --color-btn-alternative-dark-text: #110f06;
+    --color-btn-alternative-dark-bg: transparent;
+    --color-btn-alternative-dark-border: #110f06;
+
+    --color-btn-alternative-dark-text-hover: #302c1d;
+    --color-btn-alternative-dark-bg-hover: #423d2507;
+    --color-btn-alternative-dark-border-hover: #302c1d;
 }
 
-.primary-color {
-    color: var(--primary-color);
-}
+.primary-color { color: var(--primary-color); }
+.secondary-color { color: var(--secondary-color); }
+.accent-color { color: var(--accent-color); }
+.secondary-accent-color { color: var(--secondary-accent-color); }
+.white-color { color: var(--white-color); }
+.primary-color-background { color: var(--primary-color); }
+.secondary-color-background { color: var(--secondary-color); }
+.accent-color-background { color: var(--accent-color); }
+.secondary-accent-color-background { color: var(--secondary-accent-color); }
+.white-color-background { color: var(--white-color); }
 
-.secondary-color {
-    color: var(--secondary-color);
-}
+/* Primary BUTTON */
 
-.accent-color {
-    color: var(--accent-color);
-}
-
-.secondary-accent-color {
-    color: var(--secondary-accent-color);
-}
-
-.white-color {
-    color: var(--white-color);
-}
-
-/* Background colors */
-
-.primary-color-background {
-    color: var(--primary-color);
-}
-
-.secondary-color-background {
-    color: var(--secondary-color);
-}
-
-.accent-color-background {
-    color: var(--accent-color);
-}
-
-.secondary-accent-color-background {
-    color: var(--secondary-accent-color);
-}
-
-.white-color-background {
-    color: var(--white-color);
-}
-
-/* Buttons */
-
-.primary-btn {
-    position: relative;
-    display: inline-block;
-    padding: 8px 20px;
+button.primary {
     cursor: pointer;
     user-select: none;
 
-    border: 1px solid;
+    padding: 8px 20px;
+    margin: 8px;
+
+    border: 2px solid;
     border-radius: 6px;
-    border-color: var(--btn-primary-color-border);
-    background-color: var(--btn-primary-color);
-    color: var(--white-color);
+    background: linear-gradient(170deg, var(--color-btn-primary-bg-start) 40%, var(--color-btn-primary-bg-end));
+    color: var(--color-btn-primary-text);
+    border-color: var(--color-btn-primary-border);
 
     font-weight: 600;
     font-family: 'Open Sans';
     font-size: 18px;
 }
 
-.primary-btn:hover {
-    background-color: var(--btn-primary-hover-color);
-    border-color: var(--btn-primary-hover-color-border);
+button.primary:hover {
+    background: linear-gradient( var(--color-btn-primary-bg-start-hover), var(--color-btn-primary-bg-end-hover));
+    color: var(--color-btn-primary-text-hover);
+    border-color: var(--color-btn-primary-border-hover);
 }
 
-.primary-btn:active {
-    border-color: var(--btn-primary-color-border);
-    background-color: var(--btn-primary-color);
+button.primary:active {
+    background: linear-gradient( var(--color-btn-primary-bg-start), var(--color-btn-primary-bg-end));
+    color: var(--color-btn-primary-text);
+    border-color: var(--color-btn-primary-border);
 }
 
-.secondary-btn {
-    position: relative;
-    display: inline-block;
-    padding: 8px 20px;
+/* Alternative BUTTON */
+
+button.alternative {
     cursor: pointer;
     user-select: none;
 
+    padding: 8px 20px;
+    margin: 8px;
+
     border: 1px solid;
     border-radius: 6px;
-    border-color: var(--btn-secondary-color-border);
-    background-color: var(--btn-secondary-color);
-    color: var(--primary-color);
+    background: var(--color-btn-alternative-bg);
+    color: var(--color-btn-alternative-text);
+    border-color: var(--color-btn-alternative-border);
 
     font-weight: 600;
     font-family: 'Open Sans';
     font-size: 18px;
 }
 
-.secondary-btn:hover {
-    background-color: var(--btn-secondary-hover-color);
-    border-color: var(--btn-secondary-hover-color-border);
+button.alternative:hover {
+    background: var(--color-btn-alternative-bg-hover);
+    color: var(--color-btn-alternative-text-hover);
+    border-color: var(--color-btn-alternative-border-hover);
 }
 
-.secondary-btn:active {
-    border-color: var(--btn-secondary-color-border);
-    background-color: var(--btn-secondary-color);
+button.alternative:active {
+    background: var(--color-btn-alternative-bg);
+    color: var(--color-btn-alternative-text);
+    border-color: var(--color-btn-alternative-border);
+}
+
+/* Alternative dark BUTTON */
+
+button.alternative-dark {
+    cursor: pointer;
+    user-select: none;
+
+    padding: 8px 20px;
+    margin: 8px;
+
+    border: 1px solid;
+    border-radius: 6px;
+    background: var(--color-btn-alternative-dark-bg);
+    color: var(--color-btn-alternative-dark-text);
+    border-color: var(--color-btn-alternative-dark-border);
+
+    font-weight: 600;
+    font-family: 'Open Sans';
+    font-size: 18px;
+}
+
+button.alternative-dark:hover {
+    background: var(--color-btn-alternative-dark-bg-hover);
+    color: var(--color-btn-alternative-dark-text-hover);
+    border-color: var(--color-btn-alternative-dark-border-hover);
+}
+
+button.alternative-dark:active {
+    background: var(--color-btn-alternative-dark-bg);
+    color: var(--color-btn-alternative-dark-text);
+    border-color: var(--color-btn-alternative-dark-border);
 }
 
 /* Inputs */

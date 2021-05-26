@@ -1,12 +1,12 @@
 @keyframes shift {
     from{
-        transform: skew(0);
+        transform: skew(0) scale(1);
     }
     50% {
-        transform: skew(2deg, 2deg);
+        transform: skew(2deg, 2deg) scale(1.05);
     }
     to {
-        transform: skew(0);
+        transform: skew(0) scale(1);
     }
 }
 
@@ -22,7 +22,7 @@
     height: 100vh;
     /* background-image: url('/static/damascus.svg'); */
     background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/damascus.svg');
-    animation: shift 5s;
+    animation: shift 15s;
     animation-iteration-count: infinite;
     animation-timing-function: ease;
 }
