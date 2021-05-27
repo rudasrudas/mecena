@@ -1,9 +1,11 @@
 /* Imports */
 
-@import url('https://fonts.googleapis.com/css?family=Kanit&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Mukta+Vaani&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lusitana&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mukta+Vaani&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Commissioner:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
 
 /* Generic resets */
 
@@ -16,38 +18,49 @@ body {
     font-family: "Mukta Vaani", serif, Helvetica;
     color: #110f06;
     background-color: #f8f4fa;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
 
 /* Headlines */
 
 h1 {
     font-family: 'Kanit', serif, Verdana;
-    font-size: 60px;
+    font-size: 48px;
     font-weight: 400;
 }
 
 h2 {
     font-family: 'Kanit', serif, Verdana;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 400;
 }
 
 h3 {
     font-family: 'Mukta Vaani', serif, Helvetica;
-    font-size: 36px;
+    font-size: 24px;
     font-weight: 300;
 }
 
 h4 {
     font-family: 'Mukta Vaani', serif, Helvetica;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 300;
 }
 
 p {
     font-family: 'Open Sans', serif, Helvetica;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
 }
 
@@ -122,7 +135,6 @@ button.primary {
     user-select: none;
 
     padding: 8px 20px;
-    margin: 8px;
 
     border: 2px solid;
     border-radius: 6px;
@@ -154,7 +166,6 @@ button.alternative {
     user-select: none;
 
     padding: 8px 20px;
-    margin: 8px;
 
     border: 1px solid;
     border-radius: 6px;
@@ -186,7 +197,6 @@ button.alternative-dark {
     user-select: none;
 
     padding: 8px 20px;
-    margin: 8px;
 
     border: 1px solid;
     border-radius: 6px;

@@ -5,6 +5,7 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/hero.css">
+    <link rel="stylesheet" href="/styles/about.css">
     <title>Mecena</title>
 </head>
 <body>
@@ -15,39 +16,45 @@
         $(function(){
           $("#nav-selector").load("navigation.html");
         });
-
     </script>
     
     <!-- Hero -->
     <div id="hero">
         <div class="hero-background"></div>
 
-        <div id="inner-hero">
-            <div class="hero-content">
-                <h2>Some headline explaining the website</h2>
-                <h4>More information regarding what the company does and it's mission, together with
-                    some incentive for the user to click the button below.
-                </h4>
-                <br>
-                <div style="display: inline;">
-                    <button class="primary">View portfolio</button>
-                    <button class="alternative-dark">Shop</button>
-                </div>
+        <div class="hero-content">
+            <h1>Some headline explaining the website</h1>
+            <h3>More information regarding what the company does and it's mission, together with
+                some incentive for the user to click the button below.
+            </h3>
+            <br>
+            <div style="display: inline;">
+                <button class="primary">View portfolio</button>
+                <button class="alternative-dark" style="margin-left: 20px;">Shop</button>
             </div>
+        </div>
 
-            <div class="visual-hero-content">
-                <img src="../static/dj-hero.png" alt=""/>
-            </div>
-            
-            <div class="hero-footer">
-                <p>Scroll for more!</p>
-            </div>
+        <div class="visual-hero-content">
+            <img src="../static/pictures/dj-hero.png" alt=""/>
+        </div>
+        
+        <div class="hero-footer">
+            <p>Scroll for more!</p>
         </div>
     </div>
 
     <!-- About -->
 
-    <div style="height: 100vh; width: 100vw; background-color: black;"></div>
+    <div id="about">
+        <div class="inner-about">
+            <h1>About</h1>
+            <h3>Here would be a thorough explanation of the company's goals, what products
+                are sold and plans for the future.
+            </h3>
+            <br>
+            <button class="alternative">Find out more</button>
+        </div>
+    </div>
 
     <!-- Album carousel -->
 
