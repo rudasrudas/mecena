@@ -222,3 +222,10 @@ button.alternative-dark:active {
 }
 
 /* Inputs */
+
+/* Material icons */
+
+.inline-icon {
+    vertical-align: bottom;
+    font-size: 24px !important;
+}
