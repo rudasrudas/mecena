@@ -2,15 +2,15 @@
 
 #about {
     position: relative;
-    height: 100vh;
+    height: auto;
     width: 100vw;
-    background-color: var(--primary-color);
-    color: var(--white-color);
+    background-color: var(--color-about-bg);
+    color: var(--color-about-text);
     z-index: 1;
 }
 
 .inner-about {
-    padding-top: 100px;
+    padding: 100px;
     margin-left: auto;
     margin-right: auto;
     width: 60%;

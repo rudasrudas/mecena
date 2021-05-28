@@ -14,6 +14,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Mukta Vaani", serif, Helvetica;
     color: #110f06;
@@ -67,24 +71,20 @@ p {
 /* Colors */
 
 :root {
+
     /* Default */
-    --primary-color: #110f06;
-    --secondary-color: #2a252d;
-    --accent-color: #ecbd00;
-    --secondary-accent-color: #cc9900;
-    --white-color: #f8f4fa;
+    --color-header-bg: #110f06;
+    --color-header-text: #ffffff;
 
-    /* Buttons */
-    --btn-primary-color: #ecbd00;
-    --btn-primary-hover-color: #e7c22e;
-    --btn-primary-color-border: #c79f00;
-    --btn-primary-hover-color-border: #d3b22c;
+    --color-hero-text: #110f06;
 
-    
-    --btn-secondary-color: #DFD7E1;
-    --btn-secondary-hover-color: #D7CFD9;
-    --btn-secondary-color-border: #C5C1C6;
-    --btn-secondary-hover-color-border: #BFBBC0;
+    --color-about-bg: #110f06;
+    --color-about-text: #ffffff;
+
+    --color-footer-bg: #3a3a3a;
+    --color-footer-bg-alt: #6b6b6b;
+    --color-footer-text: #ffffff;
+    --color-footer-text-alt: #6b6b6b;
 
     /* Primary button */
 
