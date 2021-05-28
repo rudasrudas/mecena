@@ -21,18 +21,18 @@
 }
 
 .navbar-logo{
-    width: 40px;
+    width: 35px;
     -webkit-filter: invert(100%);
     filter: invert(100%);
 }
 
 .navbar-logo-text {
-    font-size: 32px;
-    margin: 0px 20px;
+    font-size: 35px;
+    margin: 0px 10px;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 400;
     letter-spacing: 4px;
-    font-family: 'Manrope', serif, Times;
+    font-family: 'Fjalla One', sans-serif, Times;
     color: var(--color-header-text);
 }
 

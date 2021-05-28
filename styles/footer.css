@@ -43,7 +43,10 @@
 
 .footer-logo-text {
     color: var(--color-footer-text);
-    padding: 0px 20px;
+    font-family: 'Fjalla One', sans-serif, Times;
+    font-size: 40px;
+    letter-spacing: 4px;
+    padding: 0px 10px;
 }
 
 .footer-top {
