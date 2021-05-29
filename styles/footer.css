@@ -37,14 +37,13 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 50px;
     user-select: none;
 }
 
 .footer-logo-text {
     color: var(--color-footer-text);
-    font-family: 'Fjalla One', sans-serif, Times;
-    font-size: 40px;
+    font-family: 'Staatliches', sans-serif, Arial;
+    font-size: 36px;
     letter-spacing: 4px;
     padding: 0px 10px;
 }
