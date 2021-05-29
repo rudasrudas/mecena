@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/hero.css">
     <link rel="stylesheet" href="/styles/about.css">
+    <link rel="stylesheet" href="/styles/jukebox.css">
+    <link rel="stylesheet" href="/styles/footer.css">
     <title>Mecena</title>
 </head>
 <body>
@@ -29,7 +31,7 @@
             </h3>
             <br>
             <div style="display: inline;">
-                <button class="primary"><span class="material-icons inline-icon">play_arrow</span> Take a listen</button>
+                <button class="primary" onclick="location.href = '#jukebox';"><span class="material-icons inline-icon">play_arrow</span> Take a listen</button>
                 <button class="alternative-dark" style="margin-left: 20px;">Shop</button>
             </div>
         </div>
@@ -39,7 +41,7 @@
         </div>
         
         <div class="hero-footer">
-            <p>Scroll for more!</p>
+            <a class="hero-footer-content" href="#about">Scroll for more</a>
         </div>
     </div>
 
@@ -58,7 +60,8 @@
 
     <!-- Album carousel -->
 
-    <div style="height: 100vh;">
+    <div id="jukebox">
+
     </div>
 
     <!-- Package options -->
@@ -66,5 +69,12 @@
     <!-- Testimonials -->
 
     <!-- Footer -->
+    <div id="footer-selector"></div>
+
+    <script>
+        $(function(){
+          $("#footer-selector").load("footer.html");
+        });
+    </script>
 </body>
 </html>

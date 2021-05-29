@@ -34,6 +34,7 @@
     left: 10%;
     top: 25%;
     width: 60%;
+    color: var(--color-hero-text);
 }
 
 .visual-hero-content img {
@@ -52,4 +53,11 @@
     left: 0;
     right: 0;
     text-align: center;
+    user-select: none;
+}
+
+.hero-footer a {
+    cursor: default;
+    text-decoration: none;
+    color: var(--color-hero-text) !important;
 }
