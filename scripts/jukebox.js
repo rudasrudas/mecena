@@ -20,7 +20,20 @@ function render(){
         title.innerHTML = songList[i][1];
         artist.innerHTML = songList[i][2];
 
+        song.classList.add("jukebox-song");
+        cover.classList.add("jukebox-song-img");
+        title.classList.add("jukebox-song-title");
+        artist.classList.add("jukebox-song-artist");
+
+        jukebox.appendChild(song);
+
         song.onclick = async function () {
+            var selected = i;
+
+            fadeTo(songList[i], 1);
+            fadeTo(songList[i-1], 0.5);
+            fadeTo(songList[i+1], 0.5);
+
             while (song.getBoundingClientRect().left + (song.getBoundingClientRect().right - song.getBoundingClientRect().left)/2 < window.innerWidth/2){
                 let newLeft = (+jukebox.style.left.substring(0, jukebox.style.left.length-2) + 10) + "px";
                 jukebox.style.left = newLeft;
@@ -33,16 +46,24 @@ function render(){
                 await sleep(1);
             }
         }
-
-        song.classList.add("jukebox-song");
-        cover.classList.add("jukebox-song-img");
-        title.classList.add("jukebox-song-title");
-        artist.classList.add("jukebox-song-artist");
-
-        jukebox.appendChild(song);
     }
 }
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function fadeTo(song, opacity){
+    if (song == undefined || song.style == undefined) return;
+
+    let currentOpacity = song.style.opacity;
+    while (opacity > currentOpacity){
+        //Fade out
+        song.style.opacity = 0;
+    }
+    while (opacity < currentOpacity){
+        //Fade in
+        song.style.opacity += 0.1;
+
+    }
 }

@@ -1,8 +1,12 @@
 #jukebox {
     padding: 50px;
-    height: 400px;
+    height: auto;
     position: relative;
     background: white;
+    
+}
+
+.inner-jukebox {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -25,16 +29,34 @@
     display: flex;
     flex-direction: row;
     z-index: 0;
+    /* max-height: 300px; */
 }
 
 .jukebox-song {
     position: relative;
-    width: 25%;
-    height: 100%;
+    width: 19vw;
+    height: auto;
     margin: 5px 10px;
 }
 
 .jukebox-song-img {
+    position: relative;
     width: 100%;
     height: auto;
+}
+
+.jukebox-song-title {
+    position: relative;
+}
+
+.jukebox-song-artist {
+    position: relative;
+}
+
+.jukebox-placeholder {
+    position: relative;
+    z-index: -1;
+    width: 1px !important;
+    height: auto;
+    visibility: hidden;
 }
