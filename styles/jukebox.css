@@ -1,5 +1,40 @@
 #jukebox {
+    padding: 50px;
+    height: 400px;
     position: relative;
-    height: 50vh;
-    /* background: white; */
+    background: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.jukebox-arrow {
+    display: flex;
+    align-self: center;
+    width: 20px;
+    user-select: none;
+    cursor: pointer;
+    font-size: 40px !important;
+    z-index: 1;
+}
+
+#jukebox-content {
+    position: absolute;
+    width: 100%;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row;
+    z-index: 0;
+}
+
+.jukebox-song {
+    position: relative;
+    width: 25%;
+    height: 100%;
+    margin: 5px 10px;
+}
+
+.jukebox-song-img {
+    width: 100%;
+    height: auto;
 }

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../scripts/jukebox.js"></script>
+
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/hero.css">
     <link rel="stylesheet" href="/styles/about.css">
@@ -61,8 +63,14 @@
     <!-- Album carousel -->
 
     <div id="jukebox">
-
+        <div class="jukebox-arrow material-icons">arrow_back_ios</div>
+        <div id="jukebox-content"></div>
+        <div class="jukebox-arrow material-icons">arrow_forward_ios</div>
     </div>
+
+    <script>
+        render();
+    </script>
 
     <!-- Package options -->
 
