@@ -41,14 +41,17 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: absolute;
+    right: var(--spacing-content-margin-side);
 }
 
 .navbar a {
     color: var(--color-header-text);
     text-decoration: none;
+    text-transform: uppercase;
     cursor: pointer;
     font-size: 18px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 .navbar-brand{
@@ -61,4 +64,5 @@
 .login-icon {
     font-size: 30px !important;
     cursor: pointer;
+    text-transform: none !important;
 }

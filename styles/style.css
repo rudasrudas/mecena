@@ -80,6 +80,14 @@ p {
 
 :root {
 
+    /* Content spacing */
+    --spacing-content-margin-side: 20%;
+    --spacing-content-width: 60%;
+
+    /* Border rounding */
+    --button-border-radius: 6px;
+    --package-border-radius: 6px;
+
     /* Default */
     --color-header-bg: #110f06;
     --color-header-text: #ffffff;
@@ -88,6 +96,14 @@ p {
 
     --color-about-bg: #110f06;
     --color-about-text: #ffffff;
+
+    --color-packages-bg: #ffffff00;
+    --color-packages-text: #110f06;
+    --color-packages-border: #3a3a3a;
+    --color-package-bg: #ffffff;
+    --color-package-label-bg: #efefef;
+    --color-package-label-text: #000000;
+    --color-package-separator: #000000;
 
     --color-footer-bg: #3a3a3a;
     --color-footer-bg-alt: #6b6b6b;
@@ -98,7 +114,7 @@ p {
 
     --color-btn-primary-text: #1a1502;
     --color-btn-primary-bg-start: #f1ca2e;
-    --color-btn-primary-bg-end: #e69f06;
+    --color-btn-primary-bg-end: #f7ae12;
     --color-btn-primary-border: #f1c410;
 
     --color-btn-primary-text-hover: #1a1502;
@@ -145,8 +161,8 @@ button.primary {
     padding: 8px 20px;
 
     border: 2px solid;
-    border-radius: 6px;
-    background: linear-gradient(170deg, var(--color-btn-primary-bg-start) 40%, var(--color-btn-primary-bg-end));
+    border-radius: var(--button-border-radius);
+    background: linear-gradient(180deg, var(--color-btn-primary-bg-start) 40%, var(--color-btn-primary-bg-end));
     color: var(--color-btn-primary-text);
     border-color: var(--color-btn-primary-border);
 
@@ -176,7 +192,7 @@ button.alternative {
     padding: 8px 20px;
 
     border: 1px solid;
-    border-radius: 6px;
+    border-radius: var(--button-border-radius);
     background: var(--color-btn-alternative-bg);
     color: var(--color-btn-alternative-text);
     border-color: var(--color-btn-alternative-border);
@@ -207,7 +223,7 @@ button.alternative-dark {
     padding: 8px 20px;
 
     border: 1px solid;
-    border-radius: 6px;
+    border-radius: var(--button-border-radius);
     background: var(--color-btn-alternative-dark-bg);
     color: var(--color-btn-alternative-dark-text);
     border-color: var(--color-btn-alternative-dark-border);

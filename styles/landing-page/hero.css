@@ -1,0 +1,63 @@
+@keyframes shift {
+    from{
+        transform: skew(0) scale(1);
+    }
+    50% {
+        transform: skew(2deg, 2deg) scale(1.05);
+    }
+    to {
+        transform: skew(0) scale(1);
+    }
+}
+
+#hero {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+.hero-background {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/pictures/damascus.svg');
+
+    animation: shift 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+
+.hero-content {
+    position: absolute;
+    left: 10%;
+    top: 25%;
+    width: 60%;
+    color: var(--color-hero-text);
+}
+
+.visual-hero-content img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: auto;
+}
+
+.hero-footer {
+    position: absolute;
+    bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    user-select: none;
+}
+
+.hero-footer a {
+    cursor: default;
+    text-decoration: none;
+    color: var(--color-hero-text) !important;
+}

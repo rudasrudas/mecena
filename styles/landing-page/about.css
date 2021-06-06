@@ -1,0 +1,18 @@
+@import url("../styles/style.css");
+
+#about {
+    position: relative;
+    height: auto;
+    width: 100vw;
+    background-color: var(--color-about-bg);
+    color: var(--color-about-text);
+    z-index: 1;
+}
+
+.inner-about {
+    padding: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: var(--spacing-content-width);
+    text-align: right;
+}
