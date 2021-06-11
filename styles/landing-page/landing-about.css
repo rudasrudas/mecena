@@ -3,7 +3,7 @@
 #about {
     position: relative;
     height: auto;
-    width: 100vw;
+    width: 100%;
     background-color: var(--color-about-bg);
     color: var(--color-about-text);
     z-index: 1;

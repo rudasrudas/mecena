@@ -1,0 +1,206 @@
+#summary {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: var(--color-about-summary-bg);
+    color: var(--color-about-summary-text);
+}
+
+    .inner-summary {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 80px 0;
+        width: var(--spacing-about-width);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .summary-img-wrapper {
+        width: 50%;
+    }
+
+    .summary-img {
+        width: 100%;
+        border: 1px solid var(--color-about-summary-img-border);
+    }
+
+    .summary-text {
+        width: 45%;
+    }
+
+    .summary-text-desc {
+        font-size: 20px;
+        font-size: 1.5vw;
+    }
+
+    .summary-call-to-actions {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 0;
+    }
+
+    .summary-call-to-action {
+        color: var(--color-about-summary-cta);
+        text-decoration: none;
+        font-size: 20px;
+        font-size: 1.5vw;
+    }
+
+    .summary-call-to-action span {
+        font-size: 10px;
+    }
+
+#statements {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background: var(--color-about-statements-bg);
+    color: var(--color-about-statements-text);
+}
+
+    .inner-statements {
+        margin-left: auto;
+        margin-right: auto;
+        padding: 80px 0;
+        width: var(--spacing-about-width);
+    }
+
+    .mission-statement {
+
+    }
+
+        .mission-subject {
+            text-align: right;
+            text-transform: uppercase;
+        }
+
+        .mission-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .mission-description {
+
+        }
+
+        .mission-title {
+            text-align: justify;
+            color: var(--color-about-statements-accent-text);
+            line-height: 120%;
+        }
+
+    .statement-gap {
+        width: 20%;
+    }
+
+    .arrow-separator {
+        margin: 30px auto;
+        width: fit-content;
+    }
+
+    .arrow-separator * {
+        font-size: 100px !important;
+    }
+
+    .vision-statement {
+
+    }
+
+        .vision-subject {
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .vision-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .vision-description {
+
+        }
+
+        .vision-title {
+            text-align: left;
+            color: var(--color-about-statements-accent-text);
+            line-height: 120%;
+        }
+
+#team {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    background: var(--color-about-team-bg);
+    color: var(--color-about-team-text);
+}
+
+    .team-title {
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        padding-top: 50px;
+    }
+
+    .team-separator {
+        width: 100vw;
+        border-top: 1px solid var(--color-about-team-members-border);
+    }
+
+    .team-members {
+        margin-left: auto;
+        margin-right: auto;
+        width: fit-content;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    /* Member */
+    .member {
+        width: fit-content;
+        height: auto;
+        text-align: center;
+        margin: 20px 50px;
+    }
+
+    .member-photo {
+        max-width: 15vw;
+        border-radius: 1000px;
+    }
+
+    .member-name {
+        line-height: 100%;
+    }
+
+    .member-title {
+        color: var(--color-about-team-member-title);
+    }
+
+    .member-description {
+        max-width: 20vw;
+        color: var(--color-about-team-member-alt-text);
+    }
+
+    .member-info {
+        color: var(--color-about-team-member-alt-text);
+    }
+
+    .member-socials {
+        color: var(--color-about-team-member-alt-text);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 5px 50px;
+    }
+
+    .member-socials a {
+        color: inherit;
+        text-transform: none;
+        text-decoration: none;
+    }

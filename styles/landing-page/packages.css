@@ -3,13 +3,13 @@
 #packages {
     position: relative;
     height: auto;
-    width: 100vw;
+    width: 100%;
     background-color: var(--color-packages-bg);
     color: var(--color-packages-text);
 }
 
 .inner-packages {
-    padding: 100px;
+    padding: 100px 0px;
     margin-left: auto;
     margin-right: auto;
     width: var(--spacing-content-width);
@@ -75,7 +75,7 @@
     margin-left: auto;
     height: auto;
     z-index: 1;
-    margin-top: 200px;
+    margin-top: 400px;
 }
 
 .package-separator {
