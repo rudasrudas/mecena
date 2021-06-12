@@ -1,0 +1,42 @@
+@import url("../styles/style.css");
+
+.contact-headline{
+    position: relative;
+    font-size: 30px;
+    text-align: left;
+}
+
+#contact{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    padding: 20px 100px;
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-links{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.general-input-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inner-contact-form{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
