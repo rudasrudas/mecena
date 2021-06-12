@@ -117,17 +117,22 @@ p {
     --color-about-summary-bg: #ffffff;
     --color-about-summary-text: #110f06;
     --color-about-summary-img-border: #110f06;
-    --color-about-summary-cta: #f7ae12;
+    --color-about-summary-cta: #ec581d;
 
-    --color-about-statements-bg: #efefef;
-    --color-about-statements-text: #110f06;
-    --color-about-statements-accent-text: #ec581d;
+    --color-about-statements-bg: #110f06;
+    --color-about-statements-text: #ffffff;
+    --color-about-statements-prefix-text: #9e9e9e;
+    --color-about-statements-accent-text: -webkit-linear-gradient(45deg, #ff7d49, #ec581d);
+    --color-about-statements-border: #9e9e9e;
+    --color-about-statements-border-top: #ffffff;
 
     --color-about-team-bg: #ffffff;
     --color-about-team-text: #110f06;
     --color-about-team-member-title: #ec581d;
+    --color-about-team-member-photo-border: #ec581d;
     --color-about-team-member-alt-text: #cbcbcb;
-    --color-about-team-members-border: black;
+    --color-about-team-members-border: #cbcbcb;
+    --color-about-team-deco-text: #cbcbcb;
 
     /* Primary button */
 
