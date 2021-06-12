@@ -30,7 +30,7 @@ body {
     font-family: "Mukta Vaani", serif, Helvetica;
     color: #110f06;
     background-color: #f8f4fa;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -79,11 +79,6 @@ p {
 /* Colors */
 
 :root {
-
-    /* Content spacing */
-    --spacing-content-margin-side: 20%;
-    --spacing-content-width: 60%;
-
     /* Border rounding */
     --button-border-radius: 6px;
     --package-border-radius: 6px;
@@ -91,6 +86,16 @@ p {
     /* Default */
     --color-header-bg: #110f06;
     --color-header-text: #ffffff;
+
+    --color-footer-bg: #3a3a3a;
+    --color-footer-bg-alt: #6b6b6b;
+    --color-footer-text: #ffffff;
+    --color-footer-text-alt: #6b6b6b;
+
+    /* Landing page */
+
+    --spacing-content-margin-side: 20%;
+    --spacing-content-width: 60%;
 
     --color-hero-text: #110f06;
 
@@ -105,10 +110,29 @@ p {
     --color-package-label-text: #000000;
     --color-package-separator: #000000;
 
-    --color-footer-bg: #3a3a3a;
-    --color-footer-bg-alt: #6b6b6b;
-    --color-footer-text: #ffffff;
-    --color-footer-text-alt: #6b6b6b;
+    /* About page */
+
+    --spacing-about-width: 60%;
+
+    --color-about-summary-bg: #ffffff;
+    --color-about-summary-text: #110f06;
+    --color-about-summary-img-border: #110f06;
+    --color-about-summary-cta: #ec581d;
+
+    --color-about-statements-bg: #110f06;
+    --color-about-statements-text: #ffffff;
+    --color-about-statements-prefix-text: #9e9e9e;
+    --color-about-statements-accent-text: -webkit-linear-gradient(45deg, #ff7d49, #ec581d);
+    --color-about-statements-border: #9e9e9e;
+    --color-about-statements-border-top: #ffffff;
+
+    --color-about-team-bg: #ffffff;
+    --color-about-team-text: #110f06;
+    --color-about-team-member-title: #ec581d;
+    --color-about-team-member-photo-border: #ec581d;
+    --color-about-team-member-alt-text: #cbcbcb;
+    --color-about-team-members-border: #cbcbcb;
+    --color-about-team-deco-text: #cbcbcb;
 
     /* Primary button */
 
@@ -252,4 +276,9 @@ button.alternative-dark:active {
 .inline-icon {
     vertical-align: bottom;
     font-size: 24px !important;
+}
+
+.inline-icon-2vw {
+    vertical-align: middle;
+    font-size: 2vw !important;
 }
