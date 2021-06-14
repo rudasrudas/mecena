@@ -12,44 +12,89 @@
     <!-- Navigation bar -->
     <div id="nav-selector"></div>
     
-    <!-- <script>
+    <script>
         $(function(){
             $("#nav-selector").load("navigation.html");
         });
-    </script> -->
-    
-    
-
-
-
-    
-    <div id="contact">
-        <div class="contact-form">'
-            <h2 class="contact-headline">Send us a message!</h2>
-            <input type="text" class="field" placeholder="Name">
-            <input type="email" class="field" placeholder="Email">
-            <input type="text" class="field" placeholder="Subject">
-            <textarea class="field"></textarea>
-        </div>
-        <div class="contact-links">
-            <h2 class="contact-headline">Connect with us:</h2>
-            <h2 class="contact-headline"></h2>
-            <a href="tel:+441414960707">+44 141 496 0707</a>
-            <a href="mailto:placeholder@gmail.com">placeholder@gmail.com</a>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.3924206725096!2d-0.13099648434352967!3d51.5060162186255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604d019862195%3A0xf10df9520fc4722c!2s26%20Whitehall%2C%20London%2C%20Jungtin%C4%97%20Karalyst%C4%97!5e0!3m2!1slt!2slt!4v1623087692868!5m2!1slt!2slt" loading="lazy"></iframe>
-            
-        </div>
-    </div>
-    
-    
-    
-    <!-- Footer -->
-    <div id="footer-selector"></div>
-    
-    <script>
-        $(function(){
-            $("#footer-selector").load("footer.html");
-        });
     </script>
+    
+    <div class="single-page">
+        <div class="nav-spacer"></div>
+
+        <div id="contact">
+            <div class="inner-contact">
+                <table class="contact-table">
+                    <thead>
+                        <th>
+                            <h1 class="contact-headline">Send us a message</h1>
+                        </th>
+                        <th class="table-gap"></th>
+                        <th>
+                            <h4 class="contact-subline">Connect with us in other ways</h4>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form class="contact-form">
+                                    <label>Name</label>
+                                    <input type="text" class="contact-form-field" required>
+                
+                                    <label>Email</label>
+                                    <input type="email" class="contact-form-field" required>
+                
+                                    <label>Message</label>
+                                    <textarea rows="5" maxlength="500" class="contact-form-field" required></textarea>
+                                    <button type="submit" class="primary contact-form-submit">
+                                        Send
+                                        <span class="material-icons inline-icon">north_east</span>
+                                    </button>
+                                </form>
+                            </td>
+                            <td></td>
+                            <td>
+                                <div class="contact-links">
+                                    <div class="contact-info-block">
+                                        <div class="center-info">
+                                            <i class="fas fa-phone-alt"></i>
+                                            <h2 class="contact-info-block-content">+44 141 496 0707</h2>
+                                        </div>
+                                        <span class="material-icons arrow">north_east</span>
+                                    </div>
+                                    <div class="contact-info-block">
+                                        <div class="center-info">
+                                            <i class="far fa-envelope"></i>
+                                            <h2 class="contact-info-block-content">hello@gmail.com</h2>    
+                                        </div>
+                                        <span class="material-icons arrow">north_east</span>
+                                    </div>
+                                    <div class="center-info-blocks">
+                                        <div class="contact-info-block small">
+                                            <i class="fab fa-instagram"></i>
+                                            <span class="material-icons arrow">north_east</span>
+                                        </div>
+                                        <div class="contact-info-block-spacer"></div>
+                                        <div class="contact-info-block small">
+                                            <i class="fab fa-facebook"></i>
+                                            <span class="material-icons arrow">north_east</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div id="footer-selector"></div>
+        
+        <script>
+            $(function(){
+                $("#footer-selector").load("footer.html");
+            });
+        </script>
+    </div>
 </body>
 </html>

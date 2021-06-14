@@ -29,7 +29,7 @@ html {
 body {
     font-family: "Mukta Vaani", serif, Helvetica;
     color: #110f06;
-    background-color: #f8f4fa;
+    background-color: #ffffff;
     /* overflow-x: hidden; */
 }
 
@@ -133,6 +133,18 @@ p {
     --color-about-team-member-alt-text: #cbcbcb;
     --color-about-team-members-border: #cbcbcb;
     --color-about-team-deco-text: #cbcbcb;
+
+    /* Contact page */
+
+    --spacing-contact-width: 60%;
+
+    --color-contact-bg: #ffffff;
+    --color-contact-block-bg: #ececec;
+    --color-contact-block-input-bg: #fbfbfb;
+    --color-contact-block-border: #adadad;
+    --color-contact-block-alt-text: #adadad;
+    --color-contact-block-text: #110f06;
+    --color-contact-block-accent: #ec581d;
 
     /* Primary button */
 
@@ -281,4 +293,17 @@ button.alternative-dark:active {
 .inline-icon-2vw {
     vertical-align: middle;
     font-size: 2vw !important;
+}
+
+.outer-module {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.inner-module {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }
