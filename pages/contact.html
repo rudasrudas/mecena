@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../scripts/contact.js"></script>
     <title>Contact</title>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/footer.css">
@@ -36,7 +37,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <form class="contact-form">
+                                <form class="contact-form" onsubmit="return false">
                                     <label>Name</label>
                                     <input type="text" class="contact-form-field" required>
                 
@@ -45,7 +46,7 @@
                 
                                     <label>Message</label>
                                     <textarea rows="5" maxlength="500" class="contact-form-field" required></textarea>
-                                    <button type="submit" class="primary contact-form-submit">
+                                    <button type="submit" onclick="sendMessage()" class="primary contact-form-submit">
                                         Send
                                         <span class="material-icons inline-icon">north_east</span>
                                     </button>
