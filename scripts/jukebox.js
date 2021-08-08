@@ -1,6 +1,6 @@
 function render(){
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://45.80.152.150:5000/featured`, true);
+    xhr.open('GET', `https://api.mecena.net:5000/featured`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             const tracks = JSON.parse(xhr.response);
@@ -22,7 +22,7 @@ function render(){
                 song.appendChild(title);
                 song.appendChild(artist);
 
-                cover.src = `http://45.80.152.150:5000/artwork/${tracks[i].cover}`;
+                cover.src = `https://api.mecena.net:5000/artwork/${tracks[i].cover}`;
                 title.innerHTML = tracks[i].title;
                 artist.innerHTML = tracks[i].artist;
 
@@ -38,7 +38,7 @@ function render(){
 
                 song.onclick = async function () {
 
-                    var audio = new Audio(`http://45.80.152.150:5000/track/${tracks[i].track}`);
+                    var audio = new Audio(`https://api.mecena.net:5000/track/${tracks[i].track}`);
                     audio.play();
 
                     selected = i;
