@@ -1,6 +1,6 @@
 function render(){
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `http://45.80.152.150:5000/featured`, true);
+    xhr.open('GET', `https://45.80.152.150:5000/featured`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             const tracks = JSON.parse(xhr.response);
