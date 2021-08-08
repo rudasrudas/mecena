@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="../scripts/jukebox.js"></script>
-
+    
+    <link rel="stylesheet" href="/styles/landing-page/glide.core.min.css">
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/landing-page/hero.css">
     <link rel="stylesheet" href="/styles/landing-page/landing-about.css">
@@ -16,17 +17,17 @@
 <body>
     <!-- Navigation bar -->
     <div id="nav-selector"></div>
-
+    
     <script>
         $(function(){
-          $("#nav-selector").load("navigation.html");
+            $("#nav-selector").load("navigation.html");
         });
     </script>
     
     <!-- Hero -->
     <div id="hero">
         <div class="hero-background"></div>
-
+        
         <div class="hero-content">
             <h1>Some headline explaining the website</h1>
             <h3>More information regarding what the company does and it's mission, together with
@@ -38,7 +39,7 @@
                 <button class="alternative-dark" style="margin-left: 20px;">Shop</button>
             </div>
         </div>
-
+        
         <div class="visual-hero-content">
             <img src="../static/pictures/dj-hero.png" alt=""/>
         </div>
@@ -47,9 +48,9 @@
             <a class="hero-footer-content" href="#about">Scroll for more</a>
         </div>
     </div>
-
+    
     <!-- About -->
-
+    
     <div id="about">
         <div class="inner-about">
             <h1>About</h1>
@@ -60,32 +61,55 @@
             <button class="alternative">Find out more</button>
         </div>
     </div>
-
-    <!-- Album carousel -->
+    
+    <!-- Album carousel -->    
 
     <div id="jukebox">
         <h2 class="jukebox-title">Most recent releases</h2>
         <div class="inner-jukebox">
-            <div class="jukebox-arrow material-icons">arrow_back_ios</div>
-            <figure id="jukebox-content"></figure>
-            <div class="jukebox-placeholder">
-                <div class="jukebox-song">
-                    <img class="jukebox-song-img" src="https://preview.redd.it/wzfk3rqz36d41.png?auto=webp&s=0ef0940179edeb0548fcfc3c062ed81bdc63e185">
-                    <h4 class="jukebox-song-title">Title</h4>
-                    <h4 class="jukebox-song-artist">Artist</h4>
+            <div id="prev" class="jukebox-arrow material-icons">arrow_back_ios</div>
+            <div class="glide">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <li class="glide__slide"><img src="https://preview.redd.it/wzfk3rqz36d41.png?auto=webp&s=0ef0940179edeb0548fcfc3c062ed81bdc63e185" alt=""></li>
+                        <li class="glide__slide"><img src="https://images-na.ssl-images-amazon.com/images/I/A1LVEJikmZL._SL1500_.jpg" alt=""></li>
+                        <li class="glide__slide"><img src="https://i2.wp.com/thesewaneepurple.org/wp-content/uploads/2020/02/The-Slow-Rush-album-cover.-Photo-from-Consequence-of-Sound..jpg?fit=3000%2C3000&ssl=1" alt=""></li>
+                    </ul>
                 </div>
             </div>
-            <div class="jukebox-arrow material-icons">arrow_forward_ios</div>
+            <div id="next" class="jukebox-arrow material-icons">arrow_forward_ios</div>
         </div>
         <button class="primary">View more</button>
     </div>
-
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    
     <script>
-        render();
+        var next = document.querySelector('#next');
+        var prev = document.querySelector('#prev');
+
+        const config = {
+                type: 'carousel',
+                perView: 3,
+                focusAt: 'center',
+                gap: 20
+        }
+        var glide = new Glide('.glide', config).mount();
+
+        next.addEventListener('click', function (event) {
+            event.preventDefault();
+            glide.go('>');
+        })
+
+        prev.addEventListener('click', function (event) {
+            event.preventDefault();
+            glide.go('<');
+        })
     </script>
-
+    
     <!-- Package options -->
-
+    
     <div id="packages">
         <!-- <img class="vinyl" src="../static/pictures/vinyl.png"> -->
         <h1 class="packages-headline">Music production packages</h1>
@@ -143,16 +167,16 @@
             </div>
         </div>
     </div>
-
+    
     <!-- Testimonials -->
     <div style="height: 100vh;"></div>
-
+    
     <!-- Footer -->
     <div id="footer-selector"></div>
-
+    
     <script>
         $(function(){
-          $("#footer-selector").load("footer.html");
+            $("#footer-selector").load("footer.html");
         });
     </script>
 </body>
