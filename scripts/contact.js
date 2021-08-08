@@ -9,7 +9,7 @@ function sendMessage() {
     let message = document.getElementById('contact-message').value;
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', `http://45.80.152.150:5000/send-message`, true);
+    xhr.open('POST', `https://api.mecena.net/send-message`, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onload = function() {
         if (xhr.status === 200) {

@@ -18,7 +18,7 @@ function getFeaturedSongs() {
 
 function getArtwork(img, id) {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.mecena.net:5000/artwork/${id}`, true);
+    xhr.open('GET', `https://api.mecena.net/artwork/${id}`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             const src = xhr.response;
