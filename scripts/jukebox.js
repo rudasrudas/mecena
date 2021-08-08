@@ -3,8 +3,8 @@ function render(){
     xhr.open('GET', `http://45.80.152.150:5000/featured`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
-            console.log(xhr.response);
             const tracks = JSON.parse(xhr.response);
+            console.log(tracks);
 
             var songElements = [];
             var selected;
@@ -37,6 +37,10 @@ function render(){
                 jukebox.appendChild(song);
 
                 song.onclick = async function () {
+
+                    var audio = new Audio(`http://45.80.152.150:5000/track/${tracks[i].track}`);
+                    audio.play();
+
                     selected = i;
 
                     fadeTo(songElements[i-2], 0);
