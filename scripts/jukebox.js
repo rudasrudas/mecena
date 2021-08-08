@@ -3,6 +3,7 @@ function render(){
     xhr.open('GET', `http://45.80.152.150:5000/featured`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
+            console.log(xhr.response);
             const tracks = JSON.parse(xhr.response);
 
             var songElements = [];
@@ -10,7 +11,7 @@ function render(){
 
             var jukebox = document.getElementById("jukebox-content");
 
-            for(let i = 0; i < songList.length; i++){
+            for(let i = 0; i < Object.keys(tracks).length; i++){
                 const song = document.createElement("div");
 
                 const cover = document.createElement("img");
@@ -21,12 +22,7 @@ function render(){
                 song.appendChild(title);
                 song.appendChild(artist);
 
-                // cover.src = songList[i][0];
-                // title.innerHTML = songList[i][1];
-                // artist.innerHTML = songList[i][2];
-                
-                // getArtwork(cover.src, tracks[i].cover);
-                cover.src = tracks[i].cover;
+                cover.src = `http://45.80.152.150:5000/artwork/${tracks[i].cover}`;
                 title.innerHTML = tracks[i].title;
                 artist.innerHTML = tracks[i].artist;
 
@@ -70,14 +66,6 @@ function render(){
         }
     };
     xhr.send();
-
-    var songList = [["https://preview.redd.it/wzfk3rqz36d41.png?auto=webp&s=0ef0940179edeb0548fcfc3c062ed81bdc63e185", "Trilogy kiss", "The Weeknd"],
-                    ["https://images-na.ssl-images-amazon.com/images/I/A1LVEJikmZL._SL1500_.jpg", "Currents", "Tame Impala"], 
-                    ["https://i2.wp.com/thesewaneepurple.org/wp-content/uploads/2020/02/The-Slow-Rush-album-cover.-Photo-from-Consequence-of-Sound..jpg?fit=3000%2C3000&ssl=1", "The Slow Rush", "Tame Impala"]];
-
-    
-
-    
 }
 
 
