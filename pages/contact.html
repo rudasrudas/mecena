@@ -37,16 +37,16 @@
                     <tbody>
                         <tr>
                             <td>
-                                <form class="contact-form" onsubmit="return false">
+                                <form class="contact-form" id="contact-form" onsubmit="return false">
                                     <label>Name</label>
-                                    <input type="text" class="contact-form-field" required>
+                                    <input type="text" id="contact-name" class="contact-form-field" required>
                 
                                     <label>Email</label>
-                                    <input type="email" class="contact-form-field" required>
+                                    <input type="email" id="contact-email" class="contact-form-field" required>
                 
                                     <label>Message</label>
-                                    <textarea rows="5" maxlength="500" class="contact-form-field" required></textarea>
-                                    <button type="submit" onclick="sendMessage()" class="primary contact-form-submit">
+                                    <textarea rows="5" id="contact-message" maxlength="500" class="contact-form-field" required></textarea>
+                                    <button type="submit" class="primary contact-form-submit">
                                         Send
                                         <span class="material-icons inline-icon">north_east</span>
                                     </button>
