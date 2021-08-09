@@ -134,3 +134,7 @@
 .table-gap {
     width: 24px;
 }
+
+.no-underline {
+    text-decoration: none;
+}
