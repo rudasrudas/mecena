@@ -6,7 +6,7 @@ owl.owlCarousel({
     center: true,
     items: 3,
     loop: true,
-    margin: 40,
+    margin: 30,
     dots: false
 });
 
