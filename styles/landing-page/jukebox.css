@@ -39,9 +39,9 @@
 
 .jukebox-song {
     position: relative;
-    width: 19vw;
+    /* width: 19vw; */
     height: auto;
-    margin: 5px 10px;
+    /* margin: 5px 10px; */
 }
 
 .jukebox-song-img {

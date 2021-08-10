@@ -7,7 +7,7 @@ owl.owlCarousel({
     items: 3,
     loop: true,
     margin: 10,
-    dots: false,
+    dots: false
 });
 
 prevBtn.click(() => {

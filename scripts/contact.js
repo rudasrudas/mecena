@@ -13,7 +13,7 @@ function sendMessage() {
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onload = function() {
         if (xhr.status === 200) {
-            alert(xhr.response);
+            console.log(xhr.response);
         }
         else {
             alert('Request failed. Returned status of ' + xhr.status);
