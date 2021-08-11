@@ -86,7 +86,6 @@
     bottom: 30px;
     right: 30px;
     z-index: 10;
-    overflow: hidden;
 }
 
 .vinyl-wrapper::after{
@@ -105,13 +104,16 @@
     border-radius: 50%;
     width: inherit;
     object-fit: cover;
-
     animation: rotate 3s linear infinite;
     animation-play-state: paused;
 }
 
 .vinyl-wrapper.play img{
     animation-play-state: running;
+}
+
+.vinyl-wrapper.hidden {
+    display: none;
 }
 
 @keyframes rotate{
