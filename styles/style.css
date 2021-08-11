@@ -80,8 +80,8 @@ p {
 
 :root {
     /* Border rounding */
-    --button-border-radius: 6px;
-    --package-border-radius: 6px;
+    --button-border-radius: 0px;
+    --package-border-radius: 0px;
 
     /* Default */
     --color-header-bg: #110f06;

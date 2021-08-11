@@ -1,5 +1,6 @@
 window.onload = function() {
     // getArtwork(document.getElementById('hero-img'), 'mar.png');
+    
 }
 
 function getFeaturedSongs() {
