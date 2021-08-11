@@ -12,7 +12,6 @@
 .jukebox-arrow {
     top: 50%;
     position: absolute;
-    width: 30px;
     user-select: none;
     cursor: pointer;
     font-size: 40px !important;
@@ -20,14 +19,13 @@
 }
 
 #jukebox-prev{
-    left: 10vw;
-    transform: translate(-50%, -50%);
-
+    top: 20vw;
+    left: 6vw;
 }
 
 #jukebox-next{
-    right: 10vw;
-    transform: translate(+50%, -50%);
+    top: 20vw;
+    right: 6vw;
 }
 
 .jukebox-title {
