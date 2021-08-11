@@ -54,7 +54,7 @@ function generateSongElement(track, jukebox){
     artist.classList.add("jukebox-song-artist");
 
     song.onclick = async function () {
-
+        
         var audio = new Audio(`https://api.mecena.net/track/${track.track}`);
         // audio.play();
     }
