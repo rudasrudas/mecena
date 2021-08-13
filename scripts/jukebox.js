@@ -1,8 +1,13 @@
 var activeAudio;
+var vinyl;
+var vinylImage;
+$(document).ready(function(){
+    vinyl = document.getElementsByClassName("vinyl-player")[0];
+})
 
 function setupCarousel(){
     $(document).ready(function(){
-        const carousel =  $('.carousel')
+        const carousel =  $('.carousel');
         carousel.slick({
             centerMode: true,
             centerPadding: '0',
@@ -12,14 +17,23 @@ function setupCarousel(){
             nextArrow: $("#jukebox-next"),
             infinite: true
         });
-        carousel.on('beforeChange', function(slick, currentSlide){
-            //if was playing, change shit
+        carousel.on('beforeChange', function(event, slick, currentSlideIndex, nextSlideIndex){
             if(activeAudio){
+                //if song is currently playing, pause
                 if(isPlaying()){
                     const button = activeAudio.parentNode.querySelector(".control-btn");
                     pauseSong(button);
                 }
+                //set timestamp to start
                 activeAudio.currentTime = 0;
+            }
+            vinyl.classList.add("hidden");
+
+            //if first song has been played and vinyl img was added
+            if(vinylImage){
+                const nextSlide = $(slick.$slides.get(nextSlideIndex))[0];
+                const nextSlideCover = nextSlide.querySelector("img");
+                vinylImage.src = nextSlideCover.src;
             }
         });
     })
@@ -87,12 +101,28 @@ function generateSongElement(track, jukebox){
     title.classList.add("jukebox-song-title");
     artist.classList.add("jukebox-song-artist");
 
-    actionButton.addEventListener("click", ()=>{       
+    actionButton.addEventListener("click", ()=>{    
+        //if activeAudio exists and is playing   
         if(activeAudio && isPlaying()){
             pauseSong(actionButton);
         }
+        //if isn't playing
         else{
+            //first time playing jukebox
+            if(!activeAudio){
+                vinylImage = document.createElement("img");
+                vinylImage.src = cover.src;
+                vinyl.appendChild(vinylImage);
+            }
+
+            vinyl.classList.remove("hidden");
             activeAudio = audio;
+            //listener for audio ended event
+            activeAudio.addEventListener("ended", function(){
+                vinyl.classList.add("hidden");
+                pauseSong(actionButton);
+            }, {once: true});
+
             playSong(actionButton);
         }
     })
@@ -117,15 +147,14 @@ function isPlaying(){
 }
 
 function playSong(button){
-    // song.classList.add("played");
-    document.getElementsByClassName("vinyl-player")[0].classList.add("play");
+    vinyl.classList.add("play");
     button.classList.remove("fa-play");
     button.classList.add("fa-pause");
     activeAudio.play();
 }
 
 function pauseSong(button){
-    document.getElementsByClassName("vinyl-player")[0].classList.remove("play");
+    vinyl.classList.remove("play");
     button.classList.remove("fa-pause");
     button.classList.add("fa-play");
     activeAudio.pause();
