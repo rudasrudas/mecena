@@ -43,7 +43,7 @@
 .jukebox-song {
     position: relative;
     /* width: 19vw; */
-    height: auto;
+    width: 100%;
     /* margin: 5px 10px; */
 }
 
@@ -55,8 +55,8 @@
 
 .jukebox-song-img {
     position: relative;
+    pointer-events: none;
     width: 100%;
-    height: auto;
 }
 
 .jukebox-song-title {
@@ -77,11 +77,11 @@
     margin: 5px 10px 0px 0px;
 }
 
-.owl-item {
+.slick-slide {
     opacity: 0.5;
 }
 
-.owl-item.center {
+.slick-center {
     opacity: 1;
 }
 
@@ -96,11 +96,11 @@
     cursor: pointer;
 }
 
-.owl-item .control-btn{
+.slick-slide .control-btn{
     display: none;
 }
 
-.owl-item.center .control-btn{
+.slick-center .control-btn{
     display: block;
 }
 
@@ -149,3 +149,12 @@
         transform: rotate(360deg);
     }
 }
+
+/* fixes slick margin issue */
+.slick-slide {
+    margin: 0 15px;
+}
+.slick-list {
+    margin: 0 -15px;
+}
+/* ------------------------ */

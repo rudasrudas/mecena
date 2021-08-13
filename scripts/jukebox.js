@@ -1,65 +1,28 @@
+var activeAudio;
+
 function setupCarousel(){
-    var owl = $(".owl-carousel");
-    var prevBtn = $("#jukebox-prev");
-    var nextBtn = $("#jukebox-next");
-    owl.owlCarousel({
-        center: true,
-        items: 3,
-        loop: true,
-        margin: 30,
-        dots: false,
-        startPosition: 5
-    });
-    
-    prevBtn.click(() => {
-        owl.trigger("prev.owl.carousel")
+    $(document).ready(function(){
+        const carousel =  $('.carousel')
+        carousel.slick({
+            centerMode: true,
+            centerPadding: '0',
+            slidesToShow: 3,
+            arrows: true,
+            prevArrow: $("#jukebox-prev"),
+            nextArrow: $("#jukebox-next"),
+            infinite: true
+        });
+        carousel.on('beforeChange', function(slick, currentSlide){
+            //if was playing, change shit
+            if(activeAudio){
+                if(isPlaying()){
+                    const button = activeAudio.parentNode.querySelector(".control-btn");
+                    pauseSong(button);
+                }
+                activeAudio.currentTime = 0;
+            }
+        });
     })
-    
-    nextBtn.click(() => {
-        owl.trigger("next.owl.carousel")
-    })
-
-    // owl.on("changed.owl.carousel", function(e) {
-    //     // console.log(e);
-    //     // var index = e.item.index;
-
-    //     // console.log($(".owl-item").eq(index - 1)[0]);
-
-    //     // current
-    //     // console.log($(".owl-item").eq(index)[0]);
-
-    //     // const playedSong = document.getElementsByClassName("jukebox-song played")[0];
-    //     // const wasPlayed = typeof playedSong !== 'undefined';
-
-      
-    //     // if(wasPlayed){
-    //     //     const audio = playedSong.getElementsByTagName("audio")[0];
-    //     //     const isPlaying = !audio.paused && audio.currentTime > 0 && !audio.ended;
-    //     //     if(isPlaying){
-    //     //         const button = playedSong.getElementsByClassName("control-btn")[0];
-
-    //     //         stopSong(audio, button);
-    //     //     }
-    //     //     playedSong.classList.remove("played");
-    //     // }
-    // });
-
-    owl.on('changed.owl.carousel', function(event) {
-        console.log(event.item.index);
-        // var center = $(".center")[0];
-        // center.addEventListener("click", ()=>{
-        //     let audio = center.querySelector('audio');
-        //     let actionButton = center.querySelector('.control-btn');
-        //     const isPlaying = !audio.paused && audio.currentTime > 0 && !audio.ended;
-    
-        //     if(isPlaying){
-        //         pauseSong(audio, actionButton);
-        //     }
-        //     else{
-        //         playSong(audio, actionButton);
-        //     }
-        // });
-    });
 }
 
 function render(){
@@ -70,7 +33,7 @@ function render(){
             const tracks = JSON.parse(xhr.response);
             console.log(tracks);
 
-            var jukebox = $(".owl-carousel");
+            var jukebox = $(".carousel");
 
             for(let i = 0; i < Object.keys(tracks).length; i++){
                 generateSongElement(tracks[i], jukebox);
@@ -124,24 +87,17 @@ function generateSongElement(track, jukebox){
     title.classList.add("jukebox-song-title");
     artist.classList.add("jukebox-song-artist");
 
-    //event listeners
-
-    actionButton.addEventListener("click", ()=>{
-        //this works as well
-        // const vinyl = document.getElementsByClassName("vinyl-player")[0];
-        // const isPlaying = vinyl.classList.contains("play");
-        
-        const isPlaying = !audio.paused && audio.currentTime > 0 && !audio.ended;
-
-        if(isPlaying){
-            pauseSong(audio, actionButton);
+    actionButton.addEventListener("click", ()=>{       
+        if(activeAudio && isPlaying()){
+            pauseSong(actionButton);
         }
         else{
-            playSong(audio, actionButton);
+            activeAudio = audio;
+            playSong(actionButton);
         }
     })
 
-    jukebox.owlCarousel('add', song).owlCarousel('update');
+    jukebox.slick('slickAdd', song);
 }
 
 function generateMediaElement(wrapper, iconClass, link){
@@ -156,22 +112,21 @@ function generateMediaElement(wrapper, iconClass, link){
     }
 }
 
-function playSong(audio, button){
+function isPlaying(){
+    return !activeAudio.paused && activeAudio.currentTime > 0 && !activeAudio.ended;
+}
+
+function playSong(button){
     // song.classList.add("played");
     document.getElementsByClassName("vinyl-player")[0].classList.add("play");
     button.classList.remove("fa-play");
     button.classList.add("fa-pause");
-    audio.play();
+    activeAudio.play();
 }
 
-function pauseSong(audio, button){
+function pauseSong(button){
     document.getElementsByClassName("vinyl-player")[0].classList.remove("play");
     button.classList.remove("fa-pause");
     button.classList.add("fa-play");
-    audio.pause();
-}
-
-function stopSong(audio, button){
-    pauseSong(audio, button);
-    audio.currentTime = 0; 
+    activeAudio.pause();
 }
