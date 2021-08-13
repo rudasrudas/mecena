@@ -7,7 +7,8 @@ function setupCarousel(){
         items: 3,
         loop: true,
         margin: 30,
-        dots: false
+        dots: false,
+        startPosition: 5
     });
     
     prevBtn.click(() => {
@@ -43,7 +44,22 @@ function setupCarousel(){
     //     // }
     // });
 
-
+    owl.on('changed.owl.carousel', function(event) {
+        console.log(event.item.index);
+        // var center = $(".center")[0];
+        // center.addEventListener("click", ()=>{
+        //     let audio = center.querySelector('audio');
+        //     let actionButton = center.querySelector('.control-btn');
+        //     const isPlaying = !audio.paused && audio.currentTime > 0 && !audio.ended;
+    
+        //     if(isPlaying){
+        //         pauseSong(audio, actionButton);
+        //     }
+        //     else{
+        //         playSong(audio, actionButton);
+        //     }
+        // });
+    });
 }
 
 function render(){

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../scripts/portfolio.js"></script>
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/portfolio.css">
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div id="nav-selector"></div>
+    
+    <script>
+        $(function(){
+            $("#nav-selector").load("navigation.html");
+        });
+    </script>
+
+<div class="full-page">
+
+    <div class="portfolio-content">
+        <!-- Artworks -->
+        <div id="artwork-side">
+            
+            <div class="artwork-content">
+                <div class="nav-spacer"></div>
+                <h1>Covers</h1>
+                <div id="artworks">
+                    <div class="artwork">
+                        <img class="artwork-img" src="static/pictures/placeholder-profile.png">
+                        <h4 class="artwork-label">Treasury</h4>
+                    </div>
+                    <div class="artwork">
+                        <img class="artwork-img" src="static/pictures/placeholder-profile.png">
+                        <h4 class="artwork-label">Treasury</h4>
+                    </div>
+                    <div class="artwork">
+                        <img class="artwork-img" src="static/pictures/placeholder-profile.png">
+                        <h4 class="artwork-label">Treasury</h4>
+                    </div>
+                    <div class="artwork">
+                        <img class="artwork-img" src="static/pictures/placeholder-profile.png">
+                        <h4 class="artwork-label">Treasury</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div id="splitter">
+            <div class="nav-spacer"></div>
+
+            <div class="splitter-content">
+                <a href="#artwork-side">Jump Artworks</a>
+                <a href="#splitter">Jump Here</a>
+                <a href="#track-side">Jump Tracks</a>
+            </div>
+        </div>
+
+        <!-- Music -->
+        <div id="track-side">
+            <div class="nav-spacer"></div>
+
+            <div class="track-content">
+                <div id="tracks">
+                    <div class="artwork">
+                        <img class="artwork-img" src="static/pictures/placeholder-profile.png">
+                        <h4 class="artwork-label">Treasury</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <div id="footer-selector"></div>
+    
+    <script>
+        $(function(){
+            $("#footer-selector").load("footer.html");
+        });
+    </script>
+</body>
+</html>
