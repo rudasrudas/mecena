@@ -1,8 +1,17 @@
-var activeAudio;
+var activeAudio = {
+    tag: undefined,
+    startTime: undefined,
+    endTime: undefined
+};
+var vinyl;
+var vinylImage;
+$(document).ready(function(){
+    vinyl = document.getElementsByClassName("vinyl-player")[0];
+})
 
 function setupCarousel(){
     $(document).ready(function(){
-        const carousel =  $('.carousel')
+        const carousel =  $('.carousel');
         carousel.slick({
             centerMode: true,
             centerPadding: '0',
@@ -12,14 +21,23 @@ function setupCarousel(){
             nextArrow: $("#jukebox-next"),
             infinite: true
         });
-        carousel.on('beforeChange', function(slick, currentSlide){
-            //if was playing, change shit
-            if(activeAudio){
+        carousel.on('beforeChange', function(event, slick, currentSlideIndex, nextSlideIndex){
+            if(activeAudio.tag){
+                //if song is currently playing, pause
                 if(isPlaying()){
-                    const button = activeAudio.parentNode.querySelector(".control-btn");
+                    const button = activeAudio.tag.parentNode.querySelector(".control-btn");
                     pauseSong(button);
                 }
-                activeAudio.currentTime = 0;
+                //set timestamp to start
+                activeAudio.tag.currentTime = activeAudio.startTime;
+            }
+            vinyl.classList.add("hidden");
+
+            //if first song has been played and vinyl img was added
+            if(vinylImage){
+                const nextSlide = $(slick.$slides.get(nextSlideIndex))[0];
+                const nextSlideCover = nextSlide.querySelector("img");
+                vinylImage.src = nextSlideCover.src;
             }
         });
     })
@@ -87,12 +105,48 @@ function generateSongElement(track, jukebox){
     title.classList.add("jukebox-song-title");
     artist.classList.add("jukebox-song-artist");
 
-    actionButton.addEventListener("click", ()=>{       
-        if(activeAudio && isPlaying()){
+    //action button click event listener
+    actionButton.addEventListener("click", ()=>{    
+        //if activeAudio exists and is playing   
+        if(activeAudio.tag && isPlaying()){
             pauseSong(actionButton);
         }
+        //if isn't playing
         else{
-            activeAudio = audio;
+            //first time playing jukebox
+            if(!activeAudio.tag){
+                vinylImage = document.createElement("img");
+                vinylImage.src = cover.src;
+                vinyl.appendChild(vinylImage);
+            }
+
+            vinyl.classList.remove("hidden");
+
+            //if audio changed
+            if (activeAudio.tag != audio){
+                //convert hh:mm:ss track timestamp format to seconds
+                startTime = hmsToSeconds(track.start_time);
+                endTime = hmsToSeconds(track.end_time);
+                console.log(endTime);
+
+                audio.currentTime = startTime;
+                activeAudio.tag = audio;
+                activeAudio.startTime = startTime;
+                activeAudio.endTime = endTime;
+            }
+
+            //listens for when the audio end timestamp has been reached
+            activeAudio.tag.addEventListener("timeupdate", function(){
+                if (this.currentTime >= activeAudio.endTime){
+                    //remove this event listener
+                    this.removeEventListener("timeupdate", arguments.callee, false);
+                    vinyl.classList.add("hidden");
+                    pauseSong(actionButton);
+                    //reset timestamp
+                    this.currentTime = activeAudio.startTime;
+                }
+            });
+
             playSong(actionButton);
         }
     })
@@ -113,20 +167,25 @@ function generateMediaElement(wrapper, iconClass, link){
 }
 
 function isPlaying(){
-    return !activeAudio.paused && activeAudio.currentTime > 0 && !activeAudio.ended;
+    let audio = activeAudio.tag;
+    return !audio.paused && audio.currentTime > 0 && !audio.ended;
 }
 
 function playSong(button){
-    // song.classList.add("played");
-    document.getElementsByClassName("vinyl-player")[0].classList.add("play");
+    vinyl.classList.add("play");
     button.classList.remove("fa-play");
     button.classList.add("fa-pause");
-    activeAudio.play();
+    activeAudio.tag.play();
 }
 
 function pauseSong(button){
-    document.getElementsByClassName("vinyl-player")[0].classList.remove("play");
+    vinyl.classList.remove("play");
     button.classList.remove("fa-pause");
     button.classList.add("fa-play");
-    activeAudio.pause();
+    activeAudio.tag.pause();
+}
+
+function hmsToSeconds(hms){
+    let parts = hms.split(':');
+    return (+parts[0]) * 3600 + (+parts[1]) * 60 + (+parts[2]);
 }
