@@ -1,41 +1,60 @@
 .full-page {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-spacer {
+    flex: 1 0 auto;
+    width: 100vw;
 }
 
 .portfolio-content {
-    height: 100%;
     overflow-x: auto;
-    /* overflow-y: hidden; */
-    /* white-space: nowrap; */
+    overflow-y: hidden;
     display: flex;
-    /* justify-content: start;
-    align-content: center; */
+    flex: 1 1 auto;
+    align-content: center;
+    -ms-overflow-style: none;  /* IE and Edge Remove horizontal scrollbar*/
+    scrollbar-width: none;  /* Firefox Remove horizontal scrollbar*/
 }
 
-#artwork-side {
+    .portfolio-content::-webkit-scrollbar {
+        display: none; /* Remove horizontal scrollbar */
+    }
+
+.portfolio-side {
     width: 100vw;
     overflow-y: auto;
     overflow-x: hidden;
     flex-shrink: 0;
-    height: 100%;
+    -ms-overflow-style: none;  /* IE and Edge Remove vertical scrollbar*/
+    scrollbar-width: none;  /* Firefox Remove vertical scrollbar*/
 }
 
-    .artwork-content {
-        width: 1000px;
-        height: 100%;
-        margin-left: auto;
-        margin-right: auto;
+    .portfolio-side::-webkit-scrollbar {
+        display: none; /* Remove vertical scrollbar */
     }
 
-    #artworks {
-        display: flex;
-        /* align-items: center; */
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
+.content-items {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.right-side-title {
+    text-align: right;
+}
+
+.artwork-content {
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
     .artwork {
-        width: 28%;
+        width: 300px;
+        margin: 0px 10px 0px 0px;
     }
 
     .artwork-img {
@@ -53,19 +72,37 @@
     }
 
 #splitter {
-    height: 100vh;
     width: 50vw;
     flex-shrink: 0;
+    border-left: solid 1px black;
+    border-right: solid 1px black;
 }
 
     .splitter-content {
-        height: 100%;
         width: 100%;
-        background-color: darkmagenta;
     }
 
-#track-side {
-    width: 100vw;
-    height: 100%;
-    flex-shrink: 0;
-}
+.track-content {
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .track {
+        width: 300px;
+        margin: 0px 10px 0px 0px;
+    }
+
+    .track-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin: auto;
+    }
+
+    .track-label {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
