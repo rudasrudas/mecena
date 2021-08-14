@@ -1,4 +1,8 @@
-var activeAudio;
+var activeAudio = {
+    tag: undefined,
+    startTime: undefined,
+    endTime: undefined
+};
 var vinyl;
 var vinylImage;
 $(document).ready(function(){
@@ -18,14 +22,14 @@ function setupCarousel(){
             infinite: true
         });
         carousel.on('beforeChange', function(event, slick, currentSlideIndex, nextSlideIndex){
-            if(activeAudio){
+            if(activeAudio.tag){
                 //if song is currently playing, pause
                 if(isPlaying()){
-                    const button = activeAudio.parentNode.querySelector(".control-btn");
+                    const button = activeAudio.tag.parentNode.querySelector(".control-btn");
                     pauseSong(button);
                 }
                 //set timestamp to start
-                activeAudio.currentTime = 0;
+                activeAudio.tag.currentTime = activeAudio.startTime;
             }
             vinyl.classList.add("hidden");
 
@@ -101,27 +105,47 @@ function generateSongElement(track, jukebox){
     title.classList.add("jukebox-song-title");
     artist.classList.add("jukebox-song-artist");
 
+    //action button click event listener
     actionButton.addEventListener("click", ()=>{    
         //if activeAudio exists and is playing   
-        if(activeAudio && isPlaying()){
+        if(activeAudio.tag && isPlaying()){
             pauseSong(actionButton);
         }
         //if isn't playing
         else{
             //first time playing jukebox
-            if(!activeAudio){
+            if(!activeAudio.tag){
                 vinylImage = document.createElement("img");
                 vinylImage.src = cover.src;
                 vinyl.appendChild(vinylImage);
             }
 
             vinyl.classList.remove("hidden");
-            activeAudio = audio;
-            //listener for audio ended event
-            activeAudio.addEventListener("ended", function(){
-                vinyl.classList.add("hidden");
-                pauseSong(actionButton);
-            }, {once: true});
+
+            //if audio changed
+            if (activeAudio.tag != audio){
+                //convert hh:mm:ss track timestamp format to seconds
+                startTime = hmsToSeconds(track.start_time);
+                endTime = hmsToSeconds(track.end_time);
+                console.log(endTime);
+
+                audio.currentTime = startTime;
+                activeAudio.tag = audio;
+                activeAudio.startTime = startTime;
+                activeAudio.endTime = endTime;
+            }
+
+            //listens for when the audio end timestamp has been reached
+            activeAudio.tag.addEventListener("timeupdate", function(){
+                if (this.currentTime >= activeAudio.endTime){
+                    //remove this event listener
+                    this.removeEventListener("timeupdate", arguments.callee, false);
+                    vinyl.classList.add("hidden");
+                    pauseSong(actionButton);
+                    //reset timestamp
+                    this.currentTime = activeAudio.startTime;
+                }
+            });
 
             playSong(actionButton);
         }
@@ -143,19 +167,25 @@ function generateMediaElement(wrapper, iconClass, link){
 }
 
 function isPlaying(){
-    return !activeAudio.paused && activeAudio.currentTime > 0 && !activeAudio.ended;
+    let audio = activeAudio.tag;
+    return !audio.paused && audio.currentTime > 0 && !audio.ended;
 }
 
 function playSong(button){
     vinyl.classList.add("play");
     button.classList.remove("fa-play");
     button.classList.add("fa-pause");
-    activeAudio.play();
+    activeAudio.tag.play();
 }
 
 function pauseSong(button){
     vinyl.classList.remove("play");
     button.classList.remove("fa-pause");
     button.classList.add("fa-play");
-    activeAudio.pause();
+    activeAudio.tag.pause();
+}
+
+function hmsToSeconds(hms){
+    let parts = hms.split(':');
+    return (+parts[0]) * 3600 + (+parts[1]) * 60 + (+parts[2]);
 }
