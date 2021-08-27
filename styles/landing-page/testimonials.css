@@ -4,13 +4,13 @@
     background: #efefef;
 }
 
+.testimonials-title{
+    text-align: center;
+}
+
 .inner-testimonials{
     position: relative;
     padding: 3% 6vw; 
-}
-
-.testimonials-title{
-    text-align: center;
 }
 
 .testimonials-arrow {
@@ -43,7 +43,6 @@
     margin: 10px;
     background-color: white;
     vertical-align: middle;
-    height: inherit !important;
     align-self: center;
     transition: ease 0.3s;
 }
@@ -55,6 +54,7 @@
 
 .testimonial-content{
     line-height: 1.5;
+    font-style: italic;
 }
 
 .testimonial-content::before, .testimonial-content::after{
@@ -76,3 +76,6 @@
     content:'\201D';
 }
 
+.testimonial-author {
+    font-weight: bold;
+}
