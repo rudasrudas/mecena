@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="../scripts/index.js"></script>
-    <script src="../scripts/jukebox.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/jukebox.js"></script>
+    <script src="./scripts/testimonials.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -14,6 +15,7 @@
     <link rel="stylesheet" href="/styles/landing-page/landing-about.css">
     <link rel="stylesheet" href="/styles/landing-page/jukebox.css">
     <link rel="stylesheet" href="/styles/landing-page/packages.css">
+    <link rel="stylesheet" href="/styles/landing-page/testimonials.css">
     <link rel="stylesheet" href="/styles/footer.css">
     <title>Mecena</title>
 </head>
@@ -65,13 +67,13 @@
         </div>
     </div>
     
-    <!-- Song carousel -->
+    <!-- Song jukebox -->
 
     <div id="jukebox">
         <h1 class="jukebox-title">Most recent releases</h1>
         <div class="inner-jukebox">
             <div id="jukebox-prev" class="jukebox-arrow material-icons">arrow_back</div>
-            <div class="carousel"></div>
+            <div class="jukebox-carousel"></div>
             <div id="jukebox-next" class="jukebox-arrow material-icons">arrow_forward</div>
         </div>
         
@@ -82,12 +84,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
     <script>
-        setupCarousel();
-        render();
+        setupJukebox();
     </script>
 
-    <div class="vinyl-player hidden">
-    </div>
+    <div class="vinyl-player hidden"></div>
 
     <!-- Package options -->
     
@@ -150,7 +150,38 @@
     </div>
     
     <!-- Testimonials -->
-    <div style="height: 100vh;"></div>
+
+    <div id="testimonials">
+        <h2 class="testimonials-title">See what our clients say</h2>
+        <div class="inner-testimonials">
+            <div id="testimonials-prev" class="testimonials-arrow material-icons">chevron_left</div>
+            <div class="testimonials-carousel">
+                <div class="testimonial">
+                    <h3 class="testimonial-content">
+                        Great company, really like the atmosphere!
+                    </h3>
+                    <h4 class="testimonial-author">- Luke</h4>
+                </div>
+                <div class="testimonial">
+                    <h3 class="testimonial-content">
+                        The best hotel I've visited - free food, stay and perks and I only had to bring a 0.5 cal gun
+                    </h3>
+                    <h4 class="testimonial-author">- Justin Svenningsen</h4>
+                </div>
+                <div class="testimonial">
+                    <h3 class="testimonial-content">
+                        As myliu vyrus
+                    </h3>
+                    <h4 class="testimonial-author">- Kristijonas</h4>
+                </div>
+            </div>
+            <div id="testimonials-next" class="testimonials-arrow material-icons">chevron_right</div>
+        </div>
+    </div>
+
+    <script>
+        setupTestimonials();
+    </script>
     
     <!-- Footer -->
     <div id="footer-selector"></div>

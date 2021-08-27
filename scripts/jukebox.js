@@ -1,17 +1,81 @@
 var activeAudio = {
     tag: undefined,
+    vinyl: undefined,
+    vinylImage: undefined,
     startTime: undefined,
-    endTime: undefined
+    endTime: undefined,
+    exists: function(){
+        return this.tag !== undefined;
+    },
+    isPlaying: function(){
+        let audio = this.tag;
+        return audio && !audio.paused && audio.currentTime > 0 && !audio.ended;
+    },
+    hasChanged: function(otherAudio){
+        return this.tag != otherAudio;
+    },
+    getButton: function(){
+        return this.tag.parentNode.querySelector(".control-btn");
+    },
+    playSong: function(button){
+        if(!button){
+            button = this.getButton();
+        }
+        this.vinyl.classList.add("play");
+        button.classList.remove("fa-play");
+        button.classList.add("fa-pause");
+        this.tag.play();
+        this.tag.addEventListener("timeupdate", function(){
+            if (activeAudio.shouldEnd(this.currentTime)){
+                //remove this event listener
+                this.removeEventListener("timeupdate", arguments.callee, false);
+                activeAudio.hideVinyl();
+                activeAudio.pauseSong(button);
+                activeAudio.resetTime();
+            }
+        });
+    },
+    pauseSong: function(button){
+        if(!button){
+            button = this.getButton();
+        }
+        this.vinyl.classList.remove("play");
+        button.classList.remove("fa-pause");
+        button.classList.add("fa-play");
+        this.tag.pause();
+    },
+    resetTime: function(){
+        this.tag.currentTime = this.startTime;
+    },
+    displayVinyl: function(){
+        this.vinyl.classList.remove("hidden");
+    },
+    hideVinyl: function(){
+        this.vinyl.classList.add("hidden");
+    },
+    setSong: function(audio, startTime, endTime){
+        audio.currentTime = startTime;
+        this.tag = audio;
+        this.startTime = startTime;
+        this.endTime = endTime;
+    },
+    shouldEnd: function(seconds){
+        return seconds >= activeAudio.endTime;
+    },
+    setupVinylImage: function(coverImg){
+        this.vinylImage = document.createElement("img");
+        this.vinylImage.src = coverImg;
+        this.vinyl.appendChild(this.vinylImage);
+    }
 };
-var vinyl;
-var vinylImage;
+
 $(document).ready(function(){
-    vinyl = document.getElementsByClassName("vinyl-player")[0];
+    activeAudio.vinyl = document.getElementsByClassName("vinyl-player")[0];
 })
 
-function setupCarousel(){
+function setupJukebox(){
     $(document).ready(function(){
-        const carousel =  $('.carousel');
+        const carousel =  $('.jukebox-carousel');
         carousel.slick({
             centerMode: true,
             centerPadding: '0',
@@ -22,28 +86,33 @@ function setupCarousel(){
             infinite: true
         });
         carousel.on('beforeChange', function(event, slick, currentSlideIndex, nextSlideIndex){
-            if(activeAudio.tag){
-                //if song is currently playing, pause
-                if(isPlaying()){
-                    const button = activeAudio.tag.parentNode.querySelector(".control-btn");
-                    pauseSong(button);
-                }
-                //set timestamp to start
-                activeAudio.tag.currentTime = activeAudio.startTime;
+            
+            //if slide hasn't changed, don't do anything
+            if(currentSlideIndex == nextSlideIndex){
+                return;
             }
-            vinyl.classList.add("hidden");
 
-            //if first song has been played and vinyl img was added
-            if(vinylImage){
+            if(activeAudio.exists()){
+                //if song is currently playing, pause
+                if(activeAudio.isPlaying()){
+                    activeAudio.pauseSong();
+                }
+
+                //set timestamp to start
+                activeAudio.resetTime();
+
+                //change vinyl cover image
                 const nextSlide = $(slick.$slides.get(nextSlideIndex))[0];
                 const nextSlideCover = nextSlide.querySelector("img");
-                vinylImage.src = nextSlideCover.src;
+                activeAudio.vinylImage.src = nextSlideCover.src;
             }
+            activeAudio.hideVinyl();
         });
+        renderSongs();
     })
 }
 
-function render(){
+function renderSongs(){
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `https://api.mecena.net/featured`, true);
     xhr.onload = function() {
@@ -51,7 +120,7 @@ function render(){
             const tracks = JSON.parse(xhr.response);
             console.log(tracks);
 
-            var jukebox = $(".carousel");
+            var jukebox = $(".jukebox-carousel");
 
             for(let i = 0; i < Object.keys(tracks).length; i++){
                 generateSongElement(tracks[i], jukebox);
@@ -65,7 +134,6 @@ function render(){
 }
 
 function generateSongElement(track, jukebox){
-    console.log(track);
     //create HTML elements
     const song = document.createElement("div");
     const audio = document.createElement("audio")
@@ -94,6 +162,7 @@ function generateSongElement(track, jukebox){
     //element styling
 
     audio.src = `https://api.mecena.net/track/${track.track}`;
+    audio.preload = "auto";
     cover.src = `https://api.mecena.net/artwork/${track.cover}`;
     title.innerHTML = track.title;
     artist.innerHTML = track.artist;
@@ -107,47 +176,28 @@ function generateSongElement(track, jukebox){
 
     //action button click event listener
     actionButton.addEventListener("click", ()=>{    
-        //if activeAudio exists and is playing   
-        if(activeAudio.tag && isPlaying()){
-            pauseSong(actionButton);
+        //if activeAudio exists and is playing, pause  
+        if(activeAudio.exists() && activeAudio.isPlaying()){
+            activeAudio.pauseSong(actionButton);
         }
         //if isn't playing
         else{
             //first time playing jukebox
-            if(!activeAudio.tag){
-                vinylImage = document.createElement("img");
-                vinylImage.src = cover.src;
-                vinyl.appendChild(vinylImage);
-            }
+            if(!activeAudio.exists())
+                activeAudio.setupVinylImage(cover.src);
 
-            vinyl.classList.remove("hidden");
+            activeAudio.displayVinyl();
 
             //if audio changed
-            if (activeAudio.tag != audio){
+            if(activeAudio.hasChanged(audio)){
                 //convert hh:mm:ss track timestamp format to seconds
                 startTime = hmsToSeconds(track.start_time);
                 endTime = hmsToSeconds(track.end_time);
-                console.log(endTime);
 
-                audio.currentTime = startTime;
-                activeAudio.tag = audio;
-                activeAudio.startTime = startTime;
-                activeAudio.endTime = endTime;
+                activeAudio.setSong(audio, startTime, endTime);
             }
 
-            //listens for when the audio end timestamp has been reached
-            activeAudio.tag.addEventListener("timeupdate", function(){
-                if (this.currentTime >= activeAudio.endTime){
-                    //remove this event listener
-                    this.removeEventListener("timeupdate", arguments.callee, false);
-                    vinyl.classList.add("hidden");
-                    pauseSong(actionButton);
-                    //reset timestamp
-                    this.currentTime = activeAudio.startTime;
-                }
-            });
-
-            playSong(actionButton);
+            activeAudio.playSong(actionButton);
         }
     })
 
@@ -164,25 +214,6 @@ function generateMediaElement(wrapper, iconClass, link){
 
         wrapper.appendChild(icon);
     }
-}
-
-function isPlaying(){
-    let audio = activeAudio.tag;
-    return !audio.paused && audio.currentTime > 0 && !audio.ended;
-}
-
-function playSong(button){
-    vinyl.classList.add("play");
-    button.classList.remove("fa-play");
-    button.classList.add("fa-pause");
-    activeAudio.tag.play();
-}
-
-function pauseSong(button){
-    vinyl.classList.remove("play");
-    button.classList.remove("fa-pause");
-    button.classList.add("fa-play");
-    activeAudio.tag.pause();
 }
 
 function hmsToSeconds(hms){
