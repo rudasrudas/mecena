@@ -2,15 +2,17 @@ function setupTestimonials(){
     $(document).ready(function(){
         const carousel =  $('.testimonials-carousel');
         carousel.slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
             accessibility: false,
             autoplay: true,
-            autoplaySpeed: 15000,
+            autoplaySpeed: 2000,
+            speed: 600,
             pauseOnHover: true,
             draggable: false,
             swipe: false,
             touchMove: false,
-            prevArrow: $("#testimonials-prev"),
-            nextArrow: $("#testimonials-next"),
+            arrows: false
         });
         //renderTestimonials();
     })
