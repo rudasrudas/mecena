@@ -37,7 +37,7 @@
 }
 
 .navbar-links{
-    width: 40%;
+    width: 35%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

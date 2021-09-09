@@ -216,6 +216,7 @@ function generateMediaElement(wrapper, iconClass, link){
         icon.classList.add("fab");
         icon.classList.add("jukebox-song-media");
         icon.href = link;
+        icon.target = "_blank";
 
         wrapper.appendChild(icon);
     }
