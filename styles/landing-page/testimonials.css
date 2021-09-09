@@ -1,7 +1,7 @@
 #testimonials{
-    padding: 0 30vw;
+    padding: 40px 0;
     position: relative;
-    background: #efefef;
+    background: #f8f8f8;
 }
 
 .testimonials-title{
@@ -10,25 +10,7 @@
 
 .inner-testimonials{
     position: relative;
-    padding: 3% 6vw; 
-}
-
-.testimonials-arrow {
-    top: 50%;
-    transform: translate(0, -50%);
-    position: absolute;
-    user-select: none;
-    cursor: pointer;
-    font-size: 60px !important;
-    z-index: 2;
-}
-
-#testimonials-prev{
-    left: 3vw;
-}
-
-#testimonials-next{
-    right: 3vw;
+    padding: 3% 12vw;
 }
 
 #testimonials .slick-track
@@ -38,18 +20,26 @@
 
 .testimonial{
     text-align: center;
-    padding: 10px 0;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    padding: 30px;
     margin: 10px;
-    background-color: white;
+    background-color: #eeeeee;
+    border: solid 1px #dadada;
     vertical-align: middle;
-    align-self: center;
     transition: ease 0.3s;
+    height: inherit !important;
 }
 
 .testimonial:hover{
-    background-color: #e6e6e6;
+    background-color: #dadada;
     transition: ease 0.3s;
+}
+
+.testimonial-text-wrapper{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .testimonial-content{
@@ -58,8 +48,8 @@
 }
 
 .testimonial-content::before, .testimonial-content::after{
-    color:#f7ae12;
-    display:inline;
+    color: #f7ae12;
+    display: inline;
     position: relative;
     top: 15px;
     font-family: serif;
@@ -69,11 +59,11 @@
 }
 
 .testimonial-content::before {
-    content:'\201C';
+    content: '\201C';
 }
 
 .testimonial-content::after {
-    content:'\201D';
+    content: '\201D';
 }
 
 .testimonial-author {

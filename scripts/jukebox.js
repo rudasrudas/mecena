@@ -1,9 +1,9 @@
 var activeAudio = {
-    tag: undefined,
-    vinyl: undefined,
-    vinylImage: undefined,
-    startTime: undefined,
-    endTime: undefined,
+    // tag: undefined,
+    // vinyl: undefined,
+    // vinylImage: undefined,
+    // startTime: undefined,
+    // endTime: undefined,
     exists: function(){
         return this.tag !== undefined;
     },
@@ -163,6 +163,11 @@ function generateSongElement(track, jukebox){
 
     audio.src = `https://api.mecena.net/track/${track.track}`;
     audio.preload = "auto";
+    // trying to pre-load the songs
+    // audio.muted = true;
+    // audio.play();
+    // audio.pause();
+    // audio.muted = false;
     cover.src = `https://api.mecena.net/artwork/${track.cover}`;
     title.innerHTML = track.title;
     artist.innerHTML = track.artist;
