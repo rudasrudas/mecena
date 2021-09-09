@@ -70,4 +70,5 @@
 .nav-spacer {
     position: relative;
     height: 65px;
+    max-height: 65px;
 }

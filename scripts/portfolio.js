@@ -72,3 +72,21 @@ function jumpToTheCenter(){
         inline: "center"
     });
 }
+
+function scrollToCovers(){
+    let options = {
+        behavior: "smooth",
+        block: "end",
+        inline: "center"
+    }
+    document.getElementById("artwork-side").scrollIntoView(options);
+}
+
+function scrollToSongs(){
+    let options = {
+        behavior: "smooth",
+        block: "end",
+        inline: "center"
+    }
+    document.getElementById("track-side").scrollIntoView(options);
+}
