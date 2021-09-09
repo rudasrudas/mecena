@@ -14,7 +14,7 @@ function setupTestimonials(){
             touchMove: false,
             arrows: false
         });
-        //renderTestimonials();
+        renderTestimonials();
     })
 }
 
@@ -28,7 +28,7 @@ function renderTestimonials(){
             var carousel = $(".testimonials-carousel");
 
             for(let i = 0; i < Object.keys(testimonials).length; i++){
-                generateTestimonialElement(testimonials[i], carousel);
+                addTestimonial(carousel, testimonials[i]);
             }
         }
         else {
@@ -38,6 +38,16 @@ function renderTestimonials(){
     xhr.send();
 }
 
-function generateTestimonialElement(testimonial, carousel){
-    console.log(testimonial);
+function addTestimonial(carousel, testimonial){
+    carousel.slick('slickAdd',
+    `
+    <div class="testimonial">
+        <div class="testimonial-text-wrapper">
+            <h3 class="testimonial-content">
+                ${testimonial.content}
+            </h3>
+            <h4 class="testimonial-author">– ${testimonial.author}</h4>
+        </div>
+    </div>
+    `)
 }
