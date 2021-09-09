@@ -72,14 +72,56 @@
     }
 
 #splitter {
-    width: 50vw;
+    width: 60vw;
     flex-shrink: 0;
-    border-left: solid 1px black;
-    border-right: solid 1px black;
+
+    display: flex;
+    justify-content: center;
 }
 
+    .splitter-title {
+        color: white;
+        text-align: center;
+        font-size: 70px;
+        line-height: 80%;
+        text-transform: uppercase;
+    }
+
+    .splitter-pointer {
+        border: solid 2px black;
+        border-left: none;
+        padding: 5px;
+        height: 50%;
+        font-size: 50px;
+        cursor: pointer;
+
+        display: flex;
+        align-self: center;
+        justify-content: center;
+    }
+
+    .splitter-pointer.left {
+        transform: scale(-1);
+        writing-mode: vertical-lr;
+        line-height: 100%;
+    }
+
+    .splitter-pointer.right {
+        vertical-align: top;
+        line-height: 100%;
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+    }
+
+    .splitter-pointer .material-icons {
+        font-size: inherit;
+    }
+
     .splitter-content {
+        height: 100%;
         width: 100%;
+        background: #110f06;
+        padding: 50px;
     }
 
 .track-content {

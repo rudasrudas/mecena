@@ -24,24 +24,37 @@
 
     <div class="portfolio-content">
         <!-- Artworks -->
-        <div id="artwork-side" class="portfolio-side">
+        <div id="artwork-side" class="portfolio-side side">
             <div class="artwork-content">
                 <h1>Covers</h1>
                 <div id="artworks" class="content-items"></div>
             </div>
         </div>
-
+        
         <!-- Divider -->
         <div id="splitter">
+            <div class="splitter-pointer left" onclick="scrollToCovers()">
+                <h1>
+                    Covers
+                    <span class="material-icons">arrow_upward</span>
+                </h1>
+            </div>
+            
             <div class="splitter-content">
-                <a href="#artwork-side">Jump Artworks</a>
-                <a href="#splitter">Jump Here</a>
-                <a href="#track-side">Jump Tracks</a>
+                <h1 class="splitter-title">Portfolio</h1>
+
+            </div>
+
+            <div class="splitter-pointer right" onclick="scrollToSongs()">
+                <h1>
+                    <span class="material-icons">arrow_upward</span>
+                    Songs
+                </h1>
             </div>
         </div>
-
+        
         <!-- Music -->
-        <div id="track-side" class="portfolio-side">
+        <div id="track-side" class="portfolio-side side">
             <div class="track-content">
                 <h1 class="right-side-title">Songs</h1>
                 <div id="tracks" class="content-items"></div>
