@@ -24,7 +24,25 @@
 <div class="full-page">
     <div class="nav-spacer"></div>
 
-    <div class="portfolio-content">
+    <div id="artwork-pointer" class="basic-pointer artwork-pointer">
+        <div class="splitter-pointer right" onclick="scrollToCovers(); slideLeft('artwork-pointer');">
+            <h1>
+                Covers
+                <span class="material-icons">arrow_downward</span>
+            </h1>
+        </div>
+    </div>
+
+    <div id="track-pointer" class="basic-pointer track-pointer">
+        <div class="splitter-pointer left" onclick="scrollToSongs(); slideRight('track-pointer');">
+            <h1>
+                <span class="material-icons">arrow_downward</span>
+                Songs
+            </h1>
+        </div>
+    </div>
+
+    <div class="portfolio-content" onscroll="updatePointers()">
         <!-- Artworks -->
         <div id="artwork-side" class="portfolio-side side">
             <div class="artwork-content">
@@ -47,9 +65,11 @@
                     <h1 class="splitter-title">Portfolio</h1>
                 </div>
                 <div class="pointer-description-wrapper">
-                    <div class="pointer-description">
+                    <div class="pointer-description" onclick="scrollToCovers()">
+                        <p>Album cover art is artwork created for a music album. ... Steinweiss was an art director and graphic designer who brought custom artwork to record album covers and invented the first packaging for long-playing records.</p>
                     </div>
-                    <div class="pointer-description">
+                    <div class="pointer-description bottom-alignment" onclick="scrollToSongs()">
+                        <p>The musical phrases uttered by some birds, whales, and insects, typically forming a recognizable and repeated sequence and used chiefly for territorial defence or for attracting mates.</p>
                     </div>
                 </div>
                 <div class="splitter-title-wrapper">
