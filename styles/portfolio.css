@@ -79,21 +79,28 @@
     justify-content: center;
 }
 
+    .splitter-title-wrapper {
+        flex-grow: 1;
+        height: 25%;
+    }
+
     .splitter-title {
         color: white;
         text-align: center;
         font-size: 70px;
-        line-height: 80%;
+        /* line-height: 80%; */
+        padding: 50px;
         text-transform: uppercase;
     }
 
     .splitter-pointer {
         border: solid 2px black;
         border-left: none;
-        padding: 5px;
+        padding: 0 5px;
         height: 50%;
         font-size: 50px;
         cursor: pointer;
+        background-color: white;
 
         display: flex;
         align-self: center;
@@ -117,11 +124,26 @@
         font-size: inherit;
     }
 
-    .splitter-content {
+    .pointer-description-wrapper {
+        height: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 2;
+    }
+
+    .pointer-description {
         height: 100%;
+        background-color: white;
+        padding: 0 20px;
+        min-width: 50px;
+    }
+
+    .splitter-content {
         width: 100%;
         background: #110f06;
-        padding: 50px;
+        display: flex;
+        flex-direction: column;
     }
 
 .track-content {
