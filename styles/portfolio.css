@@ -9,6 +9,30 @@
     width: 100vw;
 }
 
+.basic-pointer {
+    position: fixed;
+    display: flex;
+    height: 100%;
+    margin-top: 50px;
+    z-index: 13;
+}
+
+    #artwork-pointer {
+        left: 0px;
+    }
+
+    #track-pointer {
+        right: 0px;
+    }
+
+    .shifted-left {
+        margin-left: -70px;
+    }
+
+    .shifted-right {
+        margin-right: -70px;
+    }
+
 .portfolio-content {
     overflow-x: auto;
     overflow-y: hidden;
@@ -48,9 +72,17 @@
 
 .artwork-content {
     width: 1000px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
+    padding: 0px 50px;
+    background: white;
+    border: solid 2px black;
 }
+
+    #artwork-side {
+        background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/pictures/damascus.svg');
+    }
 
     .artwork {
         width: 300px;
@@ -79,21 +111,28 @@
     justify-content: center;
 }
 
+    .splitter-title-wrapper {
+        flex-grow: 1;
+        height: 25%;
+    }
+
     .splitter-title {
         color: white;
         text-align: center;
         font-size: 70px;
-        line-height: 80%;
+        /* line-height: 80%; */
+        padding: 50px;
         text-transform: uppercase;
     }
 
     .splitter-pointer {
         border: solid 2px black;
         border-left: none;
-        padding: 5px;
+        padding: 0 5px;
         height: 50%;
         font-size: 50px;
         cursor: pointer;
+        background-color: white;
 
         display: flex;
         align-self: center;
@@ -117,17 +156,53 @@
         font-size: inherit;
     }
 
-    .splitter-content {
+    .pointer-description-wrapper {
+        height: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-grow: 2;
+    }
+
+    .pointer-description {
         height: 100%;
+        background-color: white;
+        padding: 0 20px;
+        min-width: 30%;
+        max-width: 40%;
+    }
+
+    .pointer-description p {
+        margin: 40px 10px;
+        font-size: 24px;
+        text-align: justify;
+    }
+
+    .pointer-description.bottom-alignment {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .splitter-content {
         width: 100%;
         background: #110f06;
-        padding: 50px;
+        display: flex;
+        flex-direction: column;
     }
 
 .track-content {
         width: 1000px;
+        height: 100%;
         margin-left: auto;
         margin-right: auto;
+        padding: 0px 50px;
+        background: white;
+        border: solid 2px black;
+    }
+
+    #track-side {
+        background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/pictures/damascus.svg');
     }
 
     .track {

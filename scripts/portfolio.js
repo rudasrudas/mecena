@@ -90,3 +90,32 @@ function scrollToSongs(){
     }
     document.getElementById("track-side").scrollIntoView(options);
 }
+
+function slideLeft(item) {
+    document.getElementById(item).classList.add("shifted-left");
+}
+
+function slideRight(item) {
+    document.getElementById(item).classList.add("shifted-right");
+}
+
+function updatePointers(){
+    let content = document.getElementsByClassName('portfolio-content')[0];
+
+    let position = content.scrollLeft/(content.scrollWidth - content.offsetWidth);
+    
+    
+    if(position < 0.05){
+        document.getElementById('track-pointer').classList.remove("shifted-right");
+    }
+    else if(!document.getElementById('track-pointer').classList.contains("shifted-right")){
+        document.getElementById('track-pointer').classList.add("shifted-right");
+    }
+
+    if(position > 0.95){
+        document.getElementById('artwork-pointer').classList.remove("shifted-left");
+    }
+    else if(!document.getElementById('artwork-pointer').classList.contains("shifted-left")){
+        document.getElementById('artwork-pointer').classList.add("shifted-left");
+    }
+}
