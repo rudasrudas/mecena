@@ -76,6 +76,7 @@ function openModal(title, image, text){
 }
 
 function closeModal(){
+    modalImage.src = "";
     modal.classList.remove("active");
     overlay.classList.remove("active");
     document.body.classList.remove("noscroll");
