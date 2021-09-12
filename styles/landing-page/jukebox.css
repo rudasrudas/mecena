@@ -105,6 +105,7 @@
 }
 
 .vinyl-player {
+    display: none;
     position: fixed;
     width: 90px;
     height: 90px;
@@ -137,8 +138,8 @@
     animation-play-state: running;
 }
 
-.vinyl-player.hidden {
-    display: none;
+.vinyl-player.active {
+    display: block;
 }
 
 @keyframes rotate{

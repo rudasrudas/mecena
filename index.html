@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./scripts/index.js"></script>
     <script src="./scripts/jukebox.js"></script>
     <script src="./scripts/testimonials.js"></script>
-    <script src="./scripts/posts.js"></script>
+    <script defer src="./scripts/news.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -91,7 +93,7 @@
         setupJukebox();
     </script>
 
-    <div class="vinyl-player hidden"></div>
+    <div class="vinyl-player"></div>
 
     <!-- Package options -->
     
@@ -169,38 +171,20 @@
     
     <div id="news">
         <h1 class="news-title">Latest news</h2>
-        <div class="inner-news">
-            <div class="post">
-                <img class="post-image" src="static/pictures/news/1.jpg" alt="">
-                <div class="post-text-wrapper">
-                    <h3 class="post-title">Donald Trump still is an idiot</h3>
-                    <div class="post-text-separator"></div>
-                    <h4 class="post-text">Trump has made it something of a motto to try to undo anything Obama touched, from Deferred Action for Childhood Arrivals to the Clean Power Plan, but his White Whale has been the end of Obamacare, something he couldn’t do legislatively, so he's now turned to the courts. With no replacement plan in place other than the "great plan" that for years has been just weeks away from getting announced, the Trump Administration has launched multiple suits against the ACA, including one that will be heard by a court that includes his latest appointee Justice Amy Coney Barrett. This could mean the end of healthcare coverage for millions of Americans and especial trouble for anyone with a preexisting condition.</h4>
-                </div>
-            </div>
-            <div class="post">
-                <img class="post-image" src="static/pictures/news/2.png" alt="">
-                <div class="post-text-wrapper">
-                    <h3 class="post-title">Kresto has released a new single</h3>
-                    <div class="post-text-separator"></div>
-                    <h4 class="post-text">Kresto - Lithuanian DJ, producer & CEO of the new up-and-coming music production service Mecena - has released a new single called "I Got The Keys". Gytis said that it's the best thing he has ever heard.</h4>
-                </div>
-            </div>
-            <div class="post">
-                <img class="post-image" src="static/pictures/news/3.png" alt="">
-                <div class="post-text-wrapper">
-                    <h3 class="post-title">Kristijonas is hosting a party</h3>
-                    <div class="post-text-separator"></div>
-                    <h4 class="post-text">Kristijonas "Sinusas Kosinusas Virusas Papirusas" Sirusas has decided to host a party at a place called "Bybys zino". Guest list includes stars like Gediminas and no one else, because he's the star of our world. 
-                    </h4>
-                </div>
-            </div>
-        </div>
+        <div class="inner-news"></div>
     </div>
 
-    <script>
-        addReadMore()
-    </script>
+    <div id="article-modal">
+        <div class="article-modal-header">
+            <h3 class="article-modal-title"></h3>
+            <button id="article-modal-close" class="alternative">Close</button>
+        </div>
+        <div class="article-modal-content">
+            <img class="article-modal-image" src="" alt="">
+            <h4 class="article-modal-text"></h4>
+        </div>
+    </div>
+    <div id="article-modal-overlay"></div>
 
     <!-- Footer -->
     <div id="footer-selector"></div>
