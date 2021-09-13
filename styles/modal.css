@@ -1,0 +1,25 @@
+.modal {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #0003;
+    z-index: 14;
+}
+
+.modal-content {
+    position: relative;
+    width: 1000px;
+    background: #fff;
+    margin: 50px auto;
+    /* padding: 0px 50px; */
+    min-height: 800px;
+    display: flex;
+}
+
+.hidden {
+    display: none;
+}
+
+.close {
+    cursor: pointer;
+}

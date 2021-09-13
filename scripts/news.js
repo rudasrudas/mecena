@@ -36,7 +36,7 @@ function addArticle(article_info, container){
     const article = document.createElement("div");
     article.innerHTML = `
         <div class="article">
-            <img class="article-image" src="https://api.mecena.net/article/${article_info.image_name}" alt="">
+            <img class="article-image" src="https://api.mecena.net/image/${article_info.image_name}?type=article" alt="">
             <div class="article-content-wrapper">
                 <h3 class="article-title">${article_info.title}</h3>
                 <div class="article-text-separator"></div>

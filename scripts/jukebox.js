@@ -168,7 +168,7 @@ function generateSongElement(track, jukebox){
     // audio.play();
     // audio.pause();
     // audio.muted = false;
-    cover.src = `https://api.mecena.net/artwork/${track.cover}`;
+    cover.src = `https://api.mecena.net/image/${track.cover}?type=artwork`;
     title.innerHTML = track.title;
     artist.innerHTML = track.artist;
 
