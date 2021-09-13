@@ -48,7 +48,7 @@ function addArticle(article_info, container){
     container.appendChild(article);
     const readMore = article.getElementsByClassName("article-read-more")[0];
 
-    setupReadMore(readMore, article_info)
+    setupReadMore(readMore, article_info);
 }
 
 function setupReadMore(readMore, article_info){

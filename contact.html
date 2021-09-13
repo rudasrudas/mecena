@@ -40,16 +40,21 @@
                                 <form class="contact-form" id="contact-form" onsubmit="return false">
                                     <label>Name</label>
                                     <input type="text" id="contact-name" class="contact-form-field">
+                                    <p class="contact-form-field-subtext"></p>
                 
                                     <label>Email</label>
                                     <input type="text" id="contact-email" class="contact-form-field">
+                                    <p class="contact-form-field-subtext"></p>
                 
                                     <label>Message</label>
                                     <textarea rows="5" id="contact-message" maxlength="1000" class="contact-form-field"></textarea>
+                                    <p class="contact-form-field-subtext"></p>
                                     <button type="submit" onclick="sendMessage()" class="primary contact-form-submit">
                                         Send
                                         <span class="material-icons inline-icon">north_east</span>
                                     </button>
+
+                                    <p id="contact-success" class="contact-form-field-subtext"></p>
                                 </form>
                             </td>
                             <td></td>
