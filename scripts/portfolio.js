@@ -31,11 +31,15 @@ function appendArtwork(artwork, container){
     let div = document.createElement('div');
     div.innerHTML = `
     <div class="artwork">
-        <img class="artwork-img" src="https://api.mecena.net/artwork/${artwork.artwork}">
+        <img class="artwork-img" onclick="showArtwork(${artwork.id})" src="https://api.mecena.net/artwork/${artwork.artwork}">
         <h4 class="artwork-label">${artwork.title}</h4>
     </div>`.trim();
-
+    
     container.appendChild(div.firstChild);
+}
+
+function showArtwork(id) {
+    document.getElementById('artwork-info').classList.remove('hidden');
 }
 
 function getTracks() {
@@ -60,11 +64,15 @@ function appendTrack(track, container){
     let div = document.createElement('div');
     div.innerHTML = `
     <div class="track">
-        <img class="track-img" src="https://api.mecena.net/artwork/${track.cover}">
+        <img class="track-img" onclick="showTrack(${track.id})" src="https://api.mecena.net/artwork/${track.cover}">
         <h4 class="track-label">${track.title}</h4>
     </div>`.trim();
 
     container.appendChild(div.firstChild);
+}
+
+function showTrack(id) {
+    document.getElementById('track-info').classList.remove('hidden');
 }
 
 function jumpToTheCenter(){
@@ -105,17 +113,21 @@ function updatePointers(){
     let position = content.scrollLeft/(content.scrollWidth - content.offsetWidth);
     
     
-    if(position < 0.05){
+    if(position < 0.03){
         document.getElementById('track-pointer').classList.remove("shifted-right");
     }
     else if(!document.getElementById('track-pointer').classList.contains("shifted-right")){
         document.getElementById('track-pointer').classList.add("shifted-right");
     }
 
-    if(position > 0.95){
+    if(position > 0.97){
         document.getElementById('artwork-pointer').classList.remove("shifted-left");
     }
     else if(!document.getElementById('artwork-pointer').classList.contains("shifted-left")){
         document.getElementById('artwork-pointer').classList.add("shifted-left");
     }
+}
+
+function hideModal(id){
+    document.getElementById(id).classList.add('hidden');
 }

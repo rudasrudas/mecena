@@ -24,6 +24,20 @@
 <div class="full-page">
     <div class="nav-spacer"></div>
 
+    <!-- Modals for detailed info about the work -->
+    <div class="modal hidden" id="artwork-info">
+        <div class="modal-content">
+            <span class="material-icons close" onclick="hideModal('artwork-info')">close</span>
+        </div>
+    </div>
+
+    <div class="modal hidden" id="track-info">
+        <div class="modal-content">
+            <span class="material-icons close" onclick="hideModal('track-info')">close</span>
+        </div>
+    </div>
+
+    <!-- Pointers (buttons) to view other type of work -->
     <div id="artwork-pointer" class="basic-pointer artwork-pointer">
         <div class="splitter-pointer right" onclick="scrollToCovers(); slideLeft('artwork-pointer');">
             <h1>
@@ -42,6 +56,7 @@
         </div>
     </div>
 
+    <!-- Content -->
     <div class="portfolio-content" onscroll="updatePointers()">
         <!-- Artworks -->
         <div id="artwork-side" class="portfolio-side side">
