@@ -9,6 +9,7 @@
     <script src="./scripts/jukebox.js"></script>
     <script src="./scripts/testimonials.js"></script>
     <script defer src="./scripts/news.js"></script>
+    <script defer src="./scripts/modal.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -19,8 +20,10 @@
     <link rel="stylesheet" href="/styles/landing-page/jukebox.css">
     <link rel="stylesheet" href="/styles/landing-page/packages.css">
     <link rel="stylesheet" href="/styles/landing-page/testimonials.css">
+    <link rel="stylesheet" href="/styles/modal.css">
     <link rel="stylesheet" href="/styles/landing-page/news.css">
     <link rel="stylesheet" href="/styles/footer.css">
+
     <title>Mecena</title>
 </head>
 <body>
@@ -67,7 +70,7 @@
                 are sold and plans for the future.
             </h3>
             <br>
-            <button class="alternative">Find out more</button>
+            <button class="alternative" onclick="location.href = '/about.html';">Find out more</button>
         </div>
     </div>
     
@@ -174,17 +177,17 @@
         <div class="inner-news"></div>
     </div>
 
-    <div id="article-modal">
-        <div class="article-modal-header">
-            <h3 class="article-modal-title"></h3>
-            <button id="article-modal-close" class="alternative">Close</button>
+    <div class="modal" id="article-modal">
+        <div class="modal-header">
+            <h3 class="title"></h3>
+            <button onclick="closeModal(this)" class="close-button alternative">Close</button>
         </div>
-        <div class="article-modal-content">
+        <div class="modal-body">
             <img class="article-modal-image" src="" alt="">
             <h4 class="article-modal-text"></h4>
         </div>
     </div>
-    <div id="article-modal-overlay"></div>
+    <div onclick="overlayCloseModal()" id="overlay"></div>
 
     <!-- Footer -->
     <div id="footer-selector"></div>

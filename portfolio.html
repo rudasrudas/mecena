@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="../scripts/portfolio.js"></script>
+    <script src="/scripts/portfolio.js"></script>
+    <script defer src="/scripts/modal.js"></script>
     <title>Portfolio</title>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/footer.css">
@@ -26,17 +27,21 @@
     <div class="nav-spacer"></div>
 
     <!-- Modals for detailed info about the work -->
-    <div class="modal hidden" id="artwork-info">
-        <div class="modal-content">
-            <span class="material-icons close" onclick="hideModal('artwork-info')">close</span>
-            <h1 id="modal-artwork-title"></h1>
+    <div class="modal" id="artwork-info">
+        <div class="modal-header">
+            <h3 class="title"></h3>
+            <button onclick="closeModal(this)" class="close-button alternative-dark">Close</button>
         </div>
+        <div class="modal-body"></div>
     </div>
+    <div onclick="overlayCloseModal()" id="overlay"></div>
 
-    <div class="modal hidden" id="track-info">
-        <div class="modal-content">
-            <span class="material-icons close" onclick="hideModal('track-info')">close</span>
+    <div class="modal" id="track-info">
+        <div class="modal-header">
+            <h3 class="title"></h3>
+            <button onclick="closeModal(this)" class="close-button alternative-dark">Close</button>
         </div>
+        <div class="modal-body"></div>
     </div>
 
     <!-- Pointers (buttons) to view other type of work -->
