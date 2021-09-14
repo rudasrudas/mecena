@@ -71,6 +71,7 @@ var activeAudio = {
 
 window.onload = function(){
     updateArrowPosition();
+    window.onscroll = updateVinyl;
 }
 
 window.onresize = function(){
@@ -81,6 +82,22 @@ function updateArrowPosition(){
     let offset = (document.querySelector(".slick-list").offsetWidth - 30)/6 + 'px';
     $("#jukebox-prev")[0].style.top = offset;
     $("#jukebox-next")[0].style.top = offset;
+}
+
+function updateVinyl(){
+    const jukebox = document.getElementById("jukebox");
+
+    const top = jukebox.offsetTop;
+    const height = jukebox.offsetHeight;
+
+    if(top > (window.pageYOffset + window.innerHeight) || (top + height) < window.pageYOffset){
+        if(activeAudio.isPlaying()){
+            activeAudio.displayVinyl();
+        }
+    }
+    else{
+        activeAudio.hideVinyl();
+    }
 }
 
 $(document).ready(function(){
@@ -203,8 +220,6 @@ function generateSongElement(track, jukebox){
             //first time playing jukebox
             if(!activeAudio.exists())
                 activeAudio.setupVinyl(cover.src);
-
-            activeAudio.displayVinyl();
 
             //if audio changed
             if(activeAudio.hasChanged(audio))
