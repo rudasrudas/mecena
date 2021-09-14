@@ -61,8 +61,9 @@ var activeAudio = {
     shouldEnd: function(seconds){
         return seconds >= activeAudio.endTime;
     },
-    setupVinylImage: function(coverImg){
+    setupVinyl: function(coverImg){
         this.vinylImage = document.createElement("img");
+        this.vinylImage.classList.add("cover");
         this.vinylImage.src = coverImg;
         this.vinyl.appendChild(this.vinylImage);
     }
@@ -83,7 +84,7 @@ function updateArrowPosition(){
 }
 
 $(document).ready(function(){
-    activeAudio.vinyl = document.getElementsByClassName("vinyl-player")[0];
+    activeAudio.vinyl = document.getElementById("vinyl-player");
 })
 
 function setupJukebox(){
@@ -201,7 +202,7 @@ function generateSongElement(track, jukebox){
         else{
             //first time playing jukebox
             if(!activeAudio.exists())
-                activeAudio.setupVinylImage(cover.src);
+                activeAudio.setupVinyl(cover.src);
 
             activeAudio.displayVinyl();
 

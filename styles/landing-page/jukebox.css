@@ -104,43 +104,55 @@
     display: block;
 }
 
-.vinyl-player {
+#vinyl-player {
     display: none;
     position: fixed;
-    width: 90px;
-    height: 90px;
+    width: 20vh;
+    height: 20vh;
     bottom: 30px;
     right: 30px;
     z-index: 10;
-}
-
-.vinyl-player::after{
-    content: '';
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, +50%);
-    position: absolute;
-    background-color: white;    
-}
-
-.vinyl-player img{
-    border-radius: 50%;
-    width: inherit;
-    object-fit: cover;
     animation: rotate 3s linear infinite;
     animation-play-state: paused;
 }
 
-.vinyl-player.play img{
+#vinyl-player.play {
     animation-play-state: running;
 }
 
-.vinyl-player.active {
+#vinyl-player.active {
     display: block;
 }
+
+#vinyl{
+    position: absolute;
+    width: inherit;
+    object-fit: cover;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+#spindle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 7%;
+    object-fit: cover;
+    z-index: 3;
+}
+
+#vinyl-player .cover{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 32%;
+    object-fit: cover;
+    z-index: 2;
+}
+
 
 @keyframes rotate{
     from {
