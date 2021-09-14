@@ -90,7 +90,7 @@ function updateVinyl(){
     const top = jukebox.offsetTop;
     const height = jukebox.offsetHeight;
 
-    if(top > (window.pageYOffset + window.innerHeight) || (top + height) < window.pageYOffset){
+    if((top + (height/2)) > (window.pageYOffset + window.innerHeight) || (top + height) < (window.pageYOffset + window.innerHeight/2)){
         if(activeAudio.isPlaying()){
             activeAudio.displayVinyl();
         }
