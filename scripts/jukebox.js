@@ -68,6 +68,20 @@ var activeAudio = {
     }
 };
 
+window.onload = function(){
+    updateArrowPosition();
+}
+
+window.onresize = function(){
+    updateArrowPosition();
+}
+
+function updateArrowPosition(){
+    let offset = (document.querySelector(".slick-list").offsetWidth - 30)/6 + 'px';
+    $("#jukebox-prev")[0].style.top = offset;
+    $("#jukebox-next")[0].style.top = offset;
+}
+
 $(document).ready(function(){
     activeAudio.vinyl = document.getElementsByClassName("vinyl-player")[0];
 })

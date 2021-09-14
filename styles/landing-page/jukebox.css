@@ -12,7 +12,7 @@
 }
 
 .jukebox-arrow {
-    top: 50%;
+    /* top: 50%; */
     position: absolute;
     user-select: none;
     cursor: pointer;
@@ -21,12 +21,12 @@
 }
 
 #jukebox-prev{
-    top: 20vw;
+    /* top: 20vw; */
     left: 6vw;
 }
 
 #jukebox-next{
-    top: 20vw;
+    /* top: 20vw; */
     right: 6vw;
 }
 
