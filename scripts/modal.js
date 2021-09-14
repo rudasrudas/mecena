@@ -8,17 +8,19 @@ function openModal(button){
 }
 
 function closeModal(button){
-    const modal = button.closest(".modal");
-    modal.classList.remove("active");
-    overlay.classList.remove("active");
-    document.body.classList.remove("noscroll");
-}
-
-function overlayCloseModal(){
-    const modals = document.querySelectorAll(".modal.active");
-    modals.forEach(modal => {
+    if(button == null){
+        //closed by clicking overlay
+        const modals = document.querySelectorAll(".modal.active");
+        modals.forEach(modal => {
+            modal.classList.remove("active");
+        })
+    }
+    else{
+        //closed by clicking button
+        const modal = button.closest(".modal");
         modal.classList.remove("active");
-    })
+    }
+
     overlay.classList.remove("active");
     document.body.classList.remove("noscroll");
 }
