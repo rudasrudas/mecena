@@ -48,10 +48,10 @@ var activeAudio = {
         this.tag.currentTime = this.startTime;
     },
     displayVinyl: function(){
-        this.vinyl.classList.remove("hidden");
+        this.vinyl.classList.add("active");
     },
     hideVinyl: function(){
-        this.vinyl.classList.add("hidden");
+        this.vinyl.classList.remove("active");
     },
     setSong: function(audio, startTime, endTime){
         audio.currentTime = startTime;
@@ -168,7 +168,7 @@ function generateSongElement(track, jukebox){
     // audio.play();
     // audio.pause();
     // audio.muted = false;
-    cover.src = `https://api.mecena.net/artwork/${track.cover}`;
+    cover.src = `https://api.mecena.net/image/${track.cover}?type=artwork`;
     title.innerHTML = track.title;
     artist.innerHTML = track.artist;
 

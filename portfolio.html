@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="../scripts/portfolio.js"></script>
+    <script src="/scripts/portfolio.js"></script>
+    <script defer src="/scripts/modal.js"></script>
     <title>Portfolio</title>
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/footer.css">
@@ -34,7 +37,45 @@
 <div class="full-page">
     <div class="nav-spacer"></div>
 
-    <div class="portfolio-content">
+    <!-- Modals for detailed info about the work -->
+    <div class="modal" id="artwork-info">
+        <div class="modal-header">
+            <h3 class="title"></h3>
+            <button onclick="closeModal(this)" class="close-button alternative-dark">Close</button>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+    <div onclick="overlayCloseModal()" id="overlay"></div>
+
+    <div class="modal" id="track-info">
+        <div class="modal-header">
+            <h3 class="title"></h3>
+            <button onclick="closeModal(this)" class="close-button alternative-dark">Close</button>
+        </div>
+        <div class="modal-body"></div>
+    </div>
+
+    <!-- Pointers (buttons) to view other type of work -->
+    <div id="artwork-pointer" class="basic-pointer artwork-pointer">
+        <div class="splitter-pointer right" onclick="scrollToCovers(); slideLeft('artwork-pointer');">
+            <h1>
+                Covers
+                <span class="material-icons">arrow_downward</span>
+            </h1>
+        </div>
+    </div>
+
+    <div id="track-pointer" class="basic-pointer track-pointer">
+        <div class="splitter-pointer left" onclick="scrollToSongs(); slideRight('track-pointer');">
+            <h1>
+                <span class="material-icons">arrow_downward</span>
+                Songs
+            </h1>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="portfolio-content" onscroll="updatePointers()">
         <!-- Artworks -->
         <div id="artwork-side" class="portfolio-side side">
             <div class="artwork-content">
@@ -53,8 +94,19 @@
             </div>
             
             <div class="splitter-content">
-                <h1 class="splitter-title">Portfolio</h1>
-
+                <div class="splitter-title-wrapper">
+                    <h1 class="splitter-title">Portfolio</h1>
+                </div>
+                <div class="pointer-description-wrapper">
+                    <div class="pointer-description" onclick="scrollToCovers()">
+                        <p>Album cover art is artwork created for a music album. ... Steinweiss was an art director and graphic designer who brought custom artwork to record album covers and invented the first packaging for long-playing records.</p>
+                    </div>
+                    <div class="pointer-description bottom-alignment" onclick="scrollToSongs()">
+                        <p>The musical phrases uttered by some birds, whales, and insects, typically forming a recognizable and repeated sequence and used chiefly for territorial defence or for attracting mates.</p>
+                    </div>
+                </div>
+                <div class="splitter-title-wrapper">
+                </div>
             </div>
 
             <div class="splitter-pointer right" onclick="scrollToSongs()">

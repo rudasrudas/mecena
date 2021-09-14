@@ -27,20 +27,32 @@ function getArtworks() {
     xhr.send();
 }
 
-function appendArtwork(artwork, container){
+function appendArtwork(artwork_info, container){
     let div = document.createElement('div');
     div.innerHTML = `
     <div class="artwork">
-        <img class="artwork-img" src="https://api.mecena.net/artwork/${artwork.artwork}">
-        <h4 class="artwork-label">${artwork.title}</h4>
+        <img onclick="openModal(this)" data-modal-target="#artwork-info" class="artwork-img" src="https://api.mecena.net/image/${artwork_info.artwork}?type=artwork">
+        <h4 class="artwork-label">${artwork_info.title}</h4>
     </div>`.trim();
-
+    const artwork = div.firstChild;
     container.appendChild(div.firstChild);
+    const artworkImg = artwork.getElementsByClassName("artwork-img")[0];
+    const modal = document.getElementById("artwork-info");
+    setupModalLoad(modal, artworkImg, artwork_info.title, "Some text about the artwork...")
+}
+
+function setupModalLoad(modal, target, title, text){
+    const modalTitle = modal.getElementsByClassName("title")[0];
+    const modalBody = modal.getElementsByClassName("modal-body")[0];
+    target.addEventListener("click", ()=>{
+        modalTitle.innerHTML = title;
+        modalBody.innerHTML = text;
+    })
 }
 
 function getTracks() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.mecena.net/tracks`, true);
+    xhr.open('GET', `https://api.mecena.net/songs`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             const tracks = JSON.parse(xhr.response);
@@ -56,15 +68,18 @@ function getTracks() {
     xhr.send();
 }
 
-function appendTrack(track, container){
+function appendTrack(track_info, container){
     let div = document.createElement('div');
     div.innerHTML = `
-    <div class="track">
-        <img class="track-img" src="https://api.mecena.net/artwork/${track.cover}">
-        <h4 class="track-label">${track.title}</h4>
+    <div onclick="openModal(this)" data-modal-target="#track-info" class="track">
+        <img class="track-img" src="https://api.mecena.net/image/${track_info.cover}?type=artwork">
+        <h4 class="track-label">${track_info.title}</h4>
     </div>`.trim();
-
-    container.appendChild(div.firstChild);
+    const track = div.firstChild;
+    container.appendChild(track);
+    const trackImg = track.getElementsByClassName("track-img")[0];
+    const modal = document.getElementById("track-info");
+    setupModalLoad(modal, trackImg, track_info.title, "Some text about the track...")
 }
 
 function jumpToTheCenter(){
@@ -89,4 +104,35 @@ function scrollToSongs(){
         inline: "center"
     }
     document.getElementById("track-side").scrollIntoView(options);
+}
+
+//Pointer logic
+
+function slideLeft(item) {
+    document.getElementById(item).classList.add("shifted-left");
+}
+
+function slideRight(item) {
+    document.getElementById(item).classList.add("shifted-right");
+}
+
+function updatePointers(){
+    let content = document.getElementsByClassName('portfolio-content')[0];
+
+    let position = content.scrollLeft/(content.scrollWidth - content.offsetWidth);
+    
+    
+    if(position < 0.03){
+        document.getElementById('track-pointer').classList.remove("shifted-right");
+    }
+    else if(!document.getElementById('track-pointer').classList.contains("shifted-right")){
+        document.getElementById('track-pointer').classList.add("shifted-right");
+    }
+
+    if(position > 0.97){
+        document.getElementById('artwork-pointer').classList.remove("shifted-left");
+    }
+    else if(!document.getElementById('artwork-pointer').classList.contains("shifted-left")){
+        document.getElementById('artwork-pointer').classList.add("shifted-left");
+    }
 }
