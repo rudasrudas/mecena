@@ -91,7 +91,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 60px;
-    color: #4C6EF5;
+    color: white;
     opacity: 0.9;
     cursor: pointer;
 }
@@ -105,23 +105,28 @@
 }
 
 #vinyl-player {
-    display: none;
+    visibility: hidden;
     position: fixed;
     width: 20vh;
     height: 20vh;
     bottom: 30px;
     right: 30px;
     z-index: 10;
+}
+
+.inner-vinyl-player{
+    width: inherit;
+    height: inherit;
     animation: rotate 3s linear infinite;
     animation-play-state: paused;
 }
 
-#vinyl-player.play {
+#vinyl-player.play .inner-vinyl-player{
     animation-play-state: running;
 }
 
 #vinyl-player.active {
-    display: block;
+    visibility: visible;
 }
 
 #vinyl{
@@ -130,6 +135,16 @@
     object-fit: cover;
     z-index: 1;
     border-radius: 50%;
+}
+
+#vinyl-control-btn{
+    display: none;
+    z-index: 4;
+    font-size: 30px;
+}
+
+#vinyl-player:hover > #vinyl-control-btn{
+    display: block;
 }
 
 #spindle{
