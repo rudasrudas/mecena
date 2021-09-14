@@ -154,7 +154,6 @@ function renderSongs(){
     xhr.onload = function() {
         if (xhr.status === 200) {
             const tracks = JSON.parse(xhr.response);
-            console.log(tracks);
 
             var jukebox = $(".jukebox-carousel");
 
