@@ -54,7 +54,6 @@ var activeAudio = {
         this.vinyl.classList.remove("active");
     },
     setSong: function(audio, startTime, endTime){
-        audio.currentTime = startTime;
         this.tag = audio;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -159,15 +158,9 @@ function generateSongElement(track, jukebox){
     song.appendChild(artist);
     song.appendChild(mediaWrapper);
 
-    //element styling
 
     audio.src = `https://api.mecena.net/track/${track.track}`;
     audio.preload = "auto";
-    // trying to pre-load the songs
-    // audio.muted = true;
-    // audio.play();
-    // audio.pause();
-    // audio.muted = false;
     cover.src = `https://api.mecena.net/image/${track.cover}?type=artwork`;
     title.innerHTML = track.title;
     artist.innerHTML = track.artist;
@@ -178,6 +171,11 @@ function generateSongElement(track, jukebox){
     actionButton.classList.add("fas", "fa-play", "control-btn");
     title.classList.add("jukebox-song-title");
     artist.classList.add("jukebox-song-artist");
+
+    //convert hh:mm:ss track timestamp format to seconds
+    const startTime = hmsToSeconds(track.start_time);
+    const endTime = hmsToSeconds(track.end_time);
+    audio.currentTime = startTime;
 
     //action button click event listener
     actionButton.addEventListener("click", ()=>{    
@@ -194,13 +192,8 @@ function generateSongElement(track, jukebox){
             activeAudio.displayVinyl();
 
             //if audio changed
-            if(activeAudio.hasChanged(audio)){
-                //convert hh:mm:ss track timestamp format to seconds
-                startTime = hmsToSeconds(track.start_time);
-                endTime = hmsToSeconds(track.end_time);
-
+            if(activeAudio.hasChanged(audio))
                 activeAudio.setSong(audio, startTime, endTime);
-            }
 
             activeAudio.playSong(actionButton);
         }
