@@ -76,7 +76,7 @@ var activeAudio = {
 
 $(document).ready(function(){
     activeAudio.vinyl = document.getElementById("vinyl-player");
-    activeAudio.innerVinyl = activeAudio.vinyl.getElementsByClassName("inner-vinyl-player")[0];
+    activeAudio.innerVinyl = activeAudio.vinyl.getElementsByClassName("spinning-vinyl")[0];
     activeAudio.vinylButton = document.getElementById("vinyl-control-btn");
 })
 
@@ -124,7 +124,6 @@ function setupJukebox(){
             infinite: true
         });
         carousel.on('beforeChange', function(event, slick, currentSlideIndex, nextSlideIndex){
-            
             //if slide hasn't changed, don't do anything
             if(currentSlideIndex == nextSlideIndex){
                 return;
@@ -216,7 +215,7 @@ function generateSongElement(track, jukebox){
     audio.currentTime = startTime;
 
     //action button click event listener
-    actionButton.addEventListener("click", ()=>{    
+    actionButton.addEventListener("click", ()=>{
         //if activeAudio exists and is playing, pause  
         if(activeAudio.exists() && activeAudio.isPlaying()){
             activeAudio.pauseSong(actionButton);
@@ -238,11 +237,25 @@ function generateSongElement(track, jukebox){
     jukebox.slick('slickAdd', song);
 }
 
+function pressPrev(){
+    const prevButton = document.getElementById("jukebox-prev");
+    prevButton.click();
+}
+
+function pressControl(){
+    const button = document.querySelector(".jukebox-song.slick-center .control-btn");
+    button.click();
+}
+
+function pressNext(){
+    const nextButton = document.getElementById("jukebox-next");
+    nextButton.click();
+}
+
 function handleVinylPress(){
-    if(activeAudio.isPlaying())
-        activeAudio.pauseSong();
-    else
-        activeAudio.playSong()
+    // if(activeAudio.isPlaying())
+    //     activeAudio.pauseSong();
+    // else if(activeAudio.hasChanged(audio))
 }
 
 function generateMediaElement(wrapper, iconClass, link){

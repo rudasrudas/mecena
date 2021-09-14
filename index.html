@@ -98,10 +98,19 @@
 
     <div id="vinyl-player">
         <div class="inner-vinyl-player">
-            <img id="vinyl" src="/static/pictures/vinyl.png" alt="">
-            <img id="spindle" src="/static/pictures/spindle.png" alt="">
+            <div class="spinning-vinyl">
+                <img id="vinyl" src="/static/pictures/vinyl.png" alt="">
+                <img id="spindle" src="/static/pictures/spindle.png" alt="">
+            </div>
+            <div class="control-buttons-wrapper">
+                <div id="vinyl-prev" class="material-icons" onclick="pressPrev()">skip_previous</div>
+                <i id="vinyl-control-btn" class="fas fa-pause" onclick="pressControl()"></i>
+                <div id="vinyl-next" class="material-icons" onclick="pressNext()">skip_next</div>
+            </div>
         </div>
-        <i id="vinyl-control-btn" class="fas fa-pause control-btn" onclick="handleVinylPress()"></i>
+        <div class="track-info">
+            <h4>Debilas</h4>
+        </div>
     </div>
 
     <!-- Package options -->
