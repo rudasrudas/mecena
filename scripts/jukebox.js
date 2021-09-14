@@ -54,7 +54,7 @@ var activeAudio = {
         this.vinyl.classList.remove("active");
     },
     setSong: function(audio, startTime, endTime){
-        audio.currentTime = startTime;
+        // audio.currentTime = startTime;
         this.tag = audio;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -68,6 +68,20 @@ var activeAudio = {
         this.vinyl.appendChild(this.vinylImage);
     }
 };
+
+window.onload = function(){
+    updateArrowPosition();
+}
+
+window.onresize = function(){
+    updateArrowPosition();
+}
+
+function updateArrowPosition(){
+    let offset = (document.querySelector(".slick-list").offsetWidth - 30)/6 + 'px';
+    $("#jukebox-prev")[0].style.top = offset;
+    $("#jukebox-next")[0].style.top = offset;
+}
 
 $(document).ready(function(){
     activeAudio.vinyl = document.getElementsByClassName("vinyl-player")[0];
@@ -163,11 +177,13 @@ function generateSongElement(track, jukebox){
 
     audio.src = `https://api.mecena.net/track/${track.track}`;
     audio.preload = "auto";
+
     // trying to pre-load the songs
     // audio.muted = true;
     // audio.play();
     // audio.pause();
     // audio.muted = false;
+    
     cover.src = `https://api.mecena.net/image/${track.cover}?type=artwork`;
     title.innerHTML = track.title;
     artist.innerHTML = track.artist;
