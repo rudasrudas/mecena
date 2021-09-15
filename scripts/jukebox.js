@@ -3,7 +3,7 @@ var activeAudio = {
     // vinyl: undefined,
     // vinylImage: undefined,
     // vinylButton: undefined,
-    // innerVinyl: undefined,
+    // vinylImageContainer: undefined,
     // startTime: undefined,
     // endTime: undefined,
     exists: function(){
@@ -70,13 +70,13 @@ var activeAudio = {
         this.vinylImage = document.createElement("img");
         this.vinylImage.classList.add("cover");
         this.vinylImage.src = coverImg;
-        this.innerVinyl.appendChild(this.vinylImage);
+        this.vinylImageContainer.appendChild(this.vinylImage);
     }
 };
 
 $(document).ready(function(){
     activeAudio.vinyl = document.getElementById("vinyl-player");
-    activeAudio.innerVinyl = activeAudio.vinyl.getElementsByClassName("spinning-vinyl")[0];
+    activeAudio.vinylImageContainer = activeAudio.vinyl.getElementsByClassName("spinning-vinyl")[0];
     activeAudio.vinylButton = document.getElementById("vinyl-control-btn");
 })
 
@@ -214,7 +214,7 @@ function generateSongElement(track, jukebox){
     audio.currentTime = startTime;
 
     //action button click event listener
-    actionButton.addEventListener("click", ()=>{
+    $(actionButton).on("click", ()=>{
         //if activeAudio exists and is playing, pause  
         if(activeAudio.exists() && activeAudio.isPlaying()){
             activeAudio.pauseSong(actionButton);
@@ -249,12 +249,6 @@ function pressControl(){
 function pressNext(){
     const nextButton = document.getElementById("jukebox-next");
     nextButton.click();
-}
-
-function handleVinylPress(){
-    // if(activeAudio.isPlaying())
-    //     activeAudio.pauseSong();
-    // else if(activeAudio.hasChanged(audio))
 }
 
 function generateMediaElement(wrapper, iconClass, link){

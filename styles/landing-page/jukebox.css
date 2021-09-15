@@ -12,7 +12,6 @@
 }
 
 .jukebox-arrow {
-    /* top: 50%; */
     position: absolute;
     user-select: none;
     cursor: pointer;
@@ -21,12 +20,10 @@
 }
 
 #jukebox-prev{
-    /* top: 20vw; */
     left: 6vw;
 }
 
 #jukebox-next{
-    /* top: 20vw; */
     right: 6vw;
 }
 
@@ -105,6 +102,9 @@
 }
 
 #vinyl-player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     visibility: hidden;
     position: fixed;
     width: fit-content;
@@ -118,6 +118,8 @@
     position: relative;
     width: 20vh;
     height: 20vh;
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px rgba(255, 255, 255, 1);
 }
 
 .spinning-vinyl{
@@ -125,6 +127,15 @@
     width: inherit;
     animation: rotate 3s linear infinite;
     animation-play-state: paused;
+}
+
+@keyframes rotate{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 #vinyl-player.play .spinning-vinyl{
@@ -135,12 +146,16 @@
     visibility: visible;
 }
 
+#vinyl-player img{
+    pointer-events: none;
+    user-select: none;
+}
+
 #vinyl{
     position: absolute;
     width: inherit;
     object-fit: cover;
     z-index: 1;
-    border-radius: 50%;
 }
 
 .control-buttons-wrapper{
@@ -153,6 +168,7 @@
     display: flex;
     justify-content: space-between;
     z-index: 4;
+    user-select: none;
 }
 
 #vinyl-control-btn, #vinyl-prev, #vinyl-next{
@@ -187,14 +203,19 @@
     z-index: 2;
 }
 
+.record-info{
+    height: auto;
+    text-transform: uppercase;
+    text-align: right;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
+}
 
-@keyframes rotate{
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+#record-title{
+    font-weight: bold;
+}
+
+#record-artist{
+    font-weight: 600;
 }
 
 /* fixes slick margin issue */
