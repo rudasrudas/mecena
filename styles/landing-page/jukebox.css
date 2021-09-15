@@ -119,7 +119,7 @@
     width: 20vh;
     height: 20vh;
     border-radius: 50%;
-    box-shadow: 1px 1px 3px rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
 }
 
 .spinning-vinyl{
@@ -155,7 +155,7 @@
     position: absolute;
     width: inherit;
     object-fit: cover;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .control-buttons-wrapper{
@@ -204,17 +204,21 @@
 }
 
 .record-info{
+    margin-top: 10px;
+    width: 100%;
     height: auto;
     text-transform: uppercase;
     text-align: right;
-    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.9);
 }
 
 #record-title{
     font-weight: bold;
+    font-size: 22px;
+    line-height: 100%;
 }
 
 #record-artist{
+    line-height: 100%;
     font-weight: 600;
 }
 
