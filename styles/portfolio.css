@@ -229,3 +229,38 @@
         font-weight: 600;
         margin-bottom: 30px;
     }
+
+#artwork-info .modal-body{
+    display: flex;
+    padding: 40px;
+}
+
+#artwork-info .about-artwork{
+    padding-right: 40px;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+#artwork-info .title{
+    font-size: 30px;
+}
+
+#artwork-info .artist{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#artwork-info .description{
+    padding-top: 15px;
+}
+
+#artwork-info .artwork-wrapper{
+    text-align: right;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+#artwork-info .artwork-image{
+    height: 100%;
+    object-fit: contain;
+}

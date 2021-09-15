@@ -21,12 +21,18 @@
 
 .modal-header{
     height: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #e9e9e9;
-    padding: 10px;
-    border-bottom: 1px solid black;
+    text-align: right;
+}
+
+.close-button{
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 35px !important;
+    user-select: none;
+}
+
+.close-button:hover{
+    cursor: pointer;
 }
 
 .modal-body{

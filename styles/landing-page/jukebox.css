@@ -146,7 +146,6 @@
 
 #vinyl-player.active {
     opacity: 1;
-    transition: 0.7s linear;
 }
 
 #vinyl-player img{
