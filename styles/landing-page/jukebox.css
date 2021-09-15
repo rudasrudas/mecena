@@ -105,13 +105,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    visibility: hidden;
+    opacity: 0;
     position: fixed;
     width: fit-content;
     height: fit-content;
     bottom: 30px;
     right: 30px;
     z-index: 10;
+    transition: 0.7s linear;
 }
 
 .inner-vinyl-player{
@@ -143,7 +144,8 @@
 }
 
 #vinyl-player.active {
-    visibility: visible;
+    opacity: 1;
+    transition: 0.7s linear;
 }
 
 #vinyl-player img{
@@ -198,7 +200,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    width: 32%;
+    width: 34%;
     object-fit: cover;
     z-index: 2;
 }

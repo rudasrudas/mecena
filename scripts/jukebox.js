@@ -4,6 +4,8 @@ var activeAudio = {
     // vinylImage: undefined,
     // vinylButton: undefined,
     // vinylImageContainer: undefined,
+    // vinylTitle: undefined,
+    // vinylArtist: undefined,
     // startTime: undefined,
     // endTime: undefined,
     exists: function(){
@@ -66,11 +68,16 @@ var activeAudio = {
     shouldEnd: function(seconds){
         return seconds >= activeAudio.endTime;
     },
-    setupVinyl: function(coverImg){
+    setupVinyl: function(cover, title, artist){
         this.vinylImage = document.createElement("img");
         this.vinylImage.classList.add("cover");
-        this.vinylImage.src = coverImg;
+        this.changeVinyl(cover, title, artist);
         this.vinylImageContainer.appendChild(this.vinylImage);
+    },
+    changeVinyl: function(cover, title, artist){
+        this.vinylImage.src = cover;
+        this.vinylTitle.innerHTML = title;
+        this.vinylArtist.innerHTML = artist;
     }
 };
 
@@ -78,6 +85,8 @@ $(document).ready(function(){
     activeAudio.vinyl = document.getElementById("vinyl-player");
     activeAudio.vinylImageContainer = activeAudio.vinyl.getElementsByClassName("spinning-vinyl")[0];
     activeAudio.vinylButton = document.getElementById("vinyl-control-btn");
+    activeAudio.vinylTitle = document.getElementById("record-title");
+    activeAudio.vinylArtist = document.getElementById("record-artist");
 })
 
 window.onload = function(){
@@ -138,10 +147,12 @@ function setupJukebox(){
                 //set timestamp to start
                 activeAudio.resetTime();
 
-                //change vinyl cover image
+                //get next track information
                 const nextSlide = $(slick.$slides.get(nextSlideIndex))[0];
-                const nextSlideCover = nextSlide.querySelector("img");
-                activeAudio.vinylImage.src = nextSlideCover.src;
+                const nextCover = nextSlide.querySelector("img").src;
+                const nextTitle = nextSlide.querySelector(".jukebox-song-title").innerHTML;
+                const nextArtist = nextSlide.querySelector(".jukebox-song-artist").innerHTML;
+                activeAudio.changeVinyl(nextCover, nextTitle, nextArtist);
             }
         });
         renderSongs();
@@ -223,7 +234,7 @@ function generateSongElement(track, jukebox){
         else{
             //first time playing jukebox
             if(!activeAudio.exists())
-                activeAudio.setupVinyl(cover.src);
+                activeAudio.setupVinyl(cover.src, track.title, track.artist);
 
             //if audio changed
             if(activeAudio.hasChanged(audio))
