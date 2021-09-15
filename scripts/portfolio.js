@@ -38,7 +38,22 @@ function appendArtwork(artwork_info, container){
     container.appendChild(div.firstChild);
     const artworkImg = artwork.getElementsByClassName("artwork-img")[0];
     const modal = document.getElementById("artwork-info");
-    setupModalLoad(modal, artworkImg, artwork_info.title, "Some text about the artwork...")
+    setupArtworkLoad(modal, artworkImg, artwork_info.title, artwork_info.artist, artwork_info.description);
+    // setupModalLoad(modal, artworkImg, artwork_info.title, "Some text about the artwork...")
+}
+
+function setupArtworkLoad(modal, artworkImg, title, artist, description){
+    const modalTitle = modal.querySelector("#artwork-info .title");
+    const modalArtist = modal.querySelector("#artwork-info .artist");
+    const modalDescription = modal.querySelector("#artwork-info .description");
+    const modalArtwork = modal.querySelector("#artwork-info .artwork-image");
+
+    artworkImg.addEventListener("click", ()=>{
+        modalTitle.innerHTML = title;
+        modalArtist.innerHTML = artist;
+        modalDescription.innerHTML = description;
+        modalArtwork.src = artworkImg.src;
+    })
 }
 
 function setupModalLoad(modal, target, title, text){
@@ -69,6 +84,7 @@ function getTracks() {
 }
 
 function appendTrack(track_info, container){
+    console.log(track_info)
     let div = document.createElement('div');
     div.innerHTML = `
     <div onclick="openModal(this)" data-modal-target="#track-info" class="track">

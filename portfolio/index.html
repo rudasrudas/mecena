@@ -15,16 +15,6 @@
 </head>
 <body>
 
-    <div class="modal">
-        <div class="modal-content cover-modal">
-            <div id="cover-container">
-                <div id="cover-image"></div>
-            </div>
-        </div>
-    </div>
-    <script src="../scripts/perspective.js"></script>
-
-
     <!-- Navigation bar -->
     <div id="nav-selector"></div>
     
@@ -40,17 +30,25 @@
     <!-- Modals for detailed info about the work -->
     <div class="modal" id="artwork-info">
         <div class="modal-header">
-            <h3 class="title"></h3>
-            <button onclick="closeModal(this)" class="close-button alternative-dark">Close</button>
+            <span onclick="closeModal(this)" class="close-button material-icons">close</span>
         </div>
-        <div class="modal-body"></div>
+        <div class="modal-body">
+            <div class="about-artwork">
+                <h2 class="title"></h2>
+                <h4 class="artist"></h4>
+                <p class="description"></p>
+            </div>
+            <div class="artwork-wrapper">
+                <img class="artwork-image" src="" alt="">
+            </div>
+        </div>
     </div>
     <div onclick="closeModal()" id="overlay"></div>
 
     <div class="modal" id="track-info">
         <div class="modal-header">
             <h3 class="title"></h3>
-            <button onclick="closeModal(this)" class="close-button alternative-dark">Close</button>
+            <span onclick="closeModal(this)" class="close-button material-icons">close</span>
         </div>
         <div class="modal-body"></div>
     </div>
