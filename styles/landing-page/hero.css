@@ -37,6 +37,16 @@
     color: var(--color-hero-text);
 }
 
+.hero-title {
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 100%;
+}
+
+.hero-subtext {
+    font-size: 36px;
+}
+
 .visual-hero-content img {
     position: absolute;
     right: 0;

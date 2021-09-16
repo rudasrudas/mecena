@@ -1,29 +1,46 @@
 @import url("../style.css");
 
+.full-page {
+    /* position: fixed; */
+    width: inherit;
+    /* height: 100vh; */
+    background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/pictures/damascus.svg');
+}
+
 .content {
     padding: 50px;
     margin-left: auto;
     margin-right: auto;
     width: var(--spacing-content-width);
     
-    /* border: solid 1px red; */
-}
-
-.hidden {
-    display: none !important;
+    background: white;
+    border: solid 2px black;
+    border-bottom: none;
+    border-top: none;
 }
 
 /* Package block */
 .shop-group {
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 200px;
 }
 
 .shop-title {
+    font-size: 46px;
+}
 
+.right-align {
+    text-align: right;
+    max-width: 800px;
+}
+
+.right-sticky {
+    margin-right: 0px;
+    margin-left: auto;
 }
 
 .shop-description {
+    font-size: 20px;
     margin-bottom: 30px;
 }
 
@@ -33,7 +50,8 @@
 }
 
     .package-tag {
-        background: lightcoral;
+        background: rgb(223, 68, 68);
+        color: white;
         width: fit-content;
         padding: 0px 5px;
     }
@@ -41,6 +59,7 @@
 .package {
     width: 100%;
     margin-bottom: 10px;
+    z-index: 2;
     
     display: flex;
     flex-direction: row;
@@ -55,7 +74,7 @@
     }
 
     .package-block-full {
-        border: solid 1px #adadad;
+        border: solid 2px #d4d4d4;
         background: #ececec;
 
         width: 45%;
@@ -70,13 +89,12 @@
         }
 
         .package-block.left {
-            /* width: auto; */
             flex-grow: 1;
         }
 
         .package-block.right {
             width: auto;
-            text-align: right;
+            /* text-align: right; */
             
             display: flex;
             flex-direction: column;
@@ -85,6 +103,10 @@
 
             .package-engagement {
                 text-transform: uppercase;
+            }
+
+            .package-engagement.hidden {
+                opacity: 0;
             }
 
             .package-price {
@@ -98,31 +120,80 @@
         }
 
     .package-detail-block {
-        border: solid 1px #adadad;
+        border: solid 2px #d4d4d4;
         width: 50%;
         padding: 10px;
-
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
     }
 
+        .package-detail-block.no-left-border {
+            border-left: none;
+        }
+
+        .package-detail-block.no-right-border {
+            border-right: none;
+        }
+
+        .package-detail-block.hidden {
+            opacity: 0;
+        }
+
+        .package-detail-title {
+            line-height: 140%;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
         .package-details {
-            /* flex-grow: 1; */
-            width: 50%;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+            flex: 1;
         }
 
         .package-items {
-            /* flex-grow: 1; */
-            width: 30%;
-            margin-left: 30px;
-            line-height: 120%;
-        }
-
-        .package-buy {
-            /* flex-grow: 1; */
-            width: 20%;
-            height: fit-content;
+            width: 100%;
+            height: 100%;
+            line-height: 100%;
+            text-transform: none;
 
             display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            align-content: flex-start;
+        }
+
+            .package-items p {
+                width: fit-content;
+                height: fit-content;
+                padding: 5px 30px 5px 0px;
+            }
+
+        .package-buy {
+            width: fit-content;
+            height: fit-content;
             align-self: flex-end;
         }
+
+    .package-img {
+        z-index: 1;
+        margin-bottom: -390px;
+        max-width: 45%;
+        max-height: 390px;
+    }
+
+    .package-img.right {
+        margin-left: 50%; 
+    }
+
+        .package-img.faded {
+            opacity: 0.7;
+        }
+
+.glass {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(30px);
+}
