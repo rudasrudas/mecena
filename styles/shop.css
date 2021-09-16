@@ -19,6 +19,15 @@
     border-top: none;
 }
 
+.shop-header {
+    font-size: 140px;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 900;
+    line-height: 100%;
+    margin-bottom: 40px;
+}
+
 /* Package block */
 .shop-group {
     width: 100%;
