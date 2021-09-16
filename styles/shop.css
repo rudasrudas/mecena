@@ -1,0 +1,128 @@
+@import url("../style.css");
+
+.content {
+    padding: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: var(--spacing-content-width);
+    
+    /* border: solid 1px red; */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Package block */
+.shop-group {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.shop-title {
+
+}
+
+.shop-description {
+    margin-bottom: 30px;
+}
+
+/* Package */
+.package-wrapper {
+
+}
+
+    .package-tag {
+        background: lightcoral;
+        width: fit-content;
+        padding: 0px 5px;
+    }
+
+.package {
+    width: 100%;
+    margin-bottom: 10px;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+    .package.big {
+        height: 150px;
+    }
+
+    .package.small {
+        height: 110px;
+    }
+
+    .package-block-full {
+        border: solid 1px #adadad;
+        background: #ececec;
+
+        width: 45%;
+        padding: 10px;
+
+        display: flex;
+        flex-direction: row;
+    }   
+
+        .package-block {
+            height: 100%;
+        }
+
+        .package-block.left {
+            /* width: auto; */
+            flex-grow: 1;
+        }
+
+        .package-block.right {
+            width: auto;
+            text-align: right;
+            
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+            .package-engagement {
+                text-transform: uppercase;
+            }
+
+            .package-price {
+                line-height: 100%;
+            }
+
+        .package-title {
+            font-size: 30px;
+            line-height: 100%;
+            text-transform: uppercase;
+        }
+
+    .package-detail-block {
+        border: solid 1px #adadad;
+        width: 50%;
+        padding: 10px;
+
+        display: flex;
+        flex-direction: row;
+    }
+
+        .package-details {
+            /* flex-grow: 1; */
+            width: 50%;
+        }
+
+        .package-items {
+            /* flex-grow: 1; */
+            width: 30%;
+            margin-left: 30px;
+            line-height: 120%;
+        }
+
+        .package-buy {
+            /* flex-grow: 1; */
+            width: 20%;
+            height: fit-content;
+
+            display: flex;
+            align-self: flex-end;
+        }
