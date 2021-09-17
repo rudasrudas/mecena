@@ -28,9 +28,9 @@
 
 .content {
     padding: 50px;
-    margin-left: auto;
+    /* margin-left: auto;
     margin-right: auto;
-    width: var(--spacing-content-width);
+    width: var(--spacing-content-width); */
     
     background: white;
     border: solid 2px black;

@@ -1,5 +1,4 @@
 window.onload = function(){
-    
     if(document.location.pathname === '/'){
         updateArrowPosition();
         window.onscroll = updateVinyl;
