@@ -17,9 +17,10 @@
 
 /* Generic resets */
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -106,7 +107,7 @@ p {
     --color-packages-text: #110f06;
     --color-packages-border: #3a3a3a;
     --color-package-bg: #ffffff;
-    --color-package-label-bg: #efefef;
+    --color-package-label-bg: #efefef00;
     --color-package-label-text: #000000;
     --color-package-separator: #3a3a3a;
 

@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="../scripts/shop.js"></script>
+    <script src="../scripts/index.js"></script>
+    <script src="../scripts/respbox.js"></script>
     <title>Shop</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/shop.css">
+    <link rel="stylesheet" href="../styles/respbox.css">
 </head>
 <body>
     <!-- Navigation bar -->
@@ -36,7 +39,7 @@
                 <div class="package-wrapper">
                     <div class="package-tag">Best value</div>
                     <div class="package big">
-                        <div class="package-block-full">
+                        <div class="package-block-full resp-box">
                             <div class="package-block left">
                                 <h2 class="package-title">Bundle alpha 01</h2>
                                 <p class="package-subtext">Best suited for uprising creators</p>
@@ -61,7 +64,7 @@
                     </div>
                 </div>
                 <div class="package small">
-                    <div class="package-block-full">
+                    <div class="package-block-full resp-box">
                         <div class="package-block left">
                             <h2 class="package-title">Bundle beta 02</h2>
                             <p class="package-subtext">Best suited for experienced musicians</p>
@@ -85,7 +88,7 @@
                     </div>
                 </div>
                 <div class="package small">
-                    <div class="package-block-full">
+                    <div class="package-block-full resp-box">
                         <div class="package-block left">
                             <h2 class="package-title">Bundle gamma 03</h2>
                             <p class="package-subtext">Best suited for beginners</p>
@@ -128,7 +131,7 @@
                             <button class="package-buy primary">Buy</button>
                         </div>
                     </div>
-                    <div class="package-block-full">
+                    <div class="package-block-full resp-box">
                         <div class="package-block left">
                             <h2 class="package-title">Bundle alpha 01</h2>
                             <p class="package-subtext">Best suited for uprising creators</p>
@@ -152,7 +155,7 @@
                             <button class="package-buy primary">Buy</button>
                         </div>
                     </div>
-                    <div class="package-block-full">
+                    <div class="package-block-full resp-box">
                         <div class="package-block left">
                             <h2 class="package-title">Bundle beta 02</h2>
                             <p class="package-subtext">Best suited for experienced musicians</p>
@@ -176,7 +179,7 @@
                             <button class="package-buy primary">Buy</button>
                         </div>
                     </div>
-                    <div class="package-block-full">
+                    <div class="package-block-full resp-box">
                         <div class="package-block left">
                             <h2 class="package-title">Bundle gamma 03</h2>
                             <p class="package-subtext">Best suited for beginners</p>
@@ -195,7 +198,7 @@
                 <p class="shop-description">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words.</p>
                 <img src="../static/pictures/OctopusDJ.png" class="package-img right">
                 <div class="package big">
-                    <div class="package-block-full">
+                    <div class="package-block-full resp-box">
                         <div class="package-block left">
                             <h2 class="package-title">Bundle alpha 01</h2>
                             <p class="package-subtext">Best suited for uprising creators</p>
@@ -219,7 +222,7 @@
                     </div>
                 </div>
                 <div class="package small">
-                    <div class="package-block-full">
+                    <div class="package-block-full resp-box">
                         <div class="package-block left">
                             <h2 class="package-title">Bundle beta 02</h2>
                             <p class="package-subtext">Best suited for experienced musicians</p>
@@ -243,7 +246,7 @@
                     </div>
                 </div>
                 <div class="package small">
-                    <div class="package-block-full">
+                    <div class="package-block-full resp-box">
                         <div class="package-block left">
                             <h2 class="package-title">Bundle gamma 03</h2>
                             <p class="package-subtext">Best suited for beginners</p>
@@ -272,6 +275,7 @@
 
     <script>
         initializePackageEvents();
+        initializeResponsiveBoxes();
     </script>
 
     <!-- Footer -->

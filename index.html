@@ -10,6 +10,7 @@
     <script src="./scripts/testimonials.js"></script>
     <script defer src="./scripts/news.js"></script>
     <script defer src="./scripts/modal.js"></script>
+    <script src="./scripts/respbox.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="/styles/modal.css">
     <link rel="stylesheet" href="/styles/landing-page/news.css">
     <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/respbox.css">
 
     <title>Mecena</title>
 </head>
@@ -117,7 +119,7 @@
     <div id="packages">
         <h1 class="packages-headline">Music production packages</h1>
         <div class="inner-packages">
-            <div class="package">
+            <div class="package resp-box">
                 <div class="package-label">
                     <h2>Silver</h2>
                     <div class="package-separator"></div>
@@ -134,7 +136,7 @@
                     <button class="package-action primary">Choose</button>
                 </div>
             </div>
-            <div class="package">
+            <div class="package resp-box">
                 <div class="package-label">
                     <h2>Gold</h2>
                     <div class="package-separator"></div>
@@ -152,7 +154,7 @@
                     <button class="package-action primary">Choose</button>
                 </div>
             </div>
-            <div class="package">
+            <div class="package resp-box">
                 <div class="package-label">
                     <h2>Bronze</h2>
                     <div class="package-separator"></div>
@@ -210,6 +212,10 @@
         $(function(){
             $("#footer-selector").load("footer.html");
         });
+    </script>
+
+    <script>
+        initializeResponsiveBoxes();
     </script>
 </body>
 </html>

@@ -28,8 +28,7 @@
     }
 
     .summary-text-desc {
-        font-size: 20px;
-        font-size: 1.5vw;
+        font-size: 25px;
     }
 
     .summary-call-to-actions {
@@ -41,10 +40,9 @@
     }
 
     .summary-call-to-action {
-        color: var(--color-about-summary-cta);
-        text-decoration: none;
         font-size: 20px;
-        font-size: 1.3vw;
+        padding: 5px 10px;
+        cursor: pointer;
     }
 
     .summary-call-to-action span {

@@ -1,9 +1,28 @@
-@import url("../style.css");
+@import url("./style.css");
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes fadeInSlightly {
+    0% {opacity: 0.7;}
+    80% {opacity: 0.7;}
+    100% {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes fadeOutSlightly {
+    0% {opacity: 1;}
+    100% {opacity: 0.7;}
+}
 
 .full-page {
-    /* position: fixed; */
     width: inherit;
-    /* height: 100vh; */
     background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/pictures/damascus.svg');
 }
 
@@ -115,7 +134,13 @@
             }
 
             .package-engagement.hidden {
+                animation: fadeOut 0.2s;
                 opacity: 0;
+            }
+
+            .package-engagement:not(.hidden) {
+                animation: fadeIn 0.2s;
+                opacity: 1;
             }
 
             .package-price {
@@ -128,8 +153,12 @@
             text-transform: uppercase;
         }
 
+        .package-subtext {
+            color: #525252;
+        }
+
     .package-detail-block {
-        border: solid 2px #d4d4d4;
+        border: solid 2px #b0b0b0;
         width: 50%;
         padding: 10px;
         display: flex;
@@ -145,7 +174,13 @@
         }
 
         .package-detail-block.hidden {
+            animation: fadeOut 0.2s;
             opacity: 0;
+        }
+
+        .package-detail-block:not(.hidden) {
+            animation: fadeIn 0.4s;
+            opacity: 1;
         }
 
         .package-detail-title {
@@ -199,7 +234,13 @@
     }
 
         .package-img.faded {
+            animation: fadeOutSlightly 1s;
             opacity: 0.7;
+        }
+
+        .package-img:not(.faded) {
+            animation: fadeInSlightly 1s;
+            opacity: 1;
         }
 
 .glass {
