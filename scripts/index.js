@@ -1,10 +1,14 @@
 window.onload = function(){
-    customizePage();
+    
     if(document.location.pathname === '/'){
         updateArrowPosition();
         window.onscroll = updateVinyl;
     }
 }
+
+;(function(){
+    customizePage();
+})();
 
 window.onresize = function(){
     updateArrowPosition();
@@ -38,6 +42,6 @@ function updateNavBar(country, currency){
             symbol = 'fa-dollar-sign';
             break;
     }
-    // document.getElementById('nav-currency').classList.add(symbol);
-    document.querySelector('#nav-currency p').innerHTML = currency;
+
+    document.querySelector('#nav-currency').innerHTML = currency;
 }

@@ -58,24 +58,24 @@
     align-items: center;
 }
 
-.currency-icon {
+/* .currency-icon {
     font-size: 15px !important;
     font-weight: 600;
-    cursor: pointer;
     text-transform: none !important;
     text-decoration: none;
+} */
+
+.currency-icon {
+    cursor: pointer;
     color: white;
+
+    font-family: 'Open Sans';
+    font-size: 12px;
+    font-weight: 600;
 
     padding: 2px 8px;
     border: solid 2px white;
     border-radius: 3px;
-}
-
-.currency-icon p {
-    font-family: 'Open Sans';
-    font-size: 12px;
-    font-weight: 600;
-    /* display: inline; */
 }
 
 .nav-spacer {
