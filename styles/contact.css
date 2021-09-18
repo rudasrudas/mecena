@@ -1,16 +1,27 @@
 #contact{
     position: relative;
-    width: 100%;
-    height: auto;
-    padding-top: 30px;
-    padding-bottom: 50px;
-    background: var(--color-contact-bg);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    flex: 1;
+    background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/pictures/damascus.svg');
 }
 
 .single-page {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+}
+
+.content {
+    padding-top: 30px;
+    padding-bottom: 50px;
+    background: white;
+    border-width: 0px 2px;
+    border-style: solid;
+    border-color: black;
+    flex: 1;
 }
 
 .inner-contact {

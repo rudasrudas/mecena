@@ -58,13 +58,6 @@
     align-items: center;
 }
 
-/* .currency-icon {
-    font-size: 15px !important;
-    font-weight: 600;
-    text-transform: none !important;
-    text-decoration: none;
-} */
-
 .currency-icon {
     cursor: pointer;
     color: white;
@@ -80,6 +73,35 @@
 
 .nav-spacer {
     position: relative;
-    height: 65px;
-    max-height: 65px;
+    height: 60px;
+    max-height: 60px;
+}
+
+.loading-screen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    z-index: 11;
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-screen-logo {
+    animation: fadeIn 1s;
+    z-index: 12;
+    height: auto;
+    width: 200px;
 }

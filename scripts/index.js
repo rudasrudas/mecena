@@ -1,13 +1,22 @@
-window.onload = function(){
+window.onload = async function(){
+    await setupLoadingScreen();
+
     if(document.location.pathname === '/'){
         updateArrowPosition();
         window.onscroll = updateVinyl;
     }
+
+    document.querySelector('.loading-screen').classList.add('hidden');
 }
 
-;(function(){
+;(async function(){
     customizePage();
+    // await setupLoadingScreen();
 })();
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 window.onresize = function(){
     updateArrowPosition();
@@ -43,4 +52,13 @@ function updateNavBar(country, currency){
     }
 
     document.querySelector('#nav-currency').innerHTML = currency;
+}
+
+async function setupLoadingScreen() {
+    //If user logs on for the first time
+    if(sessionStorage.getItem('firstTime') === null){
+        document.querySelector('.loading-screen').classList.remove('hidden');
+        sessionStorage.setItem('firstTime', false);
+        await sleep(3000);
+    }
 }
