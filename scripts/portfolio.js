@@ -227,7 +227,8 @@ function generateStreamingService(container, link, service, serviceFull){
 
 function jumpToTheCenter(){
     document.getElementById('splitter').scrollIntoView({
-        inline: "center"
+        inline: "center",
+        block: "end"
     });
 }
 

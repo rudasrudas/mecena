@@ -31,7 +31,7 @@
 <body>
 
     <div class="loading-screen hidden">
-        <img class="loading-screen-logo" src="../static/logos/mecena-logo-icon.svg" alt="">
+        <img class="loading-screen-logo" onload="setupLoadingScreen()" src="../static/logos/mecena-logo-icon.svg" alt="">
     </div>
 
     <!-- Navigation bar -->
@@ -53,8 +53,11 @@
             </h3>
             <br>
             <div style="display: inline;">
-                <button class="primary" onclick="location.href = '#jukebox';"><span class="material-icons inline-icon">play_arrow</span> Take a listen</button>
-                <button class="alternative-dark" style="margin-left: 20px;">Shop</button>
+                <button class="primary resp-box" onclick="location.href = '#jukebox';"><span class="material-icons inline-icon">play_arrow</span> Take a listen</button>
+                <button class="alternative-dark resp-box" onclick="location.href = '/shop/';" style="margin-left: 20px;">
+                    Shop
+                    <span class="material-icons inline-icon">north_east</span>
+                </button>
             </div>
         </div>
         
@@ -90,7 +93,7 @@
         </div>
         
         <a href="/portfolio/#track-side">
-            <button class="jukebox-more primary">View more</button>
+            <button class="jukebox-more primary resp-box">View more</button>
         </a>
     </div>
 
@@ -138,7 +141,7 @@
                     </ul>
                 </div>
                 <div class="package-actions">
-                    <button class="package-action primary">Choose</button>
+                    <button class="package-action primary resp-box">Choose</button>
                 </div>
             </div>
             <div class="package resp-box">
@@ -156,7 +159,7 @@
                     </ul>
                 </div>
                 <div class="package-actions">
-                    <button class="package-action primary">Choose</button>
+                    <button class="package-action primary resp-box">Choose</button>
                 </div>
             </div>
             <div class="package resp-box">
@@ -172,7 +175,7 @@
                     </ul>
                 </div>
                 <div class="package-actions">
-                    <button class="package-action primary">Choose</button>
+                    <button class="package-action primary resp-box">Choose</button>
                 </div>
             </div>
         </div>

@@ -194,21 +194,25 @@ p {
 button.primary {
     cursor: pointer;
     user-select: none;
+    line-height: 150%;
 
     padding: 8px 20px;
 
-    border: 2px solid;
+    /* border: 2px solid;
     border-radius: var(--button-border-radius);
     background: linear-gradient(180deg, var(--color-btn-primary-bg-start) 40%, var(--color-btn-primary-bg-end));
     color: var(--color-btn-primary-text);
-    border-color: var(--color-btn-primary-border);
+    border-color: var(--color-btn-primary-border); */
+
+    background: #f7d23f;
+    border-color: #e8a20f;
 
     font-weight: 600;
     font-family: 'Open Sans';
     font-size: 18px;
 }
 
-button.primary:hover {
+/* button.primary:hover {
     background: linear-gradient( var(--color-btn-primary-bg-start-hover), var(--color-btn-primary-bg-end-hover));
     color: var(--color-btn-primary-text-hover);
     border-color: var(--color-btn-primary-border-hover);
@@ -218,7 +222,7 @@ button.primary:active {
     background: linear-gradient( var(--color-btn-primary-bg-start), var(--color-btn-primary-bg-end));
     color: var(--color-btn-primary-text);
     border-color: var(--color-btn-primary-border);
-}
+} */
 
 /* Alternative BUTTON */
 
@@ -256,14 +260,15 @@ button.alternative:active {
 button.alternative-dark {
     cursor: pointer;
     user-select: none;
+    line-height: 150%;
 
-    padding: 8px 20px;
+    padding: 8px 15px;
 
-    border: 1px solid;
+    /* border: 1px solid;
     border-radius: var(--button-border-radius);
     background: var(--color-btn-alternative-dark-bg);
     color: var(--color-btn-alternative-dark-text);
-    border-color: var(--color-btn-alternative-dark-border);
+    border-color: var(--color-btn-alternative-dark-border); */
 
     font-weight: 600;
     font-family: 'Open Sans';
