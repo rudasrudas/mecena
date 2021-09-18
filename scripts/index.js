@@ -1,20 +1,46 @@
-window.onload = function() {
-    // getArtwork(document.getElementById('hero-img'), 'mar.png');
-    // getInstagramFeed();
+window.onload = function(){
+    if(document.location.pathname === '/'){
+        updateArrowPosition();
+        window.onscroll = updateVinyl;
+    }
 }
 
-function getArtwork(img, id) {
+;(function(){
+    customizePage();
+})();
+
+window.onresize = function(){
+    updateArrowPosition();
+}
+
+function customizePage() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.mecena.net/image/${id}?type=artwork`, true);
+    xhr.open('GET', `https://api.mecena.net/`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
-            const src = xhr.response;
-            document.getElementById('hero-img').innerHTML = src;
-            img.src = src;
+            let res = JSON.parse(xhr.response);
+            updateNavBar(res.country, res.currency);
         }
         else {
             alert('Request failed.  Returned status of ' + xhr.status);
         }
     };
     xhr.send();
+}
+
+function updateNavBar(country, currency){
+    let symbol;
+    switch(currency){
+        case 'GBP':
+            symbol = 'fa-pound-sign';
+            break;
+        case 'EUR':
+            symbol = 'fa-euro-sign';
+            break;
+        default:
+            symbol = 'fa-dollar-sign';
+            break;
+    }
+
+    document.querySelector('#nav-currency').innerHTML = currency;
 }

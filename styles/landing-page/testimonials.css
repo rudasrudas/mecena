@@ -2,6 +2,11 @@
     padding: 40px 0;
     position: relative;
     background: #f8f8f8;
+
+    /* Can remove if it doesnt look that good */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-top: solid 2px black;
 }
 
 .testimonials-title{
@@ -10,7 +15,8 @@
 
 .inner-testimonials{
     position: relative;
-    padding: 3% 12vw;
+    /* padding: 3% 12vw; */
+    margin: auto -10px;
 }
 
 #testimonials .slick-track
@@ -20,13 +26,14 @@
 
 .testimonial{
     text-align: center;
-    padding: 30px;
     margin: 10px;
     background-color: #eeeeee;
     border: solid 1px #dadada;
     vertical-align: middle;
     transition: ease 0.3s;
     height: inherit !important;
+    width: 33%;
+    padding: 10px 20px;
 }
 
 .testimonial:hover{
@@ -54,7 +61,7 @@
     top: 15px;
     font-family: serif;
     line-height: 0;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
 }
 

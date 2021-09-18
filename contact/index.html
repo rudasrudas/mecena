@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="../scripts/contact.js"></script>
+    <script src="../scripts/index.js"></script>
+    <script src="../scripts/respbox.js"></script>
     <title>Contact us</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/respbox.css">
     <link rel="stylesheet" href="../styles/contact.css">
 </head>
 <body>
@@ -23,7 +26,7 @@
         <div class="nav-spacer"></div>
 
         <div id="contact">
-            <div class="inner-contact">
+            <div class="inner-module">
                 <table class="contact-table">
                     <thead>
                         <th>
@@ -37,7 +40,7 @@
                     <tbody>
                         <tr>
                             <td>
-                                <form class="contact-form" id="contact-form" onsubmit="return false">
+                                <form class="contact-form resp-box" id="contact-form" onsubmit="return false">
                                     <label>Name</label>
                                     <input type="text" id="contact-name" class="contact-form-field">
                                     <p class="contact-form-field-subtext"></p>
@@ -60,14 +63,14 @@
                             <td></td>
                             <td>
                                 <div class="contact-links">
-                                    <a class="contact-info-block no-underline" href="callto:+18002684686">
+                                    <a class="contact-info-block no-underline resp-box" href="callto:+18002684686">
                                         <div class="center-info">
                                             <i class="fas fa-phone-alt"></i>
                                             <h2 class="contact-info-block-content">+44 141 496 0707</h2>
                                         </div>
                                         <span class="material-icons arrow">north_east</span>
                                     </a>
-                                    <a class="contact-info-block no-underline" href="mailto:hello@mecena.net">
+                                    <a class="contact-info-block no-underline resp-box" href="mailto:hello@mecena.net">
                                         <div class="center-info">
                                             <i class="far fa-envelope"></i>
                                             <h2 class="contact-info-block-content">hello@mecena.net</h2>    
@@ -75,12 +78,12 @@
                                         <span class="material-icons arrow">north_east</span>
                                     </a>
                                     <div class="center-info-blocks">
-                                        <div class="contact-info-block small">
+                                        <div class="contact-info-block small resp-box">
                                             <i class="fab fa-instagram"></i>
                                             <span class="material-icons arrow">north_east</span>
                                         </div>
                                         <div class="contact-info-block-spacer"></div>
-                                        <div class="contact-info-block small">
+                                        <div class="contact-info-block small resp-box">
                                             <i class="fab fa-facebook"></i>
                                             <span class="material-icons arrow">north_east</span>
                                         </div>
@@ -95,6 +98,10 @@
         
         <!-- Footer -->
         <div id="footer-selector"></div>
+
+        <script>
+            initializeResponsiveBoxes();
+        </script>
         
         <script>
             $(function(){

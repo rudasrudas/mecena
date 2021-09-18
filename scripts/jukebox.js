@@ -89,15 +89,6 @@ $(document).ready(function(){
     activeAudio.vinylArtist = document.getElementById("record-artist");
 })
 
-window.onload = function(){
-    updateArrowPosition();
-    window.onscroll = updateVinyl;
-}
-
-window.onresize = function(){
-    updateArrowPosition();
-}
-
 function updateArrowPosition(){
     let offset = (document.querySelector(".slick-list").offsetWidth - 30)/6 + 'px';
     $("#jukebox-prev")[0].style.top = offset;

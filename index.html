@@ -10,6 +10,7 @@
     <script src="./scripts/testimonials.js"></script>
     <script defer src="./scripts/news.js"></script>
     <script defer src="./scripts/modal.js"></script>
+    <script src="./scripts/respbox.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="/styles/modal.css">
     <link rel="stylesheet" href="/styles/landing-page/news.css">
     <link rel="stylesheet" href="/styles/footer.css">
+    <link rel="stylesheet" href="/styles/respbox.css">
 
     <title>Mecena</title>
 </head>
@@ -63,7 +65,7 @@
     <!-- About -->
     
     <div id="about">
-        <div class="inner-about">
+        <div class="inner-module inner-about">
             <h1>About</h1>
             <h3>Established in 2020. Mecena is brought to You out of the need for support of today's independent artists, which all have different access to funds and possibilities. Mecena’s mission is to provide sound production and graphic design services.
             </h3>
@@ -114,10 +116,10 @@
 
     <!-- Package options -->
     
-    <div id="packages">
+    <div id="packages" class="inner-module">
         <h1 class="packages-headline">Music production packages</h1>
         <div class="inner-packages">
-            <div class="package">
+            <div class="package resp-box">
                 <div class="package-label">
                     <h2>Silver</h2>
                     <div class="package-separator"></div>
@@ -134,7 +136,7 @@
                     <button class="package-action primary">Choose</button>
                 </div>
             </div>
-            <div class="package">
+            <div class="package resp-box">
                 <div class="package-label">
                     <h2>Gold</h2>
                     <div class="package-separator"></div>
@@ -152,7 +154,7 @@
                     <button class="package-action primary">Choose</button>
                 </div>
             </div>
-            <div class="package">
+            <div class="package resp-box">
                 <div class="package-label">
                     <h2>Bronze</h2>
                     <div class="package-separator"></div>
@@ -174,9 +176,11 @@
     <!-- Testimonials -->
 
     <div id="testimonials">
-        <h2 class="testimonials-title">See what our clients say</h2>
-        <div class="inner-testimonials">
-            <div class="testimonials-carousel"></div>
+        <div class="inner-module">
+            <h2 class="testimonials-title">See what our clients say</h2>
+            <div class="inner-testimonials">
+                <div class="testimonials-carousel"></div>
+            </div>
         </div>
     </div>
 
@@ -187,8 +191,10 @@
     <!-- News section -->
     
     <div id="news">
-        <h1 class="news-title">Latest news</h2>
-        <div class="inner-news"></div>
+        <div class="inner-module">
+            <h1 class="news-title">Latest news</h2>
+            <div class="inner-news"></div>
+        </div>
     </div>
 
     <div class="modal" id="article-modal">
@@ -210,6 +216,10 @@
         $(function(){
             $("#footer-selector").load("footer.html");
         });
+    </script>
+
+    <script>
+        initializeResponsiveBoxes();
     </script>
 </body>
 </html>

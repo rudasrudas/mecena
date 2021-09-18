@@ -11,8 +11,5 @@
 
 .inner-about {
     padding: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    width: var(--spacing-content-width);
     text-align: right;
 }

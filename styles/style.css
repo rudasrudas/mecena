@@ -17,9 +17,10 @@
 
 /* Generic resets */
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -106,7 +107,7 @@ p {
     --color-packages-text: #110f06;
     --color-packages-border: #3a3a3a;
     --color-package-bg: #ffffff;
-    --color-package-label-bg: #efefef;
+    --color-package-label-bg: #efefef00;
     --color-package-label-text: #000000;
     --color-package-separator: #3a3a3a;
 
@@ -290,9 +291,9 @@ button.alternative-dark:active {
     font-size: 24px !important;
 }
 
-.inline-icon-2vw {
+.inline-icon-middle {
     vertical-align: middle;
-    font-size: 2vw !important;
+    font-size: 24px !important;
 }
 
 .outer-module {
@@ -302,9 +303,11 @@ button.alternative-dark:active {
 }
 
 .inner-module {
-    max-width: 100vh;
-    /* max-width: 1000px; */
+    /* max-width: 100vh; */
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
 }

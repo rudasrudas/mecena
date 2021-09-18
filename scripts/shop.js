@@ -7,8 +7,6 @@ function initializePackageEvents() {
         packageDetails[i].addEventListener("mouseover", showPackageDetails(i), false);
         packageDetails[i].addEventListener("mouseout", hidePackageDetails(i), false);
     }
-    
-    
 }
 
 function showPackageDetails(id) {

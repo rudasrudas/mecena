@@ -43,8 +43,8 @@
     flex-direction: column;
     justify-content: flex-start;
     padding: 20px 35px 35px 35px;
-    background: var(--color-contact-block-bg);
-    border: 1px solid var(--color-contact-block-border);
+    /* background: var(--color-contact-block-bg);
+    border: 1px solid var(--color-contact-block-border); */
 }
 
 .contact-form label {
@@ -58,7 +58,7 @@
     font-size: 16px;
     padding: 5px;
     resize: none;
-    border: 1px solid var(--color-contact-block-border);
+    border: 2px solid var(--color-contact-block-border);
     background: var(--color-contact-block-input-bg);
 }
 
@@ -101,9 +101,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background: var(--color-contact-block-bg);
+    /* background: var(--color-contact-block-bg);
     border: 1px solid var(--color-contact-block-border);
-    color: var(--color-contact-block-text);
+    color: var(--color-contact-block-text); */
     margin-bottom: 20px;
 }
 

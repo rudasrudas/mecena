@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="../scripts/index.js"></script>
+    <script src="../scripts/respbox.js"></script>
     <title>About Mecena</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/about.css">
     <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/respbox.css">
 </head>
 <body>
     <!-- Navigation bar -->
@@ -32,14 +35,14 @@
 
           <!-- Call to actions -->
           <div class="summary-call-to-actions">
-            <a class="summary-call-to-action" href="">
-              Listen to the lastest track
-              <span class="material-icons inline-icon-2vw">north_east</span>
-            </a>
-            <a class="summary-call-to-action" href="">
+            <div class="resp-box summary-call-to-action" onclick="document.location.href = '/#jukebox';">
+              Listen to the latest track
+              <span class="material-icons inline-icon-middle">north_east</span>
+            </div>
+            <div class="resp-box summary-call-to-action" onclick="document.location.href = '/portfolio';">
               View all works
-              <span class="material-icons inline-icon-2vw">north_east</span>
-            </a>
+              <span class="material-icons inline-icon-middle">north_east</span>
+            </div>
           </div>  
         </div>
 
@@ -271,6 +274,10 @@
     
     <!-- Footer -->
     <div id="footer-selector"></div>
+
+    <script>
+      initializeResponsiveBoxes();
+    </script>
 
     <script>
         $(function(){
