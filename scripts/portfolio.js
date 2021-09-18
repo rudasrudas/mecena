@@ -5,65 +5,94 @@ window.onload = function() {
 }
 
 var player = {
-    sound: undefined,
+    currentSound: undefined,
     progressBar: undefined,
     currentTime: undefined,
     duration: undefined,
-    initialize: function(song, button, progressBar, currentTime, duration){
-        this.sound = new Howl({
-            src: song,
-            html5: true,
-            onplay: function(){
-                button.classList.remove("fa-play");
-                button.classList.add("fa-pause");
-                player.duration.innerHTML = player.formatTime(Math.round(player.sound.duration()))
-                requestAnimationFrame(player.step);
-            },
-            onpause: function(){
-                button.classList.remove("fa-pause");
-                button.classList.add("fa-play");
-            },
-            onstop: function(){
-                button.classList.remove("fa-pause");
-                button.classList.add("fa-play");
-            },
-            onend: function(){
-                button.classList.remove("fa-pause");
-                button.classList.add("fa-play");
-            },
-            onseek: function(){
-                requestAnimationFrame(player.step);
-            },
-        });
-        this.progressBar = progressBar;
-        this.currentTime = currentTime;
-        this.duration = duration;
-        this.duration.innerHTML = "0:00";
-        this.progressBar.style.width = "0%";
+    button: undefined,
+    loadingRing: undefined,
+    playlist: [],
+    initialize: function(tracks){
+        this.button = document.querySelector("#play");
+        this.loadingRing = document.querySelector("#loading-ring");
+        this.progressBar = document.querySelector(".progress-bar");
+        this.currentTime = document.querySelector("#current-time");
+        this.duration = document.querySelector("#duration");
+        for(let i = 0; i < tracks.length; i++){
+            this.playlist.push({
+                id: tracks[i].id,
+                howl: new Howl({
+                    src: `https://api.mecena.net/track/${tracks[i].track}`,
+                    onplay: function(){
+                        player.duration.innerHTML = player.formatTime(Math.round(player.currentSound.duration()))
+                        requestAnimationFrame(player.step);
+                    },
+                    onpause: function(){
+                        player.button.classList.remove("fa-pause");
+                        player.button.classList.add("fa-play");
+                    },
+                    onstop: function(){
+                        player.button.classList.remove("fa-pause");
+                        player.button.classList.add("fa-play");
+                        player.duration.innerHTML = "0:00";
+                        player.progressBar.style.width = "0%";
+                        // for safety measures, if user closes while song is loading
+                        player.button.style.display = "block";
+                        player.loadingRing.style.display = "none";
+                    },
+                    onend: function(){
+                        player.button.classList.remove("fa-pause");
+                        player.button.classList.add("fa-play");
+                    },
+                    onseek: function(){
+                        requestAnimationFrame(player.step);
+                    },
+                    onload: function(){
+                        //when song is loaded, remove loading ring and display control button
+                        player.button.style.display = "block";
+                        player.loadingRing.style.display = "none";
+                    }
+                })
+            });
+        }
     },
-    play: function(){
-        this.sound.play();
+    play: function(id){
+        this.currentSound = this.getSong(id);
+        if(this.currentSound === undefined) return;
+
+        if (this.currentSound.state() === 'loaded')
+            this.button.style.display = 'block';
+        else {
+            //if not loaded, display loading ring
+            this.loadingRing.style.display = 'block';
+            this.button.style.display = 'none';
+        }
+        //prepare buttons
+        player.button.classList.remove("fa-play");
+        player.button.classList.add("fa-pause");
+        this.currentSound.play();
     },
     pause: function(){
-        this.sound.pause();
+        this.currentSound.pause();
     },
     stop: function(){
-        this.sound.stop();
+        if(this.exists())
+            this.currentSound.stop();
     },
     seek: function(per){
         if(this.isPlaying()){
-            this.sound.seek(this.sound.duration() * per);
+            this.currentSound.seek(this.currentSound.duration() * per);
         }
     },
     isPlaying: function(){
-        return this.sound.playing();
+        return this.exists() && this.currentSound.playing();
     },
     exists: function(){
-        return this.sound !== undefined;
+        return this.currentSound !== undefined;
     },
     step: function(){
-        const seek = player.sound.seek() || 0;
-        const duration = player.sound.duration() || 0;
+        const seek = player.currentSound.seek() || 0;
+        const duration = player.currentSound.duration() || 0;
         const progressPercent = (seek / duration) * 100;
         player.currentTime.innerHTML = player.formatTime(Math.round(seek));
         player.progressBar.style.width = `${progressPercent}%`;
@@ -75,6 +104,14 @@ var player = {
         let minutes = Math.floor(secs / 60) || 0;
         let seconds = (secs - minutes * 60) || 0;
         return minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    },
+    getSong(id){
+        for(let i = 0; i < this.playlist.length; i++){
+            if(this.playlist[i].id == id){
+                return this.playlist[i].howl;
+            }
+        }
+        return undefined;
     }
 }
 
@@ -132,7 +169,7 @@ function setupArtworkModal(modal, artworkImg, title, artist, description){
 
 function getTracks() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.mecena.net/featured`, true);
+    xhr.open('GET', `https://api.mecena.net/songs`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             const tracks = JSON.parse(xhr.response);
@@ -140,6 +177,7 @@ function getTracks() {
             for(let i = 0; i < Object.keys(tracks).length; i++){
                 appendTrack(tracks[i], container);
             }
+            player.initialize(tracks);
         }
         else {
             alert('Request failed. Returned status of ' + xhr.status);
@@ -168,12 +206,8 @@ function setupTrackModal(modal, cover, track){
     const songArtist = modal.querySelector("#track-info .song-artist");
     const streamingServices = modal.querySelector("#track-info .streaming-services");
 
-    const playButton = modal.querySelector("#play");
-    const progressBar = modal.querySelector(".progress-bar");
-    const currentTime = modal.querySelector("#current-time");
-    const duration = modal.querySelector("#duration");
-
     cover.addEventListener("click", ()=>{
+        modal.setAttribute('data-track-id', `${track.id}`);
         songCover.src = cover.src;
         songTitle.innerHTML = track.title;
         songArtist.innerHTML = track.artist;
@@ -184,10 +218,6 @@ function setupTrackModal(modal, cover, track){
         generateStreamingService(streamingServices, track.media_youtube, "youtube", "Youtube");
         generateStreamingService(streamingServices, track.media_soundcloud, "soundcloud", "SoundCloud");
         generateStreamingService(streamingServices, track.media_itunes, "itunes", "iTunes");
-
-        player.initialize(`https://api.mecena.net/track/${track.track}`, playButton, progressBar, currentTime, duration);
-
-        // setupMusicPlayer(musicPlayer, songAudio, playButton, progressContainer, progress)
     })
 }
 
@@ -196,8 +226,9 @@ function setupPlayer(){
     const progressContainer = document.querySelector(".progress-bar-container");
     const modal = $("#track-info");
     playButton.addEventListener("click", () => {
+        const id = modal[0].dataset.trackId;
         if(!player.isPlaying())
-            player.play();
+            player.play(id);
         else
             player.pause();
     })

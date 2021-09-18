@@ -376,10 +376,27 @@
     align-items: center;
 }
 
-    #play{
-        font-size: 35px;
-        cursor: pointer;
+    #track-info .controls{
+        height: 36px;
+        width: 50px;
+        position: relative;
     }
+
+    .controls i{
+        position: absolute;
+        font-size: 36px;
+        left: 50%;
+    }
+
+    #loading-ring{
+        display: none;
+        margin-left: -18px;
+    }
+
+    #play{
+        cursor: pointer;
+        transform: translate(-50%, 0);
+    }  
 
     #track-info .progress{
         display: flex;
@@ -405,11 +422,23 @@
     }
 
     #track-info .progress-bar{
+        position: relative;
         background: #F6630C;
         border-radius: inherit;
         height: 100%;
         width: 0;
-        transition: width 0.1s linear;
+        transition: width 0.075s linear;
+    }
+
+    #track-info .progress-bar::after{
+        content: "";
+        position: absolute;
+        right: -4px;
+        top: -3px;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background: #F6630C;
     }
 
 
