@@ -169,7 +169,7 @@ function setupArtworkModal(modal, artworkImg, title, artist, description){
 
 function getTracks() {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.mecena.net/featured`, true);
+    xhr.open('GET', `https://api.mecena.net/songs`, true);
     xhr.onload = function() {
         if (xhr.status === 200) {
             const tracks = JSON.parse(xhr.response);
