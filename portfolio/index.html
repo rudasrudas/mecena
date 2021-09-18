@@ -9,13 +9,11 @@
     <script src="../scripts/index.js"></script>
     <script src="../scripts/portfolio.js"></script>
     <script defer src="../scripts/modal.js"></script>
-    <script src="../scripts/respbox.js"></script>
     <title>Portfolio</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/portfolio.css">
     <link rel="stylesheet" href="../styles/modal.css">
-    <link rel="stylesheet" href="../styles/respbox.css">
 </head>
 <body>
 
@@ -75,10 +73,8 @@
                 <div class="streaming-services"></div>
             </div>
             <div class="music-player">
-                <div class="controls">
-                    <i class="fas fa-circle-notch fa-spin" id="loading-ring"></i>
-                    <i class="fas fa-play" id="play"></i>
-                </div>
+                <i class="fas fa-play" id="play"></i>
+
                 <div class="progress">
                     <p class="progress-time" id="current-time">0:00</p>
                     <div class="progress-bar-container">
@@ -133,7 +129,7 @@
                     <h1 class="splitter-title">Portfolio</h1>
                 </div>
                 <div class="pointer-description-wrapper">
-                    <div class="pointer-description resp-box" onclick="scrollToCovers()">
+                    <div class="pointer-description" onclick="scrollToCovers()">
                         <p>Album cover art is artwork created for a music album. ... Steinweiss was an art director and graphic designer who brought custom artwork to record album covers and invented the first packaging for long-playing records.</p>
                     </div>
                     <div class="pointer-description bottom-alignment" onclick="scrollToSongs()">
