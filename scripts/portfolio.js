@@ -76,7 +76,8 @@ var player = {
         this.currentSound.pause();
     },
     stop: function(){
-        this.currentSound.stop();
+        if(this.exists())
+            this.currentSound.stop();
     },
     seek: function(per){
         if(this.isPlaying()){
