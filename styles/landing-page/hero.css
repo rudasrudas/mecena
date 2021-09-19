@@ -50,8 +50,8 @@
 .visual-hero-content img {
     position: absolute;
     right: 0;
-    bottom: 0;
-    height: 100vh;
+    bottom: -20vh;
+    height: 120vh;
     width: auto;
 }
 

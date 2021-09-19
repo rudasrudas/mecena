@@ -393,7 +393,8 @@ function fetchMoreInfo(info, id, callback){
 
 function jumpToTheCenter(){
     document.getElementById('splitter').scrollIntoView({
-        inline: "center"
+        inline: "center",
+        block: "end"
     });
 }
 
