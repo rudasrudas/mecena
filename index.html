@@ -130,55 +130,40 @@
     <div id="packages" class="inner-module">
         <h1 class="packages-headline">Music production packages</h1>
         <div class="inner-packages">
-            <div class="package resp-box">
+            <div class="package resp-box no-touch">
+                <img src="./static/pictures/note.png" class="package-img">
                 <div class="package-label">
-                    <h2>Silver</h2>
+                    <h2>Design</h2>
+                    <h4>Album cover artworks</h4>
                     <div class="package-separator"></div>
-                    <h3 class="package-desc">30£</h3>
-                </div>
-                <div class="package-content">
-                    <ul>
-                        <li>Track mixing</li>
-                        <li>Track mastering</li>
-                        <li>2 revisions</li>
-                    </ul>
+                    <h3 class="package-desc">from 10£</h3>
                 </div>
                 <div class="package-actions">
-                    <button class="package-action primary resp-box">Choose</button>
+                    <button class="package-action primary resp-box" onclick="location.href = '/shop#design'">View options</button>
                 </div>
             </div>
-            <div class="package resp-box">
+            <div class="package resp-box no-touch">
+                <img src="./static/pictures/note.png" class="package-img">
                 <div class="package-label">
-                    <h2>Gold</h2>
+                    <h2>Music & Design</h2>
+                    <h4>All in one packages</h4>
                     <div class="package-separator"></div>
-                    <h3 class="package-desc">40£</h3>
-                </div>
-                <div class="package-content">
-                    <ul>
-                        <li>Track mixing</li>
-                        <li>Track mastering</li>
-                        <li>Cover art</li>
-                        <li>4 revisions</li>
-                    </ul>
+                    <h3 class="package-desc">from 25£</h3>
                 </div>
                 <div class="package-actions">
-                    <button class="package-action primary resp-box">Choose</button>
+                    <button class="package-action primary resp-box" onclick="location.href = '/shop#musicanddesign'">View options</button>
                 </div>
             </div>
-            <div class="package resp-box">
+            <div class="package resp-box no-touch">
+                <img src="./static/pictures/note.png" class="package-img">
                 <div class="package-label">
-                    <h2>Bronze</h2>
+                    <h2>Music</h2>
+                    <h4>Mixing and mastering</h4>
                     <div class="package-separator"></div>
-                    <h3 class="package-desc">15£</h3>
-                </div>
-                <div class="package-content">
-                    <ul>
-                        <li>Cover art</li>
-                        <li>1 revision</li>
-                    </ul>
+                    <h3 class="package-desc">from 15£</h3>
                 </div>
                 <div class="package-actions">
-                    <button class="package-action primary resp-box">Choose</button>
+                    <button class="package-action primary resp-box" onclick="location.href = '/shop#music'">View options</button>
                 </div>
             </div>
         </div>
@@ -194,10 +179,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-        setupTestimonials();
-    </script>
 
     <!-- News section -->
     
@@ -230,6 +211,7 @@
     </script>
 
     <script>
+        setupTestimonials();
         initializeResponsiveBoxes();
     </script>
 </body>

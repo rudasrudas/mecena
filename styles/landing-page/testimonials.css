@@ -27,8 +27,8 @@
 .testimonial{
     text-align: center;
     margin: 10px;
-    background-color: #eeeeee;
-    border: solid 1px #dadada;
+    /* background-color: #eeeeee;
+    border: solid 1px #dadada; */
     vertical-align: middle;
     transition: ease 0.3s;
     height: inherit !important;
@@ -37,8 +37,8 @@
 }
 
 .testimonial:hover{
-    background-color: #dadada;
-    transition: ease 0.3s;
+    /* background-color: #dadada;
+    transition: ease 0.3s; */
 }
 
 .testimonial-text-wrapper{
