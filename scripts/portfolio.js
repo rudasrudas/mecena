@@ -164,14 +164,13 @@ function appendArtwork(artwork_info, container){
     const artwork = div.firstChild;
     container.appendChild(div.firstChild);
     const artworkImg = artwork.getElementsByClassName("artwork-img")[0];
-    setupArtworkLoad(artworkImg, artwork_info);
+    setupArtworkLoad(artworkImg, artwork_info.id);
 }
 
-function setupArtworkLoad(artworkImg, artwork){
+function setupArtworkLoad(artworkImg, id){
     let infoType = infoTypes.ARTWORK;
     artworkImg.addEventListener("click", ()=>{
-        fetchMoreInfo(infoType, artwork.id, (info) => {
-            console.log(info)
+        fetchMoreInfo(infoType, id, (info) => {
             artworkTitle.innerHTML = info.title;
             artworkArtist.innerHTML = info.artist_name;
             artworkDescription.innerHTML = info.description;
@@ -211,15 +210,15 @@ function appendTrack(track_info, container){
     const track = div.firstChild;
     container.appendChild(track);
     const trackCover = track.getElementsByClassName("track-img")[0];
-    setupTrackLoad(trackCover, track_info)
+    setupTrackLoad(trackCover, track_info.id)
 }
 
-function setupTrackLoad(cover, track){
+function setupTrackLoad(cover, id){
     let infoType = infoTypes.SONG;
 
     cover.addEventListener("click", ()=>{
-        trackModal.setAttribute('data-track-id', `${track.id}`);
-        fetchMoreInfo(infoType, track.id, (info) => {
+        trackModal.setAttribute('data-track-id', `${id}`);
+        fetchMoreInfo(infoType, id, (info) => {
             trackAbout.innerHTML = info.artist_biography;
             trackCover.src = `https://api.mecena.net/image/${info.cover}?type=artwork`;
             trackTitle.innerHTML = info.title;

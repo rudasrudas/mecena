@@ -1,12 +1,11 @@
-const modal = document.getElementById("article-modal");
-const modalTitle = modal.getElementsByClassName("title")[0];
-const modalImage = modal.getElementsByClassName("article-modal-image")[0];
-const modalText = modal.getElementsByClassName("article-modal-text")[0];
+const articleModal = document.getElementById("article-modal");
+const articleBody = document.querySelector(".modal-body");
+const articleTitle = articleModal.querySelector(".title");
+const articleImage = articleModal.querySelector(".article-modal-image");
+const articleText = articleModal.querySelector(".article-modal-text");
 
-;(function(){
-    renderArticles();
-})();
-
+renderArticles();
+setupModal();
 
 function renderArticles(){
     const xhr = new XMLHttpRequest();
@@ -20,7 +19,6 @@ function renderArticles(){
             for(let i = 0; i < Object.keys(articles).length; i++){
                 addArticle(articles[i], innerNews);
             }
-
         }
         else {
             alert('Request failed.  Returned status of ' + xhr.status);
@@ -44,14 +42,37 @@ function addArticle(article_info, container){
     </div>`.trim();
     const article = div.firstChild;
     container.appendChild(article);
-    const readMore = article.querySelectorAll("[data-modal-target]")[0];
-    setupReadMore(readMore, article_info.title, image, article_info.content.replace("\n", "<br>"))
+    const readMore = article.querySelector("[data-modal-target]");
+    setupReadMore(readMore, article_info.article_id)
 }
 
-function setupReadMore(readMore, title, image, text){
+function setupReadMore(readMore, id){
     readMore.addEventListener("click", ()=>{
-        modalTitle.innerHTML = title;
-        modalImage.src = image;
-        modalText.innerHTML = text;
+        fetchMoreInfo(id, (info) => {
+            articleTitle.innerHTML = info.title;
+            articleImage.src = `https://api.mecena.net/image/${info.image_name}?type=article`;
+            articleText.innerHTML = info.content.replace("\n", "<br>");
+            articleBody.classList.remove("hidden");
+        })
+    })
+}
+
+function fetchMoreInfo(id, callback){
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://api.mecena.net/article/${id}`, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            callback(JSON.parse(xhr.response));
+        }
+        else {
+            alert('Request failed. Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
+}
+
+function setupModal(){
+    $(articleModal).on("close", () => {
+        articleBody.classList.add("hidden");
     })
 }

@@ -112,6 +112,10 @@
     background-color: white;
 }
 
+#article-modal .modal-body.hidden{
+    display: none;
+}
+
 #article-modal .modal-body::-webkit-scrollbar{
     width: 15px;
     background-color: transparent;
