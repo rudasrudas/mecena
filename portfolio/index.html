@@ -7,8 +7,8 @@
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
     <script src="../scripts/index.js"></script>
-    <script src="../scripts/portfolio.js"></script>
     <script defer src="../scripts/modal.js"></script>
+    <script defer src="../scripts/portfolio.js"></script>
     <title>Portfolio</title>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/footer.css">
@@ -34,14 +34,20 @@
         <div class="modal-header">
             <span onclick="closeModal(this)" class="close-button material-icons">close</span>
         </div>
-        <div class="modal-body">
+        <div class="modal-body hidden">
             <div class="about-artwork">
-                <h2 class="title"></h2>
-                <h4 class="artist"></h4>
-                <p class="description"></p>
+                <div class="about-artwork-text">
+                    <h2 class="title"></h2>
+                    <h4 class="artist"></h4>
+                    <p class="description"></p>
+                </div>
+                <div class="socials">
+                    <h4 class="socials-title">Follow the artist</h4>
+                    <div class="socials-inner"></div>
+                </div>
             </div>
             <div class="artwork-wrapper">
-                <img class="artwork-image" src="" alt="">
+                <img class="artwork-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=" alt="">
             </div>
         </div>
     </div>
@@ -51,29 +57,30 @@
         <div class="modal-header">
             <span onclick="closeModal(this)" class="close-button material-icons">close</span>
         </div>
-        <div class="modal-body">
+        <div class="modal-body hidden">
             <div class="info-container">
                 <div class="about-artist">
                     <h2 class="about-artist-title">About the artist</h2>
-                    <p class="about-artist-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam at dolore placeat facere, quidem, numquam distinctio adipisci quos magnam voluptas dolor deleniti molestiae a. Dolores eveniet qui repellat sed ipsam unde aut cum veritatis in, nam, dolorem itaque facere fugit.</p>
-                    <div class="artist-social-media">
-                        <i class="fab fa-instagram social-icon"></i>
-                        <p class="social-username">klaudux_77_xXx</p>
-                    </div>
-                    <div class="artist-social-media">
-                        <i class="fab fa-facebook social-icon"></i>
-                        <p class="social-username">Klaudijus Rimeikis</p>
-                    </div>
+                    <p class="about-artist-text"></p>
                 </div>
                 <div class="song-wrapper">
-                    <img class="song-cover" src="" alt="">
+                    <img class="song-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=" alt=""></img>
                     <h3 class="song-title"></h3>
                     <h4 class="song-artist"></h4>
                 </div>
-                <div class="streaming-services"></div>
+                <div class="artist-links">
+                    <div class="streaming-services"></div>
+                    <div class="socials">
+                        <h4 class="socials-title">Follow the artist</h4>
+                        <div class="socials-inner"></div>
+                    </div>
+                </div>
             </div>
             <div class="music-player">
-                <i class="fas fa-play" id="play"></i>
+                <div class="controls">
+                    <i class="fas fa-circle-notch fa-spin" id="loading-ring"></i>
+                    <i class="fas fa-play" id="play"></i>
+                </div>
 
                 <div class="progress">
                     <p class="progress-time" id="current-time">0:00</p>

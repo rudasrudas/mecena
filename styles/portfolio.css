@@ -232,29 +232,34 @@
         margin-bottom: 30px;
     }
 
+#artwork-info .modal-body.hidden, #track-info .modal-body.hidden{
+    display: none;
+}
+
 #artwork-info .modal-body{
     display: flex;
     padding: 40px;
 }
 
 #artwork-info .about-artwork{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     padding-right: 40px;
-    box-sizing: border-box;
     width: 50%;
 }
+    #artwork-info .title{
+        font-size: 30px;
+    }
 
-#artwork-info .title{
-    font-size: 30px;
-}
+    #artwork-info .artist{
+        text-transform: uppercase;
+        font-weight: bold;
+    }
 
-#artwork-info .artist{
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-#artwork-info .description{
-    padding-top: 15px;
-}
+    #artwork-info .description{
+        padding-top: 15px;
+    }
 
 #artwork-info .artwork-wrapper{
     text-align: right;
@@ -289,21 +294,6 @@
         padding-bottom: 20px;
     }
 
-    #track-info .artist-social-media{
-        display: flex;
-        padding-top: 10px;
-    }
-
-    #track-info .social-icon{
-        font-size: 30px;
-        padding-right: 10px;
-    }
-
-    #track-info .social-username{
-        align-self: center;
-        font-weight: bold;
-    }
-
 #track-info .song-cover{
     width: 310px;
     height: 310px;
@@ -320,12 +310,19 @@
     line-height: 1;
 }
 
-#track-info .streaming-services{
-    width: 25%;
+#track-info .artist-links{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: space-between;
+    width: 25%;
 }
+
+    #track-info .streaming-services{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 100%;
+    }
 
     #track-info .stream-song{
         flex: 0 0 auto;
@@ -347,6 +344,17 @@
 
     #track-info .stream-icon{
         font-size: 25px;
+    }
+
+    #track-info .socials{
+        text-align: right;
+    }
+
+    .social-icon{
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+        padding-right: 5px;
     }
 
     .spotify{
