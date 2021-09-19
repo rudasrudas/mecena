@@ -1,9 +1,23 @@
-//Wait for the page to load
-window.onload = function() {
-    jumpToTheCenter();
-    setupPlayer();
-    setupModals();
-}
+const artworkModal = document.getElementById("artwork-info");
+const artworkTitle = artworkModal.querySelector(".title");
+const artworkArtist = artworkModal.querySelector(".artist");
+const artworkDescription = artworkModal.querySelector(".description");
+const artworkSocials = artworkModal.querySelector(".socials-inner");
+const artworkImage = artworkModal.querySelector(".artwork-image");
+const artworkBody = artworkModal.querySelector(".modal-body");
+
+const trackModal = document.getElementById("track-info");
+const trackAbout = trackModal.querySelector(".about-artist-text");
+const trackCover = trackModal.querySelector(".song-cover");
+const trackTitle = trackModal.querySelector(".song-title");
+const trackArtist = trackModal.querySelector(".song-artist");
+const trackStream = trackModal.querySelector(".streaming-services");
+const trackSocials = trackModal.querySelector(".socials-inner");
+const trackBody = trackModal.querySelector(".modal-body");
+
+jumpToTheCenter();
+setupPlayer();
+setupModals();
 
 var player = {
     currentSound: undefined,
@@ -14,11 +28,11 @@ var player = {
     loadingRing: undefined,
     playlist: [],
     initialize: function(tracks){
-        this.button = document.querySelector("#play");
-        this.loadingRing = document.querySelector("#loading-ring");
-        this.progressBar = document.querySelector(".progress-bar");
-        this.currentTime = document.querySelector("#current-time");
-        this.duration = document.querySelector("#duration");
+        this.button = trackModal.querySelector("#play");
+        this.loadingRing = trackModal.querySelector("#loading-ring");
+        this.progressBar = trackModal.querySelector(".progress-bar");
+        this.currentTime = trackModal.querySelector("#current-time");
+        this.duration = trackModal.querySelector("#duration");
         for(let i = 0; i < tracks.length; i++){
             this.playlist.push({
                 id: tracks[i].id,
@@ -150,44 +164,22 @@ function appendArtwork(artwork_info, container){
     const artwork = div.firstChild;
     container.appendChild(div.firstChild);
     const artworkImg = artwork.getElementsByClassName("artwork-img")[0];
-    const modal = document.getElementById("artwork-info");
-    setupArtworkLoad(modal, artworkImg, artwork_info);
+    setupArtworkLoad(artworkImg, artwork_info);
 }
 
-function setupArtworkLoad(modal, artworkImg, artwork){
-    const artworkTitle = modal.querySelector(".title");
-    const artworkArtist = modal.querySelector(".artist");
-    const artworkDescription = modal.querySelector(".description");
-    const socials = modal.querySelector(".socials-inner");
-    const artworkWrapper = modal.querySelector(".artwork-wrapper");
+function setupArtworkLoad(artworkImg, artwork){
     let infoType = infoTypes.ARTWORK;
-
     artworkImg.addEventListener("click", ()=>{
         fetchMoreInfo(infoType, artwork.id, (info) => {
             console.log(info)
             artworkTitle.innerHTML = info.title;
             artworkArtist.innerHTML = info.artist_name;
             artworkDescription.innerHTML = info.description;
-            generateSocials(socials, info)
-            const img = document.createElement("div");
-            img.innerHTML = `<img class="artwork-image" src="https://api.mecena.net/image/${info.artwork}?type=artwork" alt="">`.trim();
-            artworkWrapper.append(img.firstChild);
+            generateSocials(artworkSocials, info)
+            artworkImage.src = `https://api.mecena.net/image/${info.artwork}?type=artwork`;
+            artworkBody.classList.remove("hidden");
         })
     })
-}
-
-function clearArtworkModal(modal){
-    const artworkTitle = modal.querySelector(".title");
-    const artworkArtist = modal.querySelector(".artist");
-    const artworkDescription = modal.querySelector(".description");
-    const socials = modal.querySelector(".socials-inner");
-    const artworkWrapper = modal.querySelector(".artwork-wrapper");
-
-    artworkTitle.innerHTML = "";
-    artworkArtist.innerHTML = "";
-    artworkDescription.innerHTML = "";
-    socials.innerHTML = "";
-    artworkWrapper.innerHTML = "";
 }
 
 function getTracks() {
@@ -219,83 +211,57 @@ function appendTrack(track_info, container){
     const track = div.firstChild;
     container.appendChild(track);
     const trackCover = track.getElementsByClassName("track-img")[0];
-    const modal = document.getElementById("track-info");
-    setupTrackLoad(modal, trackCover, track_info)
+    setupTrackLoad(trackCover, track_info)
 }
 
-function setupTrackLoad(modal, cover, track){
-    const aboutArtist = modal.querySelector(".about-artist-text");
-    const songWrapper = modal.querySelector(".song-wrapper");
-    const songTitle = songWrapper.querySelector(".song-title");
-    const songArtist = songWrapper.querySelector(".song-artist");
-    const streamingServices = modal.querySelector(".streaming-services");
-    const socials = modal.querySelector(".socials-inner");
+function setupTrackLoad(cover, track){
     let infoType = infoTypes.SONG;
 
     cover.addEventListener("click", ()=>{
-        modal.setAttribute('data-track-id', `${track.id}`);
+        trackModal.setAttribute('data-track-id', `${track.id}`);
         fetchMoreInfo(infoType, track.id, (info) => {
-            aboutArtist.innerHTML = info.artist_biography;
-            const img = document.createElement("div");
-            img.innerHTML = `<img class="song-cover" src="https://api.mecena.net/image/${info.cover}?type=artwork" alt=""></img>`.trim();
-            songWrapper.prepend(img.firstChild);
-            songTitle.innerHTML = info.title;
-            songArtist.innerHTML = info.artist_name;
-            generateStreamingServices(streamingServices, info);
-            generateSocials(socials, info);
+            trackAbout.innerHTML = info.artist_biography;
+            trackCover.src = `https://api.mecena.net/image/${info.cover}?type=artwork`;
+            trackTitle.innerHTML = info.title;
+            trackArtist.innerHTML = info.artist_name;
+            generateStreamingServices(info);
+            generateSocials(trackSocials, info);
+            trackBody.classList.remove("hidden");
         });
-    })
-}
-
-function clearTrackModal(modal){
-    const aboutArtist = modal.querySelector(".about-artist-text");
-    const songWrapper = modal.querySelector(".song-wrapper");
-    const songTitle = songWrapper.querySelector(".song-title");
-    const songArtist = songWrapper.querySelector(".song-artist");
-    const streamingServices = modal.querySelector(".streaming-services");
-    const socials = modal.querySelector(".socials-inner");
-
-    aboutArtist.innerHTML = "";
-    songWrapper.removeChild(songWrapper.firstChild);
-    songTitle.innerHTML = "";
-    songArtist.innerHTML = "";
-    streamingServices.innerHTML = "";
-    socials.innerHTML = "";
+    });
 }
 
 function setupPlayer(){
     const playButton = document.querySelector("#play");
     const progressContainer = document.querySelector(".progress-bar-container");
-    const modal = $("#track-info");
     playButton.addEventListener("click", () => {
-        const id = modal[0].dataset.trackId;
+        const id = trackModal.dataset.trackId;
         if(!player.isPlaying())
             player.play(id);
         else
             player.pause();
-    })
+    });
     progressContainer.addEventListener("click", (e) => {
         const width = progressContainer.clientWidth;
         const clickX = e.offsetX;
         player.seek(clickX / width);
-    })
-    modal.on("close", () => {
+    });
+    $(trackModal).on("close", () => {
         player.stop();
-    })
+    });
 }
 
 function setupModals(){
-    const artworkModal = $("#artwork-info")
-    const trackModal = $("#track-info");
-    artworkModal.on("close", () => {
-        clearArtworkModal(artworkModal[0]);
-    })
-    trackModal.on("close", () => {
-        clearTrackModal(trackModal[0]);
-    })
+    $(artworkModal).on("close", () => {
+        artworkBody.classList.add("hidden");
+    });
+    $(trackModal).on("close", () => {
+        trackBody.classList.add("hidden");
+    });
 }
 
-function generateStreamingServices(container, info){
+function generateStreamingServices(info){
+    trackStream.innerHTML = "";
     const services = [
         {
             service: "spotify",
@@ -332,12 +298,13 @@ function generateStreamingServices(container, info){
                 <i class="fab fa-${services[i].service} stream-icon"></i>
             </a>`.trim();
     
-            container.appendChild(a.firstChild);
+            trackStream.appendChild(a.firstChild);
         }
     }
 }
 
 function generateSocials(container, info){
+    container.innerHTML = "";
     const socials = [
         {
             social: "facebook",

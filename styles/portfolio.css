@@ -232,6 +232,10 @@
         margin-bottom: 30px;
     }
 
+#artwork-info .modal-body.hidden, #track-info .modal-body.hidden{
+    display: none;
+}
+
 #artwork-info .modal-body{
     display: flex;
     padding: 40px;
