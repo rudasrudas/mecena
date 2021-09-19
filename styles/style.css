@@ -195,6 +195,7 @@ button.primary {
     cursor: pointer;
     user-select: none;
     line-height: 150%;
+    width: fit-content;
 
     padding: 8px 20px;
 
@@ -229,6 +230,7 @@ button.primary:active {
 button.alternative {
     cursor: pointer;
     user-select: none;
+    width: fit-content;
 
     padding: 8px 20px;
 
@@ -261,6 +263,7 @@ button.alternative-dark {
     cursor: pointer;
     user-select: none;
     line-height: 150%;
+    width: fit-content;
 
     padding: 8px 15px;
 

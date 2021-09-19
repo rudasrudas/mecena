@@ -20,11 +20,13 @@
 }
 
 .package {
-    border: 1px solid var(--color-packages-border);
     background: var(--color-package-bg);
     width: 30%;
     z-index: 2;
-    border-radius: var(--package-border-radius);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .package-label {
@@ -33,6 +35,19 @@
     color: var(--color-package-label-text);
     border-radius: var(--package-border-radius) var(--package-border-radius) 0 0;
     padding: 10px 0px;
+}
+
+.package-label h2 {
+    line-height: 100%;
+    font-size: 32px;
+}
+
+.package-img {
+    width: 70%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
 }
 
 .package-content {
@@ -65,7 +80,8 @@
     text-align: center;
     font-weight: 500;
     font-style: italic;
-    margin-top: 16px;
+    font-size: 20px;
+    /* margin-top: 16px; */
 }
 
 .vinyl {
@@ -81,6 +97,7 @@
 .package-separator {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 15px;
     border-bottom: 1px solid var(--color-package-separator);
     height: 1px;
     width: 60%;

@@ -1,5 +1,5 @@
 function initializeResponsiveBoxes() {
-    const boxes = document.getElementsByClassName('resp-box');
+    const boxes = document.querySelectorAll('.resp-box:not(.no-touch)');
     const c1 = '#d6d6d6 20%';
     const c2 = '#f5f5f5';
     const b1 = '#808080 50%';

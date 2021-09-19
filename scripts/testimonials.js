@@ -41,7 +41,7 @@ function renderTestimonials(){
 function addTestimonial(carousel, testimonial){
     carousel.slick('slickAdd',
     `
-    <div class="testimonial">
+    <div class="testimonial resp-box">
         <div class="testimonial-text-wrapper">
             <h3 class="testimonial-content">
                 ${testimonial.content}
