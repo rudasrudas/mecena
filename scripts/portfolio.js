@@ -293,7 +293,7 @@ function generateStreamingServices(info){
         if(services[i].link.length > 0){
             let a = document.createElement("a");
             a.innerHTML = `
-            <a href="${services[i].link}" class="stream-song ${services[i].service}">
+            <a href="${services[i].link}" target="_blank" class="stream-song ${services[i].service}">
                 <p class="stream-text">Listen on ${services[i].serviceFull}</p>
                 <i class="fab fa-${services[i].service} stream-icon"></i>
             </a>`.trim();
@@ -332,7 +332,7 @@ function generateSocials(container, info){
         if(socials[i].link.length > 0){
             let a = document.createElement("a");
             a.innerHTML = `
-            <a href="${socials[i].link}" class="fab fa-${socials[i].social} social-icon"></a>`.trim();
+            <a href="${socials[i].link}" target="_blank" class="fab fa-${socials[i].social} social-icon"></a>`.trim();
 
             container.appendChild(a.firstChild);
         }
