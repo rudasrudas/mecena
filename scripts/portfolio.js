@@ -2,6 +2,7 @@
 window.onload = function() {
     jumpToTheCenter();
     setupPlayer();
+    setupModals();
 }
 
 var player = {
@@ -144,27 +145,49 @@ function appendArtwork(artwork_info, container){
     div.innerHTML = `
     <div class="artwork">
         <img onclick="openModal(this)" data-modal-target="#artwork-info" class="artwork-img" src="https://api.mecena.net/image/${artwork_info.artwork}?type=artwork">
-        <h4 class="artwork-label">${artwork_info.title}</h4>
+        <h4 class="artwork-label">${artwork_info.title} – ${artwork_info.artist}</h4>
     </div>`.trim();
     const artwork = div.firstChild;
     container.appendChild(div.firstChild);
     const artworkImg = artwork.getElementsByClassName("artwork-img")[0];
     const modal = document.getElementById("artwork-info");
-    setupArtworkModal(modal, artworkImg, artwork_info.title, artwork_info.artist, artwork_info.description);
+    setupArtworkLoad(modal, artworkImg, artwork_info);
 }
 
-function setupArtworkModal(modal, artworkImg, title, artist, description){
-    const modalTitle = modal.querySelector("#artwork-info .title");
-    const modalArtist = modal.querySelector("#artwork-info .artist");
-    const modalDescription = modal.querySelector("#artwork-info .description");
-    const modalArtwork = modal.querySelector("#artwork-info .artwork-image");
+function setupArtworkLoad(modal, artworkImg, artwork){
+    const artworkTitle = modal.querySelector(".title");
+    const artworkArtist = modal.querySelector(".artist");
+    const artworkDescription = modal.querySelector(".description");
+    const socials = modal.querySelector(".socials-inner");
+    const artworkWrapper = modal.querySelector(".artwork-wrapper");
+    let infoType = infoTypes.ARTWORK;
 
     artworkImg.addEventListener("click", ()=>{
-        modalTitle.innerHTML = title;
-        modalArtist.innerHTML = artist;
-        modalDescription.innerHTML = description;
-        modalArtwork.src = artworkImg.src;
+        fetchMoreInfo(infoType, artwork.id, (info) => {
+            console.log(info)
+            artworkTitle.innerHTML = info.title;
+            artworkArtist.innerHTML = info.artist_name;
+            artworkDescription.innerHTML = info.description;
+            generateSocials(socials, info)
+            const img = document.createElement("div");
+            img.innerHTML = `<img class="artwork-image" src="https://api.mecena.net/image/${info.artwork}?type=artwork" alt="">`.trim();
+            artworkWrapper.append(img.firstChild);
+        })
     })
+}
+
+function clearArtworkModal(modal){
+    const artworkTitle = modal.querySelector(".title");
+    const artworkArtist = modal.querySelector(".artist");
+    const artworkDescription = modal.querySelector(".description");
+    const socials = modal.querySelector(".socials-inner");
+    const artworkWrapper = modal.querySelector(".artwork-wrapper");
+
+    artworkTitle.innerHTML = "";
+    artworkArtist.innerHTML = "";
+    artworkDescription.innerHTML = "";
+    socials.innerHTML = "";
+    artworkWrapper.innerHTML = "";
 }
 
 function getTracks() {
@@ -191,34 +214,53 @@ function appendTrack(track_info, container){
     div.innerHTML = `
     <div onclick="openModal(this)" data-modal-target="#track-info" class="track">
         <img class="track-img" src="https://api.mecena.net/image/${track_info.cover}?type=artwork">
-        <h4 class="track-label">${track_info.title}</h4>
+        <h4 class="track-label">${track_info.artist} – ${track_info.title}</h4>
     </div>`.trim();
     const track = div.firstChild;
     container.appendChild(track);
     const trackCover = track.getElementsByClassName("track-img")[0];
     const modal = document.getElementById("track-info");
-    setupTrackModal(modal, trackCover, track_info)
+    setupTrackLoad(modal, trackCover, track_info)
 }
 
-function setupTrackModal(modal, cover, track){
-    const songCover = modal.querySelector("#track-info .song-cover");
-    const songTitle = modal.querySelector("#track-info .song-title");
-    const songArtist = modal.querySelector("#track-info .song-artist");
-    const streamingServices = modal.querySelector("#track-info .streaming-services");
+function setupTrackLoad(modal, cover, track){
+    const aboutArtist = modal.querySelector(".about-artist-text");
+    const songWrapper = modal.querySelector(".song-wrapper");
+    const songTitle = songWrapper.querySelector(".song-title");
+    const songArtist = songWrapper.querySelector(".song-artist");
+    const streamingServices = modal.querySelector(".streaming-services");
+    const socials = modal.querySelector(".socials-inner");
+    let infoType = infoTypes.SONG;
 
     cover.addEventListener("click", ()=>{
         modal.setAttribute('data-track-id', `${track.id}`);
-        songCover.src = cover.src;
-        songTitle.innerHTML = track.title;
-        songArtist.innerHTML = track.artist;
-
-        streamingServices.innerHTML = "";
-        generateStreamingService(streamingServices, track.media_spotify, "spotify", "Spotify");
-        generateStreamingService(streamingServices, track.media_apple_music, "apple", "Apple Music");
-        generateStreamingService(streamingServices, track.media_youtube, "youtube", "Youtube");
-        generateStreamingService(streamingServices, track.media_soundcloud, "soundcloud", "SoundCloud");
-        generateStreamingService(streamingServices, track.media_itunes, "itunes", "iTunes");
+        fetchMoreInfo(infoType, track.id, (info) => {
+            aboutArtist.innerHTML = info.artist_biography;
+            const img = document.createElement("div");
+            img.innerHTML = `<img class="song-cover" src="https://api.mecena.net/image/${info.cover}?type=artwork" alt=""></img>`.trim();
+            songWrapper.prepend(img.firstChild);
+            songTitle.innerHTML = info.title;
+            songArtist.innerHTML = info.artist_name;
+            generateStreamingServices(streamingServices, info);
+            generateSocials(socials, info);
+        });
     })
+}
+
+function clearTrackModal(modal){
+    const aboutArtist = modal.querySelector(".about-artist-text");
+    const songWrapper = modal.querySelector(".song-wrapper");
+    const songTitle = songWrapper.querySelector(".song-title");
+    const songArtist = songWrapper.querySelector(".song-artist");
+    const streamingServices = modal.querySelector(".streaming-services");
+    const socials = modal.querySelector(".socials-inner");
+
+    aboutArtist.innerHTML = "";
+    songWrapper.removeChild(songWrapper.firstChild);
+    songTitle.innerHTML = "";
+    songArtist.innerHTML = "";
+    streamingServices.innerHTML = "";
+    socials.innerHTML = "";
 }
 
 function setupPlayer(){
@@ -242,18 +284,111 @@ function setupPlayer(){
     })
 }
 
-function generateStreamingService(container, link, service, serviceFull){
-    if(link.length > 0){
-        let a = document.createElement("a");
-        a.innerHTML = `
-        <a href="${link}" class="stream-song ${service}">
-            <p class="stream-text">Listen on ${serviceFull}</p>
-            <i class="fab fa-${service} stream-icon"></i>
-        </a>`.trim();
+function setupModals(){
+    const artworkModal = $("#artwork-info")
+    const trackModal = $("#track-info");
+    artworkModal.on("close", () => {
+        clearArtworkModal(artworkModal[0]);
+    })
+    trackModal.on("close", () => {
+        clearTrackModal(trackModal[0]);
+    })
+}
 
-        const serviceElement = a.firstChild;
-        container.appendChild(serviceElement)
+function generateStreamingServices(container, info){
+    const services = [
+        {
+            service: "spotify",
+            serviceFull: "Spotify",
+            link: info.media_spotify
+        },
+        {
+            service: "apple",
+            serviceFull: "Apple Music",
+            link: info.media_apple_music
+        },
+        {
+            service: "youtube",
+            serviceFull: "Youtube",
+            link: info.media_youtube
+        },
+        {
+            service: "soundcloud",
+            serviceFull: "Soundcloud",
+            link: info.media_soundcloud
+        },
+        {
+            service: "itunes",
+            serviceFull: "iTunes",
+            link: info.media_itunes
+        }   
+    ];
+    for(let i = 0; i < services.length; i++){
+        if(services[i].link.length > 0){
+            let a = document.createElement("a");
+            a.innerHTML = `
+            <a href="${services[i].link}" class="stream-song ${services[i].service}">
+                <p class="stream-text">Listen on ${services[i].serviceFull}</p>
+                <i class="fab fa-${services[i].service} stream-icon"></i>
+            </a>`.trim();
+    
+            container.appendChild(a.firstChild);
+        }
     }
+}
+
+function generateSocials(container, info){
+    const socials = [
+        {
+            social: "facebook",
+            link: info.artist_media_facebook
+        },
+        {
+            social: "instagram",
+            link: info.artist_media_instagram
+        },
+        {
+            social: "soundcloud",
+            link: info.artist_media_soundcloud
+        },
+        {
+            social: "spotify",
+            link: info.artist_media_spotify
+        },
+        {
+            social: "youtube",
+            link: info.artist_media_youtube
+        }
+    ];
+
+    for(let i = 0; i < socials.length; i++){
+        if(socials[i].link.length > 0){
+            let a = document.createElement("a");
+            a.innerHTML = `
+            <a href="${socials[i].link}" class="fab fa-${socials[i].social} social-icon"></a>`.trim();
+
+            container.appendChild(a.firstChild);
+        }
+    }
+}
+
+const infoTypes = {
+    SONG: "song",
+    ARTWORK: "artwork"
+}
+
+function fetchMoreInfo(info, id, callback){
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://api.mecena.net/${info}/${id}`, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            callback(JSON.parse(xhr.response));
+        }
+        else {
+            alert('Request failed. Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
 }
 
 function jumpToTheCenter(){
