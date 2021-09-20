@@ -3,11 +3,11 @@ function setupTestimonials(){
         const carousel =  $('.testimonials-carousel');
         carousel.slick({
             slidesToShow: 3,
-            slidesToScroll: 1,
+            slidesToScroll: 2,
             accessibility: false,
             autoplay: true,
-            autoplaySpeed: 5000,
-            speed: 1000,
+            autoplaySpeed: 3000,
+            speed: 500,
             pauseOnHover: true,
             draggable: false,
             swipe: false,
@@ -40,14 +40,21 @@ function renderTestimonials(){
 
 function addTestimonial(carousel, testimonial){
     carousel.slick('slickAdd',
-    `
-    <div class="testimonial resp-box">
-        <div class="testimonial-text-wrapper">
-            <h3 class="testimonial-content">
-                ${testimonial.content}
-            </h3>
-            <h4 class="testimonial-author">– ${testimonial.author}</h4>
+    `<div class="testimonial">
+        <div class="testimonial-content">
+            <div class="testimonial-body resp-box no-touch">
+                <img src="../static/icons/quotes.svg" class="testimonial-quotes">
+                <div class="testimonial-text-wrapper">
+                    <p class="testimonial-text">${testimonial.content}</p>
+                    <h4 class="testimonial-author">– ${testimonial.author}</h4>
+                </div>
+            </div>
+            <div class="testimonial-footer">
+                <p class="testimonial-footer-headline">Purchased package</p>
+                <p class="testimonial-footer-content">Music Gamma 03</p>
+            </div>
         </div>
-    </div>
-    `)
+    </div>`
+            
+    );
 }

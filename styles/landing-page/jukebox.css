@@ -4,6 +4,7 @@
     padding: 50px;
     position: relative;
     background: white;
+    border-bottom: solid 2px black;
 }
 
 .inner-jukebox {

@@ -19,6 +19,9 @@ function renderArticles(){
             for(let i = 0; i < Object.keys(articles).length; i++){
                 addArticle(articles[i], innerNews);
             }
+
+            const respBoxes = document.querySelectorAll('.article-read-more.primary.resp-box, .article.resp-box');
+            initializeResponsiveBoxes(respBoxes);
         }
         else {
             alert('Request failed.  Returned status of ' + xhr.status);
@@ -31,13 +34,13 @@ function addArticle(article_info, container){
     const div = document.createElement("div");
     const image = `https://api.mecena.net/image/${article_info.image_name}?type=article`
     div.innerHTML = `
-    <div class="article">
-        <img class="article-image" src="${image}" alt="">
+    <div class="article resp-box no-bg-anim">
+        <img class="article-image resp-box no-touch" src="${image}" alt="">
         <div class="article-content-wrapper">
             <h3 class="article-title">${article_info.title}</h3>
             <div class="article-text-separator"></div>
             <p class="article-summary">${article_info.summary}</p>
-            <span onclick="openModal(this)" data-modal-target="#article-modal" class="article-read-more">Read more</span>
+            <button onclick="openModal(this)" data-modal-target="#article-modal" class="article-read-more primary resp-box">Read more</button>
         </div>
     </div>`.trim();
     const article = div.firstChild;

@@ -1,21 +1,16 @@
 #testimonials{
     padding: 40px 0;
     position: relative;
-    background: #f8f8f8;
-
-    /* Can remove if it doesnt look that good */
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
+    background: white;
     border-top: solid 2px black;
 }
 
 .testimonials-title{
-    text-align: center;
+    text-align: left;
 }
 
 .inner-testimonials{
     position: relative;
-    /* padding: 3% 12vw; */
     margin: auto -10px;
 }
 
@@ -25,54 +20,77 @@
 }
 
 .testimonial{
-    text-align: center;
-    margin: 10px;
-    /* background-color: #eeeeee;
-    border: solid 1px #dadada; */
-    vertical-align: middle;
+    position: relative;
     transition: ease 0.3s;
     height: inherit !important;
     width: 33%;
-    padding: 10px 20px;
+    margin: 10px;
 }
 
-.testimonial:hover{
-    /* background-color: #dadada;
-    transition: ease 0.3s; */
-}
 
 .testimonial-text-wrapper{
     display: flex;
-    height: 100%;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin: 30px 0px 10px 0px;
 }
 
-.testimonial-content{
+.testimonial-text{
     line-height: 1.5;
     font-style: italic;
+    z-index: 5;
+    height: 100%;
+    font-size: 20px;
 }
 
-.testimonial-content::before, .testimonial-content::after{
-    color: #f7ae12;
-    display: inline;
-    position: relative;
-    top: 15px;
-    font-family: serif;
-    line-height: 0;
-    font-size: 40px;
-    font-weight: bold;
+.testimonial-quotes {
+    width: 20%;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 4;
 }
 
-.testimonial-content::before {
-    content: '\201C';
+.testimonial-body {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: none !important;
 }
 
-.testimonial-content::after {
-    content: '\201D';
+.testimonial-footer {
+    padding: 10px;
+
+    background: radial-gradient(circle at 100px 20px, #d6d6d6 60%, #d6d6d6);
+
+    border-image-source: radial-gradient(circle at 50px 20px, #808080, #b0b0b0);
+    border-image-slice: 1;
+    border-width: 2px;
+    border-style: solid;
+}
+
+    .testimonial-footer-headline {
+        text-transform: uppercase;
+        font-size: 12px;
+        /* font-weight: 800; */
+    }
+
+    .testimonial-footer-content {
+        text-transform: uppercase;
+        /* font-family: 'Kanit', serif, Verdana; */
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 100%;
+    }
+
+.testimonial-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .testimonial-author {
     font-weight: bold;
+    font-size: 16px;
 }

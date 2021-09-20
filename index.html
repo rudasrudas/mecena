@@ -83,9 +83,9 @@
     </div>
     
     <!-- Song jukebox -->
-
+    
     <div id="jukebox">
-        <h1 class="jukebox-title">Most recent releases</h1>
+        <h1 class="jukebox-title">New releases</h1>
         <div class="inner-jukebox">
             <div id="jukebox-prev" class="jukebox-arrow material-icons">skip_previous</div>
             <div class="jukebox-carousel"></div>
@@ -130,7 +130,7 @@
     <div id="packages" class="inner-module">
         <h1 class="packages-headline">Music production packages</h1>
         <div class="inner-packages">
-            <div class="package resp-box no-touch">
+            <div class="package resp-box no-bg-anim">
                 <img src="./static/pictures/note.png" class="package-img">
                 <div class="package-label">
                     <h2>Design</h2>
@@ -142,7 +142,7 @@
                     <button class="package-action primary resp-box" onclick="location.href = '/shop#design'">View options</button>
                 </div>
             </div>
-            <div class="package resp-box no-touch">
+            <div class="package resp-box no-bg-anim">
                 <img src="./static/pictures/note.png" class="package-img">
                 <div class="package-label">
                     <h2>Music & Design</h2>
@@ -154,7 +154,7 @@
                     <button class="package-action primary resp-box" onclick="location.href = '/shop#musicanddesign'">View options</button>
                 </div>
             </div>
-            <div class="package resp-box no-touch">
+            <div class="package resp-box no-bg-anim">
                 <img src="./static/pictures/note.png" class="package-img">
                 <div class="package-label">
                     <h2>Music</h2>
@@ -173,7 +173,7 @@
 
     <div id="testimonials">
         <div class="inner-module">
-            <h2 class="testimonials-title">See what our clients say</h2>
+            <h1 class="testimonials-title">See what our clients say</h1>
             <div class="inner-testimonials">
                 <div class="testimonials-carousel"></div>
             </div>
@@ -184,7 +184,7 @@
     
     <div id="news">
         <div class="inner-module">
-            <h1 class="news-title">Latest news</h2>
+            <h1 class="news-title">Latest news</h1>
             <div class="inner-news"></div>
         </div>
     </div>
@@ -212,7 +212,7 @@
 
     <script>
         setupTestimonials();
-        initializeResponsiveBoxes();
+        callResponsiveBoxes();
     </script>
 </body>
 </html>

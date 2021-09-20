@@ -162,6 +162,8 @@ function renderSongs(){
             for(let i = 0; i < Object.keys(tracks).length; i++){
                 generateSongElement(tracks[i], jukebox);
             }
+
+            initializeResponsiveBoxes(document.querySelectorAll('.jukebox-song-img-wrapper.resp-box'));
         }
         else {
             alert('Request failed.  Returned status of ' + xhr.status);
@@ -204,7 +206,7 @@ function generateSongElement(track, jukebox){
     artist.innerHTML = track.artist;
 
     song.classList.add("jukebox-song");
-    coverWrapper.classList.add("jukebox-song-img-wrapper")
+    coverWrapper.classList.add("jukebox-song-img-wrapper", "resp-box", "no-bg-anim")
     cover.classList.add("jukebox-song-img");
     actionButton.classList.add("fas", "fa-play", "control-btn");
     title.classList.add("jukebox-song-title");
@@ -256,9 +258,7 @@ function pressNext(){
 function generateMediaElement(wrapper, iconClass, link){
     if(link.length > 0){
         const icon = document.createElement("a");
-        icon.classList.add(iconClass);
-        icon.classList.add("fab");
-        icon.classList.add("jukebox-song-media");
+        icon.classList.add(iconClass, "fab", "jukebox-song-media");
         icon.href = link;
         icon.target = "_blank";
 
