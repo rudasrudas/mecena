@@ -8,8 +8,11 @@
 		</style>
 	</head>
 	<body>
-		<script src="js/three.js"></script>
-		<script>
+		<!-- <script src="js/three.js"></script> -->
+		<script type="module">
+            import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
+import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
+            
 			const scene = new THREE.Scene();
             const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -17,17 +20,36 @@
             renderer.setSize( window.innerWidth, window.innerHeight );
             document.body.appendChild( renderer.domElement );
 
-            const geometry = new THREE.BoxGeometry();
-            const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-            const cube = new THREE.Mesh( geometry, material );
-            scene.add( cube );
+            // const geometry = new THREE.BoxGeometry();
+            // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+            // const cube = new THREE.Mesh( geometry, material );
+            // scene.add( cube );
+
+            var textureLoader = new THREE.TextureLoader();
+            var map =  textureLoader.load("./static/pictures/placeholder-profile.png");
+            map.encoding = THREE.sRGBEncoding;
+            map.flipY = false;
+
+            const loader = new GLTFLoader();
+            loader.load( './static/objects/mecena-logo.glb', function ( gltf ) {
+                var mesh = gltf.scene.children[0];
+                mesh.material = new THREE.MeshPhongMaterial({
+                    map: map,
+                    color: 0xff00ff,
+                });
+
+			    scene.add( mesh );
+                scene.add( gltf.scene );
+            }, undefined, function ( error ) {
+                console.error( error );
+            } );
 
             camera.position.z = 5;
 
             function animate() {
                 requestAnimationFrame( animate );
-                cube.rotation.x += 0.01;
-                cube.rotation.y += 0.01;
+                // cube.rotation.x += 0.01;
+                // cube.rotation.y += 0.01;
                 renderer.render( scene, camera );
             }
             animate();

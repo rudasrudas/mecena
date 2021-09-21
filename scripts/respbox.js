@@ -7,7 +7,7 @@ const b3 = '#d4d4d4';
 const g1 = '#f7ae12';
 const g2 = '#f7d23f';
 const g3 = '#d9980b';
-const g4 = '#e8a20f';
+const g4 = '#eca91c';
 
 function callResponsiveBoxes() {
     const boxes = document.querySelectorAll('.resp-box');

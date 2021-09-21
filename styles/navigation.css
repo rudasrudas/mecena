@@ -105,3 +105,21 @@
     height: auto;
     width: 200px;
 }
+
+.currency-select {
+    position: relative;
+    background: var(--color-header-bg);
+    color: white;
+
+    font-family: 'Open Sans';
+    font-size: 12px;
+    font-weight: 600; 
+
+    padding: 2px 6px;
+    border: solid 2px white;
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}

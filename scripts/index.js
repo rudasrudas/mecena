@@ -20,34 +20,33 @@ window.onresize = function(){
 }
 
 function customizePage() {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.mecena.net/`, true);
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            let res = JSON.parse(xhr.response);
-            updateNavBar(res.country, res.currency);
-        }
-        else {
-            alert('Request failed.  Returned status of ' + xhr.status);
-        }
-    };
-    xhr.send();
-}
 
-function updateNavBar(country, currency){
-    let symbol;
-    switch(currency){
-        case 'GBP':
-            symbol = 'fa-pound-sign';
-            break;
-        case 'EUR':
-            symbol = 'fa-euro-sign';
-            break;
-        default:
-            symbol = 'fa-dollar-sign';
-            break;
+    let connected = true;
+
+    if(sessionStorage.getItem('clientDataInitialized') === null){
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', `https://api.mecena.net/`, true);
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                let res = JSON.parse(xhr.response);
+                sessionStorage.setItem('clientCountry', res.country)
+                sessionStorage.setItem('clientCurrency', res.currency);
+                sessionStorage.setItem('clientProducts', JSON.stringify(res.products));
+                sessionStorage.setItem('clientDataInitialized', true);
+            }
+            else {
+                alert('Failed to connect to the server. Status code: ' + xhr.status);
+                connected = false;
+            }
+        };
+        xhr.send();
     }
 
+    if(connected) 
+        updateNavBar(sessionStorage.getItem('clientCurrency'));
+}
+
+function updateNavBar(currency){
     document.querySelector('#nav-currency').innerHTML = currency;
 }
 
@@ -57,5 +56,31 @@ async function setupLoadingScreen() {
         sessionStorage.setItem('firstTime', false);
         await sleep(3000);
         document.querySelector('.loading-screen').classList.add('hidden');
+    }
+}
+
+function getSymbol(currency){
+    switch(currency){
+        case 'EUR': return '€';
+        case 'USD': return '$';
+        case 'GBP': return '£';
+    }
+}
+
+function initializeFromPrices(){
+    const priceElements = document.querySelectorAll(".package-desc[fromprice]");
+    // console.log(priceElements);
+    const currency = sessionStorage.getItem('clientCurrency');
+    const products = JSON.parse(sessionStorage.getItem('clientProducts'));
+    
+    for(let i = 0; i < priceElements.length; i++){
+        var productArr = [];
+        for(let j = 0; j < products.length; j++){
+            if(priceElements[i].getAttribute('productids').includes(products[j].id)){
+                productArr.push(products[j].price);
+            }
+        }
+        if(productArr != [])
+            priceElements[i].innerHTML = 'from ' + Math.min(...productArr) + getSymbol(currency); 
     }
 }

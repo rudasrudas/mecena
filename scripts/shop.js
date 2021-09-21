@@ -24,3 +24,20 @@ function hidePackageDetails(id) {
         document.getElementsByClassName('package-img')[`${Math.floor(id/3)}`].classList.remove('faded');
     }
 }
+
+function initializePrices(){
+    const priceElements = document.querySelectorAll(".package-price[price]");
+    const currency = sessionStorage.getItem('clientCurrency');
+    const products = JSON.parse(sessionStorage.getItem('clientProducts'));
+    
+    for(let i = 0; i < priceElements.length; i++){
+        var product = null;
+        for(let j = 0; j < products.length; j++){
+            if(products[j].id == priceElements[i].getAttribute('productid')){
+                product = products[j];
+            }
+        }
+        if(product != null)
+            priceElements[i].innerHTML = '' + product.price + getSymbol(currency); 
+    }
+}
