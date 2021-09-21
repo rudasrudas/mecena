@@ -1,0 +1,11 @@
+Model Information:
+* title:	12" Vinyl Record
+* source:	https://sketchfab.com/3d-models/12-vinyl-record-dd27284e8c1a4622b3a0433c7cc8ee72
+* author:	AleixoAlonso (https://sketchfab.com/AleixoAlonso)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "12" Vinyl Record" (https://sketchfab.com/3d-models/12-vinyl-record-dd27284e8c1a4622b3a0433c7cc8ee72) by AleixoAlonso (https://sketchfab.com/AleixoAlonso) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

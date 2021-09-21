@@ -6,7 +6,6 @@ window.onload = async function(){
 }
 
 ;(async function(){
-    customizePage();
 })();
 
 function sleep(ms) {
@@ -20,10 +19,8 @@ window.onresize = function(){
 }
 
 function customizePage() {
-
     let connected = true;
-
-    if(sessionStorage.getItem('clientDataInitialized') === null){
+    if(sessionStorage.getItem('clientDataInitialized') === null || true){
         const xhr = new XMLHttpRequest();
         xhr.open('GET', `https://api.mecena.net/`, true);
         xhr.onload = function() {
@@ -32,6 +29,8 @@ function customizePage() {
                 sessionStorage.setItem('clientCountry', res.country)
                 sessionStorage.setItem('clientCurrency', res.currency);
                 sessionStorage.setItem('clientProducts', JSON.stringify(res.products));
+                sessionStorage.setItem('clientShoppingCart', '[]');
+                console.log(sessionStorage.getItem('clientShoppingCart'));
                 sessionStorage.setItem('clientDataInitialized', true);
             }
             else {
@@ -42,7 +41,7 @@ function customizePage() {
         xhr.send();
     }
 
-    if(connected) 
+    if(connected)
         updateNavBar(sessionStorage.getItem('clientCurrency'));
 }
 
@@ -55,6 +54,7 @@ async function setupLoadingScreen() {
         document.querySelector('.loading-screen').classList.remove('hidden');
         sessionStorage.setItem('firstTime', false);
         await sleep(3000);
+        customizePage();
         document.querySelector('.loading-screen').classList.add('hidden');
     }
 }
@@ -74,7 +74,7 @@ function initializeFromPrices(){
     const products = JSON.parse(sessionStorage.getItem('clientProducts'));
     
     for(let i = 0; i < priceElements.length; i++){
-        var productArr = [];
+        let productArr = [];
         for(let j = 0; j < products.length; j++){
             if(priceElements[i].getAttribute('productids').includes(products[j].id)){
                 productArr.push(products[j].price);

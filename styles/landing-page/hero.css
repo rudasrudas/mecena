@@ -22,6 +22,7 @@
     position: fixed;
     width: inherit;
     height: 100vh;
+    z-index: 0;
     background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/pictures/damascus.svg');
 
     animation: shift 15s;
@@ -70,4 +71,13 @@
     cursor: default;
     text-decoration: none;
     color: var(--color-hero-text) !important;
+}
+
+.visual-hero-content {
+    z-index: 15;
+}
+
+#hero-canvas {
+    /* mix-blend-mode: multiply; */
+    opacity: 1;
 }

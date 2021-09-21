@@ -11,6 +11,12 @@
     <script defer src="./scripts/news.js"></script>
     <script defer src="./scripts/modal.js"></script>
     <script src="./scripts/respbox.js"></script>
+    
+    <!-- Three JS -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/libs/dat.gui.module.js"></script>
+    <script type="module" src="./scripts/threejs/vinylModel.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
@@ -45,6 +51,12 @@
     
     <!-- Hero -->
     <div id="hero">
+        
+        <!-- <div class="visual-hero-content">
+            <img id="hero-img" src="../static/pictures/dj-hero.png" alt=""/>
+        </div> -->
+        <canvas id="hero-canvas"></canvas>
+        
         <div class="hero-background"></div>
         
         <div class="hero-content">
@@ -64,9 +76,6 @@
             </div>
         </div>
         
-        <div class="visual-hero-content">
-            <img id="hero-img" src="../static/pictures/dj-hero.png" alt=""/>
-        </div>
         
         <div class="hero-footer">
             <a class="hero-footer-content" href="#about">Scroll for more</a>
@@ -103,9 +112,7 @@
         </a>
     </div>
 
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-
     <script>
         setupJukebox();
     </script>

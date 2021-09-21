@@ -31,7 +31,7 @@ function initializePrices(){
     const products = JSON.parse(sessionStorage.getItem('clientProducts'));
     
     for(let i = 0; i < priceElements.length; i++){
-        var product = null;
+        let product = null;
         for(let j = 0; j < products.length; j++){
             if(products[j].id == priceElements[i].getAttribute('productid')){
                 product = products[j];
@@ -39,5 +39,47 @@ function initializePrices(){
         }
         if(product != null)
             priceElements[i].innerHTML = '' + product.price + getSymbol(currency); 
+        else 
+            console.log("Failed to update price. Product could not be found.");
     }
+}
+
+function addToShoppingCart(id){
+    let shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
+    console.log(shoppingCart);
+    if (shoppingCart === null){
+        shoppingCart = JSON.parse('[]');
+    }
+    console.log(shoppingCart);
+
+    let product = null;
+    for(let i = 0; i < shoppingCart.length; i++){
+        if(shoppingCart[i].product == id){
+            product = shoppingCart[i];
+            break;
+        }
+    }
+
+    if(product != null){
+        product.quantity += 1;
+    }
+    else {
+        const products = JSON.parse(sessionStorage.getItem('clientProducts'));
+        let price;
+        for(let i = 0; i < products.length; i++){
+            if(products[i].id == id){
+                price = products[i].price;
+                break;
+            }
+        }
+        console.log(shoppingCart);
+        if(price != null){
+            shoppingCart.push({"product": id, "price": price, "quantity": 1});
+        }
+        else{ 
+            console.log("Failed to add item to shopping cart. Price could not be found.");
+        }
+    }
+    
+    sessionStorage.setItem('clientShoppingCart', JSON.stringify(shoppingCart));
 }

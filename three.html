@@ -8,53 +8,72 @@
 		</style>
 	</head>
 	<body>
-		<!-- <script src="js/three.js"></script> -->
+        <canvas id="about-canvas"></canvas>
 		<script type="module">
-            import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
-import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
-            
-			const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+            import * as THREE       from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
+            import { GLTFLoader }   from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
+            import * as dat         from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/libs/dat.gui.module.js";
+			var scene, camera, renderer;
 
-            const renderer = new THREE.WebGLRenderer();
-            renderer.setSize( window.innerWidth, window.innerHeight );
-            document.body.appendChild( renderer.domElement );
+            function init(){
+                scene = new THREE.Scene();
+                scene.background = new THREE.Color(0xffffff);
 
-            // const geometry = new THREE.BoxGeometry();
-            // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-            // const cube = new THREE.Mesh( geometry, material );
-            // scene.add( cube );
+                camera = new THREE.PerspectiveCamera(40, window.innerWidth/window.innerHeight,1,5000);
+                camera.rotation.x = -0.85;
+                camera.rotation.y = 0.7;
+                camera.rotation.z = -0.05;
 
-            var textureLoader = new THREE.TextureLoader();
-            var map =  textureLoader.load("./static/pictures/placeholder-profile.png");
-            map.encoding = THREE.sRGBEncoding;
-            map.flipY = false;
+                camera.position.x = 1;
+                camera.position.y = 1;
+                camera.position.z = 1;
 
-            const loader = new GLTFLoader();
-            loader.load( './static/objects/mecena-logo.glb', function ( gltf ) {
-                var mesh = gltf.scene.children[0];
-                mesh.material = new THREE.MeshPhongMaterial({
-                    map: map,
-                    color: 0xff00ff,
+                var gui = new dat.GUI();
+                gui.add(camera.rotation, 'x').step(0.05);
+                gui.add(camera.rotation, 'y').step(0.05);
+                gui.add(camera.rotation, 'z').step(0.05);
+
+                var hlight = new THREE.AmbientLight (0x404040, 100);
+
+                scene.add(hlight);
+
+                
+                var canvasElm = document.querySelector('#about-canvas');
+
+                renderer = new THREE.WebGLRenderer({antialias: true, alpha: true, canvas: canvasElm});
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setClearColor( 0x000000, 0);
+
+
+                var loader = new GLTFLoader();
+                loader.load('./static/objects/vinyl/scene.gltf', function(gltf){
+                    var model = gltf.scene.children[0];
+                    model.scale.set(5, 5, 5);
+                    model.rotation.set(-1.45, 0.05, 0);
+                    console.log(model.rotation);
+
+                    gui.add(model.rotation, 'x').step(0.05);
+                    gui.add(model.rotation, 'y').step(0.05);
+                    gui.add(model.rotation, 'z').step(0.05);
+
+                    gui.add(model.scale, 'x').step(0.05);
+                    gui.add(model.scale, 'y').step(0.05);
+                    gui.add(model.scale, 'z').step(0.05);
+
+                    scene.add(gltf.scene);
                 });
 
-			    scene.add( mesh );
-                scene.add( gltf.scene );
-            }, undefined, function ( error ) {
-                console.error( error );
-            } );
+                function animate(){
+                    requestAnimationFrame(animate);
 
-            camera.position.z = 5;
+                    renderer.render(scene, camera);
 
-            function animate() {
-                requestAnimationFrame( animate );
-                // cube.rotation.x += 0.01;
-                // cube.rotation.y += 0.01;
-                renderer.render( scene, camera );
+                }
+
+                animate();
             }
-            animate();
 
-
+            init();
 		</script>
 	</body>
 </html>
