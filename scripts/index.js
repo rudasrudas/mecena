@@ -53,8 +53,8 @@ async function setupLoadingScreen() {
     if(sessionStorage.getItem('firstTime') === null){
         document.querySelector('.loading-screen').classList.remove('hidden');
         sessionStorage.setItem('firstTime', false);
-        await sleep(3000);
         customizePage();
+        await sleep(3000);
         document.querySelector('.loading-screen').classList.add('hidden');
     }
 }

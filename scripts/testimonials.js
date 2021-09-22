@@ -8,7 +8,6 @@ function setupTestimonials(){
             autoplay: true,
             autoplaySpeed: 3000,
             speed: 500,
-            pauseOnHover: true,
             draggable: false,
             swipe: false,
             touchMove: false,

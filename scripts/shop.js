@@ -81,3 +81,11 @@ function addToShoppingCart(id){
     
     sessionStorage.setItem('clientShoppingCart', JSON.stringify(shoppingCart));
 }
+
+function checkout(){
+    const shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
+    if(shoppingCart.length == 0) return;
+
+    console.log(shoppingCart);
+
+}
