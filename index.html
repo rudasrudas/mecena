@@ -13,9 +13,9 @@
     <script src="./scripts/respbox.js"></script>
     
     <!-- Three JS -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/libs/dat.gui.module.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/libs/dat.gui.module.js"></script>
     <script type="module" src="./scripts/threejs/vinylModel.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
@@ -55,9 +55,11 @@
         <!-- <div class="visual-hero-content">
             <img id="hero-img" src="../static/pictures/dj-hero.png" alt=""/>
         </div> -->
-        <canvas id="hero-canvas"></canvas>
+        <div class="global-background"></div>
         
-        <div class="hero-background"></div>
+        <div class="hero-background">
+            <canvas id="hero-canvas"></canvas>
+        </div>
         
         <div class="hero-content">
             <h1 class="hero-title">No more labels</h1>

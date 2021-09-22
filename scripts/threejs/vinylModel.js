@@ -52,7 +52,8 @@ function init(){
 
     function animate(){
         requestAnimationFrame(animate);
-        model.rotation.z += 0.01;
+        if(model)
+            model.rotation.z += 0.01;
         renderer.render(scene, camera);
 
     }
@@ -61,5 +62,3 @@ function init(){
 }
 
 init();
-
-module.exports = {}

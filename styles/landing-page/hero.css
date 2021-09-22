@@ -18,12 +18,24 @@
     top: 0;
 }
 
-.hero-background {
+.global-background {
     position: fixed;
     width: inherit;
     height: 100vh;
     z-index: 0;
-    background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url('/static/pictures/damascus.svg');
+    background-image: linear-gradient( #ffffffe6, #ffffffe6 ), url('/static/pictures/damascus.svg');
+
+    animation: shift 15s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease;
+}
+
+.hero-background {
+    /* position: fixed; */
+    width: inherit;
+    height: 100vh;
+    z-index: 0;
+    background-image: linear-gradient( #ffffffe6, #ffffffe6 ), url('/static/pictures/damascus.svg');
 
     animation: shift 15s;
     animation-iteration-count: infinite;
@@ -75,9 +87,4 @@
 
 .visual-hero-content {
     z-index: 15;
-}
-
-#hero-canvas {
-    /* mix-blend-mode: multiply; */
-    opacity: 1;
 }

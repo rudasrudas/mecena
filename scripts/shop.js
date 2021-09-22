@@ -46,11 +46,9 @@ function initializePrices(){
 
 function addToShoppingCart(id){
     let shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
-    console.log(shoppingCart);
     if (shoppingCart === null){
         shoppingCart = JSON.parse('[]');
     }
-    console.log(shoppingCart);
 
     let product = null;
     for(let i = 0; i < shoppingCart.length; i++){
@@ -72,7 +70,7 @@ function addToShoppingCart(id){
                 break;
             }
         }
-        console.log(shoppingCart);
+        
         if(price != null){
             shoppingCart.push({"product": id, "price": price, "quantity": 1});
         }
