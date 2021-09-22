@@ -42,19 +42,26 @@ function customizePage() {
     }
 
     if(connected)
-        updateNavBar(sessionStorage.getItem('clientCurrency'));
+        sessionStorage.setItem('clientConnected', true);
 }
 
 function updateNavBar(currency){
     document.querySelector('#nav-currency').innerHTML = currency;
 }
 
+function updateNavBar2(){
+    if(sessionStorage.getItem('clientConnected') === true)
+        updateNavBar(sessionStorage.getItem('clientCurrency'));
+    else
+        console.log("Client was not connected in time to update nav bar");
+}
+
 async function setupLoadingScreen() {
     if(sessionStorage.getItem('firstTime') === null){
         document.querySelector('.loading-screen').classList.remove('hidden');
         sessionStorage.setItem('firstTime', false);
-        await sleep(3000);
         customizePage();
+        await sleep(3000);
         document.querySelector('.loading-screen').classList.add('hidden');
     }
 }
