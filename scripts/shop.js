@@ -63,16 +63,17 @@ function addToShoppingCart(id){
     }
     else {
         const products = JSON.parse(sessionStorage.getItem('clientProducts'));
-        let price;
+        let price, productId;
         for(let i = 0; i < products.length; i++){
             if(products[i].id == id){
                 price = products[i].price;
+                productId = products[i].productId;
                 break;
             }
         }
-        
+
         if(price != null){
-            shoppingCart.push({"product": id, "price": price, "quantity": 1});
+            shoppingCart.push({"product": id, "priceId": productId, "price": price, "quantity": 1});
         }
         else{ 
             console.log("Failed to add item to shopping cart. Price could not be found.");
