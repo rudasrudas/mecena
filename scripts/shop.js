@@ -83,7 +83,7 @@ function addToShoppingCart(id, title){
     sessionStorage.setItem('clientShoppingCart', JSON.stringify(shoppingCart));
     updateShoppingCart();
 
-    document.querySelector('#shopping-window').classList.remove('hidden');
+    document.querySelector('#shopping-window').classList.remove('shopping-hidden');
 }
 
 function checkout(){
