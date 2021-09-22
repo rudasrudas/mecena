@@ -87,6 +87,14 @@ function checkout(){
     const shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
     if(shoppingCart.length == 0) return;
 
-    console.log(shoppingCart);
+    const formattedCart = shoppingCart.map(item => ({price: item.priceId, quantity: item.quantity}));
 
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `https://api.mecena.net/checkout/create-checkout-session`, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onload = function(){
+        console.log(xhr.response);
+    }
+    
+    xhr.send(JSON.stringify(formattedCart))
 }
