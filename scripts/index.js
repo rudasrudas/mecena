@@ -18,7 +18,7 @@ window.onresize = function(){
     }
 }
 
-function customizePage() {
+async function customizePage() {
     let connected = true;
     if(sessionStorage.getItem('clientDataInitialized') === null || true){
         const xhr = new XMLHttpRequest();
@@ -30,7 +30,6 @@ function customizePage() {
                 sessionStorage.setItem('clientCurrency', res.currency);
                 sessionStorage.setItem('clientProducts', JSON.stringify(res.products));
                 sessionStorage.setItem('clientShoppingCart', '[]');
-                console.log(sessionStorage.getItem('clientShoppingCart'));
                 sessionStorage.setItem('clientDataInitialized', true);
             }
             else {
@@ -38,7 +37,7 @@ function customizePage() {
                 connected = false;
             }
         };
-        xhr.send();
+        await xhr.send();
     }
 
     if(connected)
@@ -50,6 +49,7 @@ function updateNavBar(currency){
 }
 
 function updateNavBar2(){
+    console.log("Updating nav bar!");
     if(sessionStorage.getItem('clientConnected') === true)
         updateNavBar(sessionStorage.getItem('clientCurrency'));
     else
@@ -60,7 +60,7 @@ async function setupLoadingScreen() {
     if(sessionStorage.getItem('firstTime') === null){
         document.querySelector('.loading-screen').classList.remove('hidden');
         sessionStorage.setItem('firstTime', false);
-        customizePage();
+        await customizePage();
         await sleep(3000);
         document.querySelector('.loading-screen').classList.add('hidden');
     }
@@ -76,7 +76,6 @@ function getSymbol(currency){
 
 function initializeFromPrices(){
     const priceElements = document.querySelectorAll(".package-desc[fromprice]");
-    // console.log(priceElements);
     const currency = sessionStorage.getItem('clientCurrency');
     const products = JSON.parse(sessionStorage.getItem('clientProducts'));
     
@@ -89,5 +88,108 @@ function initializeFromPrices(){
         }
         if(productArr != [])
             priceElements[i].innerHTML = 'from ' + Math.min(...productArr) + getSymbol(currency); 
+    }
+}
+
+function updateShoppingCartLocation(){
+    const shoppingCartButton = document.querySelector('#checkout-btn');
+    const shoppingCartWindow = document.querySelector('#shopping-window');
+    shoppingCartWindow.style.top = (shoppingCartButton.offsetTop + shoppingCartButton.offsetHeight).toString() + 'px';
+    shoppingCartWindow.style.right = (window.screen.width - shoppingCartButton.offsetLeft - shoppingCartButton.offsetWidth).toString() + 'px';
+}
+
+function updateShoppingCart(){
+    const shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
+    const shoppingCartElm = document.querySelector('#shopping-cart');
+    const symbol = getSymbol(sessionStorage.getItem('clientCurrency'));
+
+    shoppingCartElm.innerHTML = '';
+
+    for(let i = 0; i < shoppingCart.length; i++){
+        let div = document.createElement('div');
+        div.innerHTML = `
+        <div class="shopping-cart-item">
+            <h4 class="item-title">${shoppingCart[i].productName}</h4>
+            <h4 class="item-price">${shoppingCart[i].price * shoppingCart[i].quantity}${symbol}</h4>
+            <div class="item-quantity-selector">
+                <button class="item-quantity-less resp-box" onclick="decreaseQuantity('${shoppingCart[i].product}')">
+                    <span class="material-icons">remove</span>
+                </button>
+                <p class="item-quantity resp-box no-touch">${shoppingCart[i].quantity}</p>
+                <button class="item-quantity-more resp-box" onclick="increaseQuantity('${shoppingCart[i].product}')">
+                    <span class="material-icons">add</span>
+                </button>
+            </div>
+        </div>
+        `;
+
+        shoppingCartElm.append(div);
+    }
+
+    updateShoppingCartLocation();
+
+    if(shoppingCart.length == 0){
+        let p = document.createElement('p');
+        p.innerHTML = "You don't have any items in your shopping cart.";
+        document.querySelector('.purchase-btn').classList.add('shopping-hidden');
+        shoppingCartElm.append(p);
+    }
+    else {
+        document.querySelector('.purchase-btn').classList.remove('shopping-hidden');
+    }
+}
+
+function removeEmptyItems(){
+    const shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
+    
+    for(let i = shoppingCart.length - 1; i >= 0 ; i--){
+        if(shoppingCart[i].quantity == 0){
+            shoppingCart.splice(i, 1);
+        }
+    }
+
+    sessionStorage.setItem('clientShoppingCart', JSON.stringify(shoppingCart));
+    updateShoppingCart();
+}
+
+function decreaseQuantity(product){
+    const shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
+
+    for(let i = 0; i < shoppingCart.length; i++){
+        if(shoppingCart[i].product === product){
+            if(shoppingCart[i].quantity > 0){
+                shoppingCart[i].quantity--;
+                sessionStorage.setItem('clientShoppingCart', JSON.stringify(shoppingCart));
+                updateShoppingCart()
+            }
+            return;
+        }
+    }
+}
+
+function increaseQuantity(product){
+    const shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
+
+    for(let i = 0; i < shoppingCart.length; i++){
+        if(shoppingCart[i].product === product){
+            if(shoppingCart[i].quantity < 10){
+                shoppingCart[i].quantity++;
+                sessionStorage.setItem('clientShoppingCart', JSON.stringify(shoppingCart));
+                updateShoppingCart()
+            }
+            return;
+        }
+    }
+}
+
+function toggleShoppingCart(){
+    removeEmptyItems();
+
+    const element = document.querySelector('#shopping-window');
+    if(element.classList.contains('shopping-hidden')){
+        element.classList.remove('shopping-hidden');
+    }
+    else {
+        element.classList.add('shopping-hidden');
     }
 }

@@ -44,7 +44,7 @@ function initializePrices(){
     }
 }
 
-function addToShoppingCart(id){
+function addToShoppingCart(id, title){
     let shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
     if (shoppingCart === null){
         shoppingCart = JSON.parse('[]');
@@ -73,7 +73,7 @@ function addToShoppingCart(id){
         }
 
         if(price != null){
-            shoppingCart.push({"product": id, "priceId": productId, "price": price, "quantity": 1});
+            shoppingCart.push({"productName": title, "product": id, "priceId": productId, "price": price, "quantity": 1});
         }
         else{ 
             console.log("Failed to add item to shopping cart. Price could not be found.");
@@ -81,6 +81,9 @@ function addToShoppingCart(id){
     }
     
     sessionStorage.setItem('clientShoppingCart', JSON.stringify(shoppingCart));
+    updateShoppingCart();
+
+    document.querySelector('#shopping-window').classList.remove('hidden');
 }
 
 function checkout(){

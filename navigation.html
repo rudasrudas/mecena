@@ -17,11 +17,50 @@
             <a href="/about/">About</a>
         </div>
         <div class="navbar-right">
-            <button id="checkout-btn" class="primary resp-box" onclick="checkout()">
+            <button id="checkout-btn" class="primary resp-box" onclick="toggleShoppingCart()">
                 <!-- <span class="material-icons shopping-cart-icon">shopping_cart</span> -->
                 Shopping cart
             </button>
-            <p id="nav-currency" class="currency-select" onload="updateNavBar2()"></p>
+            <!-- <p id="nav-currency" class="currency-select" onload="updateNavBar2()"></p> -->
         </div>
     </div>
 </nav>
+
+<div id="shopping-window" class="shopping-hidden resp-box no-touch">
+    <div class="shopping-window-header">
+        <h3 class="shopping-cart-title">Shopping cart</h3>
+        <span onclick="toggleShoppingCart()" class="shopping-cart-close material-icons">close</span>
+    </div>
+    <div id="shopping-cart">
+        <!-- <div class="shopping-cart-item">
+            <h4 class="item-title">Music: Premium package</h4>
+            <h4 class="item-price">199€</h4>
+            <div class="item-quantity-selector">
+                <button class="item-quantity-less resp-box">
+                    -
+                </button>
+                <p class="item-quantity resp-box no-touch">
+                    3
+                </p>
+                <button class="item-quantity-more resp-box">
+                    +
+                </button>
+            </div>
+        </div>
+
+        <div class="shopping-cart-item">
+            <h4 class="item-title">Music: Premium package</h4>
+            <h4 class="item-price">199€</h4>
+            <div class="item-quantity-selector">
+                <button class="item-quantity-less resp-box">
+                    <span class="material-icons">remove</span>
+                </button>
+                <p class="item-quantity resp-box no-touch">2</p>
+                <button class="item-quantity-more resp-box">
+                    <span class="material-icons">add</span>
+                </button>
+            </div>
+        </div> -->
+    </div>
+    <button class="primary resp-box purchase-btn" onclick="removeEmptyItems(); checkout()">Purchase</button>
+</div>
