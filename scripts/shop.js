@@ -96,8 +96,10 @@ function checkout(){
     xhr.open('POST', `https://api.mecena.net/checkout/create-checkout-session`, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onload = function(){
-        console.log(xhr.response);
+        if (xhr.status >= 200 && xhr.status < 300) {
+            let url = JSON.parse(xhr.response).url;
+            window.location = url;
+        }
     }
-    
     xhr.send(JSON.stringify(formattedCart))
 }
