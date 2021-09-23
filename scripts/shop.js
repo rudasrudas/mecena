@@ -103,3 +103,30 @@ function checkout(){
     }
     xhr.send(JSON.stringify(formattedCart))
 }
+
+function getCustomer(){
+    const appreciation = document.getElementById("appreciation-message");
+    const emailSentMessage = document.getElementById("email-sent-message");
+    let params = new URLSearchParams(window.location.search);
+    let id = params.get("id");
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://api.mecena.net/checkout/success?id=` + id, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const customer = JSON.parse(xhr.response);
+            appreciation.innerHTML = `Thank you, ${customer.name}`;
+            emailSentMessage.innerHTML = `The order invoice has been sent to your email at ${customer.email}`;
+        }
+        else {
+            alert('Request failed.  Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
+}
+
+function clearCart(){
+    if(sessionStorage.getItem("clientShoppingCart") !== null){
+        sessionStorage.removeItem("clientShoppingCart");
+    }
+}
