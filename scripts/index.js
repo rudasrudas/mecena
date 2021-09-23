@@ -8,12 +8,11 @@
     });
 })();
 
-window.onload = async function(){
+window.onload = function(){
     if(document.location.pathname === '/'){
         updateArrowPosition();
         window.onscroll = updateVinyl;
     }
-    // customizePage();
 }
 
 window.onresize = function(){
@@ -33,7 +32,6 @@ function customizePage() {
             xhr.open('GET', `https://api.mecena.net/`, true);
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    console.log("Updating client info in storage!");
                     let res = JSON.parse(xhr.response);
                     sessionStorage.setItem('clientCountry', res.country)
                     sessionStorage.setItem('clientCurrency', res.currency);
