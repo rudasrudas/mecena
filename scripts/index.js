@@ -1,3 +1,11 @@
+;(async () => {
+    let contentLoaded = await new Promise((resolve) => document.addEventListener('DOMContentLoaded', resolve));
+    Promise.all([await customizePage(), contentLoaded]).then(() => {
+        if(document.location.pathname === '/')  initializeFromPrices();
+        if(document.location.pathname === '/shop/')  initializePrices();
+    });
+})();
+
 window.onload = async function(){
     if(document.location.pathname === '/'){
         updateArrowPosition();
@@ -6,26 +14,18 @@ window.onload = async function(){
     // customizePage();
 }
 
-window.addEventListener('DOMContentLoaded', async (event) => {
-    customizePage().then(() => {
-        if(document.location.pathname === '/')  initializeFromPrices();
-        if(document.location.pathname === '/shop/')  initializePrices();
-    });
-});
-
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 window.onresize = function(){
     if(document.location.pathname === '/'){
         updateArrowPosition();
     }
 }
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function customizePage() {
-    return new Promise(function (resolve, rejest){
-        let connected = true;
+    return new Promise(function (resolve, reject){
         if(sessionStorage.getItem('clientDataInitialized') === null){
             const xhr = new XMLHttpRequest();
             xhr.open('GET', `https://api.mecena.net/`, true);
@@ -42,15 +42,11 @@ function customizePage() {
                 }
                 else {
                     console.log('Failed to connect to the server. Status code: ' + xhr.status);
-                    connected = false;
                     reject();
                 }
             };
             xhr.send();
         }
-
-        if(connected)
-            sessionStorage.setItem('clientConnected', true);
     });
 }
 
@@ -58,12 +54,12 @@ function updateNavBar(currency){
     document.querySelector('#nav-currency').innerHTML = currency;
 }
 
-function updateNavBar2(){
-    if(sessionStorage.getItem('clientConnected') === true)
-        updateNavBar(sessionStorage.getItem('clientCurrency'));
-    else
-        console.log("Client was not connected in time to update nav bar");
-}
+// function updateNavBar2(){
+//     if(sessionStorage.getItem('clientConnected') === true)
+//         updateNavBar(sessionStorage.getItem('clientCurrency'));
+//     else
+//         console.log("Client was not connected in time to update nav bar");
+// }
 
 async function setupLoadingScreen() {
     if(sessionStorage.getItem('firstTime') === null){
