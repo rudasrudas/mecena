@@ -3,11 +3,15 @@ window.onload = async function(){
         updateArrowPosition();
         window.onscroll = updateVinyl;
     }
-    customizePage();
+    // customizePage();
 }
 
-;(async function(){
-})();
+window.addEventListener('DOMContentLoaded', async (event) => {
+    customizePage().then(() => {
+        if(document.location.pathname === '/')  initializeFromPrices();
+        if(document.location.pathname === '/shop/')  initializePrices();
+    });
+});
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -19,30 +23,35 @@ window.onresize = function(){
     }
 }
 
-async function customizePage() {
-    let connected = true;
-    if(sessionStorage.getItem('clientDataInitialized') === null || true){
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', `https://api.mecena.net/`, true);
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                let res = JSON.parse(xhr.response);
-                sessionStorage.setItem('clientCountry', res.country)
-                sessionStorage.setItem('clientCurrency', res.currency);
-                sessionStorage.setItem('clientProducts', JSON.stringify(res.products));
-                sessionStorage.setItem('clientShoppingCart', '[]');
-                sessionStorage.setItem('clientDataInitialized', true);
-            }
-            else {
-                alert('Failed to connect to the server. Status code: ' + xhr.status);
-                connected = false;
-            }
-        };
-        await xhr.send();
-    }
+function customizePage() {
+    return new Promise(function (resolve, rejest){
+        let connected = true;
+        if(sessionStorage.getItem('clientDataInitialized') === null){
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `https://api.mecena.net/`, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log("Updating client info in storage!");
+                    let res = JSON.parse(xhr.response);
+                    sessionStorage.setItem('clientCountry', res.country)
+                    sessionStorage.setItem('clientCurrency', res.currency);
+                    sessionStorage.setItem('clientProducts', JSON.stringify(res.products));
+                    sessionStorage.setItem('clientShoppingCart', '[]');
+                    sessionStorage.setItem('clientDataInitialized', true);
+                    resolve();
+                }
+                else {
+                    console.log('Failed to connect to the server. Status code: ' + xhr.status);
+                    connected = false;
+                    reject();
+                }
+            };
+            xhr.send();
+        }
 
-    if(connected)
-        sessionStorage.setItem('clientConnected', true);
+        if(connected)
+            sessionStorage.setItem('clientConnected', true);
+    });
 }
 
 function updateNavBar(currency){
@@ -50,7 +59,6 @@ function updateNavBar(currency){
 }
 
 function updateNavBar2(){
-    console.log("Updating nav bar!");
     if(sessionStorage.getItem('clientConnected') === true)
         updateNavBar(sessionStorage.getItem('clientCurrency'));
     else
@@ -61,7 +69,7 @@ async function setupLoadingScreen() {
     if(sessionStorage.getItem('firstTime') === null){
         document.querySelector('.loading-screen').classList.remove('hidden');
         sessionStorage.setItem('firstTime', false);
-        await sleep(3000);
+        await sleep(2000);
         document.querySelector('.loading-screen').classList.add('hidden');
     }
 }
@@ -74,7 +82,8 @@ function getSymbol(currency){
     }
 }
 
-function initializeFromPrices(){
+async function initializeFromPrices(){
+
     const priceElements = document.querySelectorAll(".package-desc[fromprice]");
     const currency = sessionStorage.getItem('clientCurrency');
     const products = JSON.parse(sessionStorage.getItem('clientProducts'));
@@ -90,6 +99,10 @@ function initializeFromPrices(){
             priceElements[i].innerHTML = 'from ' + Math.min(...productArr) + getSymbol(currency); 
     }
 }
+
+/////////////////////////////////////////////////////////////
+///                 SHOPPING CART FUNCTIONS                //
+/////////////////////////////////////////////////////////////
 
 function updateShoppingCartLocation(){
     const shoppingCartButton = document.querySelector('#checkout-btn');
@@ -192,4 +205,92 @@ function toggleShoppingCart(){
     else {
         element.classList.add('shopping-hidden');
     }
+}
+
+function addToShoppingCart(id, title){
+    let shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
+    if (shoppingCart === null){
+        shoppingCart = JSON.parse('[]');
+    }
+
+    let product = null;
+    for(let i = 0; i < shoppingCart.length; i++){
+        if(shoppingCart[i].product == id){
+            product = shoppingCart[i];
+            break;
+        }
+    }
+
+    if(product != null){
+        product.quantity += 1;
+    }
+    else {
+        const products = JSON.parse(sessionStorage.getItem('clientProducts'));
+        let price, productId;
+        for(let i = 0; i < products.length; i++){
+            if(products[i].id == id){
+                price = products[i].price;
+                productId = products[i].productId;
+                break;
+            }
+        }
+
+        if(price != null){
+            shoppingCart.push({"productName": title, "product": id, "priceId": productId, "price": price, "quantity": 1});
+        }
+        else{ 
+            console.log("Failed to add item to shopping cart. Price could not be found.");
+        }
+    }
+    
+    sessionStorage.setItem('clientShoppingCart', JSON.stringify(shoppingCart));
+    updateShoppingCart();
+
+    document.querySelector('#shopping-window').classList.remove('shopping-hidden');
+}
+
+function checkout(){
+    const shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
+    if(shoppingCart.length == 0) return;
+
+    const formattedCart = shoppingCart.map(item => ({price: item.priceId, quantity: item.quantity}));
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', `https://api.mecena.net/checkout/create-checkout-session`, true);
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.onload = function(){
+        if (xhr.status >= 200 && xhr.status < 300) {
+            let url = JSON.parse(xhr.response).url;
+            window.location = url;
+        }
+        else {
+            console.log('Request failed.  Returned status of ' + xhr.status);
+        }
+    }
+    xhr.send(JSON.stringify(formattedCart))
+}
+
+function getCustomer(){
+    const appreciation = document.getElementById("appreciation-message");
+    const emailSentMessage = document.getElementById("email-sent-message");
+    let params = new URLSearchParams(window.location.search);
+    let id = params.get("id");
+
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://api.mecena.net/checkout/success?id=` + id, true);
+    xhr.onload = function() {
+        if (xhr.status === 200) {
+            const customer = JSON.parse(xhr.response);
+            appreciation.innerHTML = `Thank you, ${customer.name}`;
+            emailSentMessage.innerHTML = `The order invoice has been sent to your email at ${customer.email}`;
+        }
+        else {
+            console.log('Request failed.  Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
+}
+
+function clearCart(){
+    sessionStorage.setItem('clientShoppingCart', '[]');
 }
