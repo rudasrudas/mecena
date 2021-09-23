@@ -124,3 +124,9 @@ function getCustomer(){
     };
     xhr.send();
 }
+
+function clearCart(){
+    if(sessionStorage.getItem("clientShoppingCart") !== null){
+        sessionStorage.removeItem("clientShoppingCart");
+    }
+}
