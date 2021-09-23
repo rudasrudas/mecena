@@ -3,6 +3,8 @@
     Promise.all([await customizePage(), contentLoaded]).then(() => {
         if(document.location.pathname === '/')  initializeFromPrices();
         if(document.location.pathname === '/shop/')  initializePrices();
+
+        document.querySelector('.loading-screen').classList.add('hidden');
     });
 })();
 
@@ -47,6 +49,9 @@ function customizePage() {
             };
             xhr.send();
         }
+        else {
+            resolve();
+        }
     });
 }
 
@@ -65,8 +70,6 @@ async function setupLoadingScreen() {
     if(sessionStorage.getItem('firstTime') === null){
         document.querySelector('.loading-screen').classList.remove('hidden');
         sessionStorage.setItem('firstTime', false);
-        await sleep(2000);
-        document.querySelector('.loading-screen').classList.add('hidden');
     }
 }
 
