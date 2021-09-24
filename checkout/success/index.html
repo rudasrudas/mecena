@@ -4,15 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../../scripts/index.js"></script>
-    <title>Document</title>
+    <title>Purchase successful - Mecena</title>
+    <base href="../../">
+
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="scripts/shop.js"></script>
+    <script src="scripts/respbox.js"></script>
+    <script src="scripts/index.js"></script>
+
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/navigation.css">
+    <link rel="stylesheet" href="styles/respbox.css">
+    <link rel="stylesheet" href="styles/contact.css">
+    <link rel="stylesheet" href="styles/success.css">
 </head>
 <body>
 
-    <div id="appreciation-message"></div>
-    <div id="email-sent-message"></div>
+    <!-- Navigation bar -->
+    <div id="nav-selector" onload=""></div>
+    
+    <script>
+        $(() => {$('#nav-selector').load('navigation.html')})
+    </script>
+
+    <div class="success-page">
+        <div class="nav-spacer"></div>
+    
+        <div class="inner-module content center-vertically">
+            <h1 class="success-headline">Your order is on it's way</h1>
+            <h3 id="appreciation-message">Thank you for your purchase!</h3>
+            <h3>You will receive the payment invoice in your email momentarily. For the mean time, please see the order fulfillment plan below.</h3>
+            <div class="fulfillment-plan">
+
+            </div>
+            <button class="offset-upwards primary resp-box right-align">
+                Return to the homepage
+                <span class="material-icons inline-icon">north_east</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer-selector"></div>
 
     <script>
+        $(function(){
+            $("#footer-selector").load("footer.html");
+        });
+
+        callResponsiveBoxes();
         getCustomer();
         clearCart();
     </script>

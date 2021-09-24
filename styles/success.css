@@ -1,0 +1,33 @@
+.success-page {
+    position: relative;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    height: 100vh;
+    background-image: linear-gradient( rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9) ), url(/static/pictures/damascus.svg);
+}
+
+.center-vertically {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.offset-upwards {
+    margin-bottom: 30px;
+}
+
+.success-headline {
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.right-align {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.fulfillment-plan {
+    margin: 40px 0px;
+}
