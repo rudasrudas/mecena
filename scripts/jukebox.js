@@ -121,7 +121,15 @@ function setupJukebox(){
             arrows: true,
             prevArrow: $("#jukebox-prev"),
             nextArrow: $("#jukebox-next"),
-            infinite: true
+            infinite: true,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
         });
         carousel.on('beforeChange', function(event, slick, currentSlideIndex, nextSlideIndex){
             //if slide hasn't changed, don't do anything
