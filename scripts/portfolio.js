@@ -63,9 +63,11 @@ var player = {
                         requestAnimationFrame(player.step);
                     },
                     onload: function(){
-                        //when song is loaded, remove loading ring and display control button
-                        player.button.style.display = "block";
-                        player.loadingRing.style.display = "none";
+                        //if the current sound is loaded, remove loading ring and display control button
+                        if(player.currentSound && player.currentSound == this){
+                            player.button.style.display = "block";
+                            player.loadingRing.style.display = "none";
+                        }
                     }
                 })
             });
@@ -74,7 +76,6 @@ var player = {
     play: function(id){
         this.currentSound = this.getSong(id);
         if(this.currentSound === undefined) return;
-
         if (this.currentSound.state() === 'loaded')
             this.button.style.display = 'block';
         else {
