@@ -1,6 +1,6 @@
 const articleModal = document.getElementById("article-modal");
 const articleBody = document.querySelector(".modal-body");
-const articleTitle = articleModal.querySelector(".title");
+const articleTitle = articleModal.querySelector(".article-modal-title");
 const articleImage = articleModal.querySelector(".article-modal-image");
 const articleText = articleModal.querySelector(".article-modal-text");
 
