@@ -269,10 +269,8 @@ function checkout(){
 
 function getCustomer(){
     const appreciation = document.getElementById("appreciation-message");
-    const emailSentMessage = document.getElementById("email-sent-message");
     let params = new URLSearchParams(window.location.search);
     let id = params.get("id");
-    console.log(id);
     if(id === null){
         location.href = "/";
     }
@@ -283,7 +281,6 @@ function getCustomer(){
         if (xhr.status === 200) {
             const customer = JSON.parse(xhr.response);
             appreciation.innerHTML = `Thank you, ${customer.name}`;
-            // emailSentMessage.innerHTML = `The order invoice has been sent to your email at ${customer.email}`;
         }
         else {
             console.log('Request failed.  Returned status of ' + xhr.status);

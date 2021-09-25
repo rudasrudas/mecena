@@ -167,8 +167,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    visibility: hidden;
-    display: flex;
+    display: none;
     justify-content: space-between;
     z-index: 4;
     user-select: none;
@@ -181,8 +180,8 @@
     cursor: pointer;
 }
 
-#vinyl-player:hover .control-buttons-wrapper{
-    visibility: visible;
+#vinyl-player.active:hover .control-buttons-wrapper{
+    display: flex;
 }
 
 #spindle{

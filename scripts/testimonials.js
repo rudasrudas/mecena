@@ -11,7 +11,15 @@ function setupTestimonials(){
             draggable: false,
             swipe: false,
             touchMove: false,
-            arrows: false
+            arrows: false,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                }
+            ]
         });
         renderTestimonials();
     })

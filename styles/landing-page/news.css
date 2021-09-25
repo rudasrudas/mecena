@@ -107,6 +107,10 @@
     background-color: white;
 }
 
+#article-modal .modal-body{
+    padding-top: 0;
+}
+
 #article-modal .modal-body.hidden{
     display: none;
 }
@@ -128,9 +132,22 @@
     background-color: #c98e10;
 }
 
+.article-modal-title{
+    text-align: center;
+    border-bottom: 1px black solid;
+    margin-bottom: 10px;
+}
+
 .article-modal-image{
     float: left;
     width: 30%;
-    padding-right: 20px;
-    padding-bottom: 20px;
+    min-width: 120px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.article-modal-text{
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: 100;
 }
