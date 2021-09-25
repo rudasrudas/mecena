@@ -1,2 +1,3 @@
-# mecena
-Website and system for Mecena music production company
+# Mecena
+Website front-end for Mecena Services Ltd.
+https://mecena.net/about/
