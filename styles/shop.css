@@ -42,8 +42,8 @@
     text-transform: uppercase;
     text-align: center;
     font-weight: 900;
-    line-height: 100%;
-    margin-bottom: 40px;
+    line-height: 80%;
+    margin-bottom: 30px;
 }
 
 /* Package block */
@@ -55,6 +55,7 @@
 .shop-info {
     display: flex;
     justify-content: space-between;
+    margin: 30px 0px 60px 0px;
 }
 
 .info-block{
@@ -93,6 +94,7 @@
 
 .info-block-description{
     font-size: 14px;
+    color:#7c7c7c;
 }
 
 
