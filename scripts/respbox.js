@@ -9,6 +9,18 @@ const g2 = '#f7d23f';
 const g3 = '#d9980b';
 const g4 = '#eca91c';
 
+function callHeroActionBackground(){
+    const bg = document.getElementById('hero-action-background');
+    bg.addEventListener("mousemove", function(event){ if(!event){ event = window.event; } updateActionBackground(event, bg); });
+}
+
+function updateActionBackground(event, bg){
+    const x = Math.floor(event.pageX - event.target.getBoundingClientRect().left + document.body.getBoundingClientRect().left);
+    const y = Math.floor(event.pageY - event.target.getBoundingClientRect().top + document.body.getBoundingClientRect().top);
+    console.log(x + " " + y);
+    bg.style.setProperty('-webkit-mask-image', '-webkit-radial-gradient(' + x + 'px ' + y + 'px, circle, #000f 20%, #0000 20%)');
+}
+
 function callResponsiveBoxes() {
     const boxes = document.querySelectorAll('.resp-box');
     initializeResponsiveBoxes(boxes);
