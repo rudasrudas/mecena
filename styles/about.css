@@ -96,6 +96,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 120%;
+            font-size: 30px;
         }
 
     .statement-gap {
@@ -141,6 +142,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 120%;
+            font-size: 30px;
         }
 
 #team {
