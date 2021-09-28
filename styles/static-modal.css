@@ -1,0 +1,71 @@
+.modal-overlay {
+    opacity: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+}
+
+.modal-overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-overlay.active .modal{
+    transform: scale(1);
+}
+  
+.modal {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 1000px;
+    max-width: 70vw;
+    height: 700px;
+    max-height: 70vh;
+    z-index: 25;
+    background-color: white;
+    transform: scale(0);
+    border: 1px solid black;
+    transition: 200ms ease-in-out;
+}
+
+.modal-header{
+    height: auto;
+    text-align: right;
+}
+
+.close-button{
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 35px !important;
+    user-select: none;
+}
+
+.close-button:hover{
+    cursor: pointer;
+}
+
+.modal-body{
+    padding: 20px 50px;
+    /* prevents body going outside modal */
+    flex-grow: 1;
+    overflow: auto;
+    /* --------------------------------- */
+}
+
+.modal-body.hidden{
+    display: none;
+}
+
+body.noscroll{
+    overflow: hidden;
+}

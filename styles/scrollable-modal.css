@@ -1,0 +1,74 @@
+.modal-overlay {
+    opacity: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+    /* hides scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* hides scrollbar */
+.modal-overlay::-webkit-scrollbar{
+    display: none;
+}
+  
+.modal-overlay.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-overlay.active .modal{
+    transform: scale(1);
+}
+
+.modal {
+    position: relative;
+    overflow: hidden;
+    width: 768px;
+    z-index: 25;
+    margin: 80px 20px 80px 20px;
+    background-color: white;
+    min-height: 50vh;
+    transform: scale(0);
+    border: 1px solid black;
+    transition: 200ms ease-in-out;
+}
+
+.modal-header{
+    height: auto;
+    text-align: right;
+}
+
+.close-button{
+    padding-top: 10px;
+    padding-right: 10px;
+    font-size: 35px !important;
+    user-select: none;
+}
+
+.close-button:hover{
+    cursor: pointer;
+}
+
+.modal-body{
+    padding: 20px 50px;
+}
+
+.modal-body.hidden{
+    display: none;
+}
+
+body.noscroll{
+    overflow: hidden;
+}

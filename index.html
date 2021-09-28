@@ -9,7 +9,7 @@
     <script src="./scripts/jukebox.js"></script>
     <script src="./scripts/testimonials.js"></script>
     <script defer src="./scripts/news.js"></script>
-    <script defer src="./scripts/modal.js"></script>
+    <script src="./scripts/modal.js"></script>
     <script src="./scripts/respbox.js"></script>
     
     <!-- Three JS -->
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="/styles/landing-page/jukebox.css">
     <link rel="stylesheet" href="/styles/landing-page/packages.css">
     <link rel="stylesheet" href="/styles/landing-page/testimonials.css">
-    <link rel="stylesheet" href="/styles/modal.css">
+    <link rel="stylesheet" href="/styles/scrollable-modal.css">
     <link rel="stylesheet" href="/styles/landing-page/news.css">
     <link rel="stylesheet" href="/styles/footer.css">
     <link rel="stylesheet" href="/styles/respbox.css">
@@ -196,17 +196,18 @@
         </div>
     </div>
 
-    <div class="modal" id="article-modal">
-        <div class="modal-header">
-            <span onclick="closeModal(this)" class="close-button material-icons">close</span>
-        </div>
-        <div class="modal-body hidden">
-            <h3 class="article-modal-title"></h3>
-            <img class="article-modal-image" src="" alt="">
-            <h4 class="article-modal-text"></h4>
+    <div class="modal-overlay" id="article-modal" onclick="closeModal(this, event)">
+        <div class="modal">
+            <div class="modal-header">
+                <span onclick="closeModal(this)" class="close-button material-icons">close</span>
+            </div>
+            <div class="modal-body hidden">
+                <h3 class="article-modal-title"></h3>
+                <img class="article-modal-image" src="" alt="">
+                <h4 class="article-modal-text"></h4>
+            </div>
         </div>
     </div>
-    <div onclick="closeModal()" id="overlay"></div>
 
     <!-- Footer -->
     <div id="footer-selector"></div>

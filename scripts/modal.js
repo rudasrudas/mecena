@@ -1,29 +1,27 @@
-const overlay = document.getElementById("overlay");
-
 function openModal(button){
-    const modal = document.querySelector(button.dataset.modalTarget);
-    modal.classList.add("active");
-    overlay.classList.add("active");
+    const modalOverlay = document.querySelector(button.dataset.modalTarget);
+    modalOverlay.scrollTop = 0;
+    modalOverlay.classList.add("active");
     document.body.classList.add("noscroll");
 }
 
-function closeModal(button){
-    let modal;
-    if(button == null){
-        //closed by clicking overlay
-        // const modals = document.querySelectorAll(".modal.active");
-        // modals.forEach(modal => {
-        //     modal.classList.remove("active");
-        // })
-        modal = document.querySelector(".modal.active");
+function closeModal(clickedTarget, event){
+    let modalOverlay;
+
+    //overlay onclick fired
+    if(event !== undefined){
+        //overlay wasn't clicked
+        if(event.target !== clickedTarget)
+            return
+        //overlay was clicked
+        else
+            modalOverlay = clickedTarget;
     }
-    else{
-        //closed by clicking button
-        modal = button.closest(".modal");
-    }
-    $(modal).removeClass("active").trigger("close");
-    overlay.classList.remove("active");
+    //button onclick fired
+    else
+        modalOverlay = clickedTarget.closest(".modal-overlay");
+    
+    $(modalOverlay).removeClass("active").trigger("close");
+    modalOverlay.classList.remove("active");
     document.body.classList.remove("noscroll");
 }
-
-

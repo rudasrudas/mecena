@@ -232,11 +232,7 @@
         margin-bottom: 30px;
     }
 
-#artwork-info .modal-body.hidden, #track-info .modal-body.hidden{
-    display: none;
-}
-
-#artwork-info .modal-body{
+#artwork-info .modal-body:not(.hidden){
     display: flex;
     padding: 40px;
 }

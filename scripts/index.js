@@ -249,6 +249,9 @@ function addToShoppingCart(id, title){
 function checkout(){
     const shoppingCart = JSON.parse(sessionStorage.getItem('clientShoppingCart'));
     if(shoppingCart.length == 0) return;
+    
+    const checkoutButton = document.querySelector(".purchase-btn");
+    checkoutButton.classList.add("loading")
 
     const formattedCart = shoppingCart.map(item => ({price: item.priceId, quantity: item.quantity}));
 
@@ -262,9 +265,10 @@ function checkout(){
         }
         else {
             console.log('Request failed.  Returned status of ' + xhr.status);
+            checkoutButton.classList.remove("loading")
         }
     }
-    xhr.send(JSON.stringify(formattedCart))
+    xhr.send(JSON.stringify(formattedCart));
 }
 
 function getCustomer(){

@@ -103,33 +103,8 @@
     } */
 }
 
-#article-modal{
-    background-color: white;
-}
-
 #article-modal .modal-body{
     padding-top: 0;
-}
-
-#article-modal .modal-body.hidden{
-    display: none;
-}
-
-#article-modal .modal-body::-webkit-scrollbar{
-    width: 15px;
-    background-color: transparent;
-}
-
-#article-modal .modal-body::-webkit-scrollbar-thumb {
-    background-color: #f7ae12;
-    width: 10px;
-    border-radius: 10px;
-    background-clip: content-box;
-    border: 3px solid transparent;
-}
-
-#article-modal .modal-body::-webkit-scrollbar-thumb:hover {
-    background-color: #c98e10;
 }
 
 .article-modal-title{
