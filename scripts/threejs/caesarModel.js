@@ -59,7 +59,7 @@ function init(){
         model = gltf.scene.children[0];
         model.scale.set(1, 1, 1);
         // model.rotation.set(-1.45, 0.05, 0);
-        model.rotation.z = 2;
+        model.rotation.z = 5;
         console.log(model);
 
         // const guiMod = gui.addFolder('Model Rotation')
@@ -92,22 +92,22 @@ function init(){
     document.getElementById('hero-canvas').addEventListener("mousemove", function(e){
         newMouseX = e.pageX;
         let xDiff = newMouseX - oldMouseX;
-        model.rotation.z += xDiff/500;
+        model.rotation.z += xDiff/10000;
         oldMouseX = newMouseX;
 
-        newMouseY = e.pageY;
-        let yDiff = newMouseY - oldMouseY;
-        if (yDiff > 0){
-            if(model.rotation.x < -1.6){
-                model.rotation.x += yDiff/1000;
-            }
-        }
-        else if (yDiff < 0){
-            if(model.rotation.x > -2){
-                model.rotation.x += yDiff/1000;
-            }
-        }
-        oldMouseY = newMouseY;
+        // newMouseY = e.pageY;
+        // let yDiff = newMouseY - oldMouseY;
+        // if (yDiff > 0){
+        //     if(model.rotation.x < -1.6){
+        //         model.rotation.x += yDiff/1000;
+        //     }
+        // }
+        // else if (yDiff < 0){
+        //     if(model.rotation.x > -2){
+        //         model.rotation.x += yDiff/1000;
+        //     }
+        // }
+        // oldMouseY = newMouseY;
     });
 
     animate();

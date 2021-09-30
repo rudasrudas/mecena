@@ -11,13 +11,27 @@
 window.onload = function(){
     if(document.location.pathname === '/'){
         updateArrowPosition();
-        window.onscroll = updateVinyl;
+        window.onscroll = () => {
+            updateVinyl();
+            updateNavScroll();
+        }
     }
 }
 
 window.onresize = function(){
     if(document.location.pathname === '/'){
         updateArrowPosition();
+    }
+}
+
+function updateNavScroll(){
+    if(document.location.pathname === '/'){
+        if((window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0) == 0){
+            document.querySelector('.navbar').classList.add('on-hero');
+        }
+        else {
+            document.querySelector('.navbar').classList.remove('on-hero');
+        }
     }
 }
 

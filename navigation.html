@@ -9,17 +9,20 @@
 </div>
 
 <nav class="navbar">
+    <script>
+        updateNavScroll()
+    </script>
     <div class="navbar-content">
-        <a class="navbar-brand" href="/">
-            <img class="navbar-logo" src="../static/logos/mecena-logo-icon.svg">
-            <img class="navbar-logo-text" src="../static/logos/mecena-logo-text.svg" alt="Mecena">
-        </a>
         <div class="navbar-links">
             <a href="/portfolio/">Portfolio</a>
             <a href="/shop/">Shop</a>
             <a href="/contact/">Contact</a>
             <a href="/about/">About</a>
         </div>
+        <a class="navbar-brand" href="/">
+            <img class="navbar-logo" src="../static/logos/mecena-logo-icon.svg">
+            <!-- <img class="navbar-logo-text" src="../static/logos/mecena-logo-text.svg" alt="Mecena"> -->
+        </a>
         <div class="navbar-right">
             <button id="checkout-btn" class="primary resp-box" onclick="toggleShoppingCart()">
                 <span class="material-icons shopping-cart-icon">shopping_cart</span>

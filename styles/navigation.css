@@ -33,13 +33,18 @@
     height: 25px;
 }
 
+.on-hero {
+    background: transparent;
+    filter: invert();
+    border: none;
+}
+
 .navbar-links{
     width: 35%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    position: absolute;
-    right: var(--spacing-content-margin-side);
+    /* position: absolute; */
 }
 
 .navbar a {
@@ -56,12 +61,18 @@
     cursor: pointer;
     text-decoration: none;
     align-items: center;
+    position: absolute;
+    left: 50vw;
 }
 
 .navbar-right {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.on-hero .navbar-right {
+    filter: invert();
 }
 
 .currency-icon {
