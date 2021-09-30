@@ -59,6 +59,7 @@ function init(){
         model = gltf.scene.children[0];
         model.scale.set(1, 1, 1);
         // model.rotation.set(-1.45, 0.05, 0);
+        model.rotation.z = 2;
         console.log(model);
 
         // const guiMod = gui.addFolder('Model Rotation')
@@ -77,12 +78,37 @@ function init(){
         requestAnimationFrame(animate);
         
         if(model){
-            model.rotation.z -= 0.01;
-            document.getElementById('hero-canvas').style.filter = 'hue-rotate(' + (model.rotation.z * 5000) + 'deg) saturate(1000000000)';
+            // model.rotation.z -= 0.002;
+            document.getElementById('hero-canvas').style.filter = 'hue-rotate(' + (new Date().getMilliseconds() / 1) + 'deg) saturate(2)';
         }
         renderer.render(scene, camera);
 
     }
+
+    var oldMouseX = 0;
+    var newMouseX = 0;
+    var oldMouseY = 0;
+    var newMouseY = 0;
+    document.getElementById('hero-canvas').addEventListener("mousemove", function(e){
+        newMouseX = e.pageX;
+        let xDiff = newMouseX - oldMouseX;
+        model.rotation.z += xDiff/500;
+        oldMouseX = newMouseX;
+
+        newMouseY = e.pageY;
+        let yDiff = newMouseY - oldMouseY;
+        if (yDiff > 0){
+            if(model.rotation.x < -1.6){
+                model.rotation.x += yDiff/1000;
+            }
+        }
+        else if (yDiff < 0){
+            if(model.rotation.x > -2){
+                model.rotation.x += yDiff/1000;
+            }
+        }
+        oldMouseY = newMouseY;
+    });
 
     animate();
 }
