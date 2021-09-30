@@ -17,7 +17,6 @@ function callHeroActionBackground(){
 function updateActionBackground(event, bg){
     const x = Math.floor(event.pageX - event.target.getBoundingClientRect().left + document.body.getBoundingClientRect().left);
     const y = Math.floor(event.pageY - event.target.getBoundingClientRect().top + document.body.getBoundingClientRect().top);
-    console.log(x + " " + y);
     bg.style.setProperty('-webkit-mask-image', '-webkit-radial-gradient(' + x + 'px ' + y + 'px, circle, #000f 20%, #0000 20%, #0000 22%, #000f 22%, #000f 24%, #0000 24%)');
 }
 

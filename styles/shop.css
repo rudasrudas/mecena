@@ -263,10 +263,12 @@
                 padding: 5px 30px 2px 0px;
             }
 
-        .package-buy {
+        button.primary.package-buy {
             width: fit-content;
             height: fit-content;
             align-self: flex-end;
+            font-size: 16px;
+            padding: 5px 10px;
         }
 
     .package-img {
