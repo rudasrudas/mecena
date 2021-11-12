@@ -41,11 +41,15 @@
 }
 
 .navbar-links{
-    width: 35%;
+    width: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     /* position: absolute; */
+}
+
+.navbar-links a {
+    margin-right: 30px;
 }
 
 .navbar a {
