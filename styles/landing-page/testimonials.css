@@ -23,7 +23,7 @@
     position: relative;
     transition: ease 0.3s;
     height: inherit !important;
-    width: 33%;
+    width: 300px;
     margin: 10px;
 }
 

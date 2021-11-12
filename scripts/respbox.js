@@ -57,7 +57,7 @@ function updateRespBoxMouseMove(event, box){
             box.style.background = 'radial-gradient(circle ' + box.offsetWidth + 'px at ' + xPost + 'px ' + yPost + 'px, ' + a + ', ' + b + ')';
         }
 
-        box.style.borderImageSource = 'radial-gradient(circle ' + box.offsetWidth + 'px at ' + xPost + 'px ' + yPost + 'px, ' + c + ', ' + d + ')';
+        // box.style.borderImageSource = 'radial-gradient(circle ' + box.offsetWidth + 'px at ' + xPost + 'px ' + yPost + 'px, ' + c + ', ' + d + ')';
     }
 }
 
@@ -74,5 +74,5 @@ function updateRespBoxMouseOut(box){
         box.style.background = a;
     }
 
-    box.style.borderImageSource = 'radial-gradient(circle, ' + b + ', ' + b + ')';
+    // box.style.borderImageSource = 'radial-gradient(circle, ' + b + ', ' + b + ')';
 }

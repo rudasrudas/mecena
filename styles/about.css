@@ -254,6 +254,7 @@
     .member-photo {
         max-width: 15vw;
         padding: 15px;
+        background-color: red;
     }
 
     .member-name {

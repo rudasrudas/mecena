@@ -18,10 +18,11 @@
 
     width: 100%;
     margin: 10px 30px;
+    height: 60px;
 }
 
 .navbar-logo{
-    width: 40px;
+    width: 60px;
     margin: 2px 0px;
     -webkit-filter: invert(100%);
     filter: invert(100%);

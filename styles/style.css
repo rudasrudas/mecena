@@ -290,6 +290,11 @@ button.alternative-dark:active {
     border-color: var(--color-btn-alternative-dark-border);
 }
 
+button {
+    --btn-border-radius: 1000px;
+    border-radius: var(--btn-border-radius);
+}
+
 /* Inputs */
 
 /* Material icons */
