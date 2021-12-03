@@ -13,7 +13,7 @@ window.onload = function(){
         updateArrowPosition();
         window.onscroll = () => {
             updateVinyl();
-            updateNavScroll();
+            // updateNavScroll();
         }
     }
 }
@@ -24,16 +24,16 @@ window.onresize = function(){
     }
 }
 
-function updateNavScroll(){
-    if(document.location.pathname === '/'){
-        if((window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0) == 0){
-            document.querySelector('.navbar').classList.add('on-hero');
-        }
-        else {
-            document.querySelector('.navbar').classList.remove('on-hero');
-        }
-    }
-}
+// function updateNavScroll(){
+//     if(document.location.pathname === '/'){
+//         if((window.pageYOffset || scrollTop)  - (document.documentElement.clientTop || 0) == 0){
+//             document.querySelector('.navbar').classList.add('on-hero');
+//         }
+//         else {
+//             document.querySelector('.navbar').classList.remove('on-hero');
+//         }
+//     }
+// }
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
