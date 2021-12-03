@@ -9,7 +9,6 @@ function updateNavScroll(){
     let scrollTop = document.documentElement.scrollTop;
 
     const navbar = document.querySelector('.navbar');
-    console.log(navbar)
 
     $("div[data-navstyle]").each(function(){
         var topDistance = $(this).offset().top;
@@ -21,8 +20,6 @@ function updateNavScroll(){
                 navbar.classList.remove("white");
         }
     });
-
-
 
     if(document.location.pathname === '/'){
         if((window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0) == 0){
