@@ -80,6 +80,8 @@ p {
 /* Colors */
 
 :root {
+    --highlight-color: #3bffb7;
+
     /* Border rounding */
     --button-border-radius: 0px;
     --package-border-radius: 0px;
@@ -188,6 +190,8 @@ p {
 .accent-color-background { color: var(--accent-color); }
 .secondary-accent-color-background { color: var(--secondary-accent-color); }
 .white-color-background { color: var(--white-color); }
+
+.highlight-color { color: var(--highlight-color); }
 
 /* Primary BUTTON */
 
